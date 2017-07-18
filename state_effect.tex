@@ -1,0 +1,53 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[all,pdf,2cell]{xy}\UseAllTwocells\SilentMatrices
+\else
+\usepackage[all,xdvi,2cell]{xy}\UseAllTwocells\SilentMatrices
+\fi
+\newcommand{\EA}{\mathbf{EA}}
+\newcommand{\Conv}{\mathbf{Conv}}
+\newcommand{\Convop}{\mathbf{Conv}^{op}}
+\newcommand{\states}{\Sigma}
+\newcommand{\effects}{E}
+
+\begin{document}
+\title{The state-effect monad on effect algebras}
+
+\section{Preliminaries}
+\subsection{Notation}
+\begin{itemize}
+\item $\EA$ is category of effect algebras.
+\item $\Conv$ is the category of convex sets (whatever that is).
+\item $\states:\EA\to\Convop$ is the state space functor.
+\item $\effects:\Convop\to\EA$ is the effects functor.
+\end{itemize}
+\subsection{The adjunction}
+Let $A$ be an effect algebra. Then $\states(A)$ is the convex set consisting of all states
+on $A$, equipped with convex combinations defined pointwise. If $f:A\to B$ is a morphism
+of effect algebras, then $\states(f):\states(B)\to\states(A)$ is given by the 
+rule $\states(f)(s)=s\circ f$. The mapping $\states(f)(s)$ is clearly a
+state on $A$ and, whenever $s,s'$ are two states on $B$, $\theta\in[0,1]$ and $b\in B$,
+\begin{align*}
+(\states(f)(\theta s+(1-\theta)s'))(b)=\\
+((\theta(s)+(1-\theta)s')\circ f)(b)=
+((\theta(s)+(1-\theta)s')(f(b)))=\\
+\theta(s(f(b)))+(1-\theta)(s'(f(b)))=
+\theta((s\circ f)(b))+(1-\theta)((s' \circ f)(b))=\\
+\theta((\states(f)(s))(b))+(1-\theta)((\states(f)(s'))(b))
+\end{align*}
+hence
+$$
+\states(f)(\theta s+(1-\theta)s')=
+\theta(\states(f)(s))+(1-\theta)(\states(f)(s'))
+$$
+so $\states(f)$ is a morphism in $\Convop$.
+
+Let $K$ be a convex set. An effect $\phi:K\to[0,1]$ on $K$ is an affine mapping 
+(that means, a morphism in $\Conv$) into a line segment $[0,1]$. Clearly, the set of all effects on $K$ 
+(denoted by $\effects(K)$) can be equipped with a pointwise partial addition inherited from the effect algebra 
+$[0,1]$. If $f:K\to K'$ is a morphism in $\Conv$, then $E(f):E(K')\to E(K)$ is given by the rule
+$E(f)(\phi)=\phi\circ f$. Let us prove that this is indeed a morphism of effect algebras
+\end{document}
