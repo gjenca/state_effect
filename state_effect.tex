@@ -29,16 +29,16 @@ Let $A$ be an effect algebra. We write $\states(A)$ for the convex set consistin
 on $A$, equipped with convex combinations defined pointwise. If $f:A\to B$ is a morphism
 of effect algebras, then $\states(f):\states(B)\to\states(A)$ is given by the 
 rule $\states(f)(s)=s\circ f$. The mapping $\states(f)(s)$ is clearly a
-state on $A$ and, whenever $s,s'$ are two states on $B$, $\theta\in[0,1]$ and $b\in B$,
+state on $A$ and, whenever $s,s'$ are two states on $B$, $\theta\in[0,1]$ and $a\in A$,
 \begin{align*}
-(\states(f)(\theta s+(1-\theta)s'))(b)=\\
-((\theta(s)+(1-\theta)s')\circ f)(b)=
-((\theta(s)+(1-\theta)s')(f(b)))=\\
-\theta(s(f(b)))+(1-\theta)(s'(f(b)))=
-\theta((s\circ f)(b))+(1-\theta)((s' \circ f)(b))=\\
-\theta((\states(f)(s))(b))+(1-\theta)((\states(f)(s'))(b))
+\bigl(\states(f)\bigl(\theta s+(1-\theta)s'\bigr)\bigr)(a)=\\
+\bigl(\bigl(\theta(s)+(1-\theta)s'\bigr)\circ f\bigr)(a)=
+\bigl(\bigl(\theta(s)+(1-\theta)s'\bigr)\bigl(f(a)\bigr)\bigr)=\\
+\theta\bigl(s\bigl(f(a)\bigr)\bigr)+(1-\theta)\bigl(s'\bigl(f(a)\bigr)\bigr)=
+\theta\bigl((s\circ f)(a)\bigr)+(1-\theta)\bigl((s' \circ f)(a)\bigr)=\\
+\theta\bigl(\bigl(\states(f)(s)\bigr)(a)\bigr)+(1-\theta)\bigl(\bigl(\states(f)(s')\bigr)(a)\bigr)
 \end{align*}
-hence
+meaning that
 $$
 \states(f)(\theta s+(1-\theta)s')=
 \theta(\states(f)(s))+(1-\theta)(\states(f)(s'))
@@ -48,6 +48,23 @@ so $\states(f)$ is a morphism in $\Convop$.
 Let $K$ be a convex set. An effect $\phi:K\to[0,1]$ on $K$ is an affine mapping 
 (that means, a morphism in $\Conv$) into a line segment $[0,1]$. Clearly, the set of all effects on $K$ 
 (denoted by $\effects(K)$) can be equipped with a pointwise partial addition inherited from the effect algebra 
-$[0,1]$. If $f:K\to K'$ is a morphism in $\Conv$, then $E(f):E(K')\to E(K)$ is given by the rule
-$E(f)(\phi)=\phi\circ f$. Let us prove that this is indeed a morphism of effect algebras
+$[0,1]$. In detail, if $\phi,\psi\in\effects(K)$, then $\phi\oplus\psi$ exists in $\effects(K)$ if and
+only if, for all points $x\in X$, $\phi(x)+\psi(x)\leq 1$ and then $(\phi\oplus\psi)(x)=\phi(x)\oplus\psi(x)$.
+
+If $f:K\to K'$ is a morphism in $\Conv$, then $\effects(f):\effects(K')\to \effects(K)$ is given by the rule
+$\effects(f)(\phi)=\phi\circ f$. Let us prove that this is indeed a morphism of effect algebras.
+Suppose that $\phi\oplus\psi$ exists in $\effects(K')$. Then, for all $x\in K$,
+$$
+(\effects(f)(\phi\oplus\psi))(x)=((\phi\oplus\psi)\circ f)(x)=
+(\phi\oplus\psi)(f(x))=\phi(f(x))+\psi(f(x))\leq 1,
+$$
+because $\phi\oplus\psi$ exists in $\effects(K')$. Thus,
+$$
+\phi(f(x))+\psi(f(x))=(\phi\circ f)(x)+(\psi\circ f)(x)=
+((\effects(f))(\phi))(x)+((\effects)(f))(\psi)(x)\leq 1
+$$
+Therefore, $\effects(f)(\phi)\oplus\effects(f)(\psi)$ exists
+in $\effects(K)$ and $\effects(f)(\phi)\oplus\effects(f)(\psi)=
+\effects(f)(\phi\oplus\psi)$. Moreover, it is easy to see that $\effects(f)(1)=1$,
+so $\effects(f)$ is a morphism of effect algebras.
 \end{document}
