@@ -1,0 +1,104 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amsfonts, amsthm}
+\usepackage[all]{xy}
+\newtheorem{lemma}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+
+
+\begin{document}
+
+\section{Convex sets, effects and states}
+
+There is a functor $V_b: BConv\to Ban$, mapping each $K$ to the generated base norm space.  $Ban$ is the category of Banach spaces and  contractions.
+
+
+\section{Convex effect algebras and ordered vector spaces}
+
+Let $V: CEA\to OVSu$ be the functor defined in \cite{sylviaetc}. Here $OVSu$ is the category of ordered vector spaces with an order unit and positive unital linear maps. We say that $A$ is archimedean if $VA$ is an order unit space and $A$ is called  complete archimedean  if $VA$ is an  order unit Banach space. 
+
+We will now introduce a monad on $EA$ such that the corresponding algebras are precisely the complete archimedean effect algebras. Let $CConv$ be the category whose objects are compact convex subsets in some Hausdorff topological vector spaces
+ and morphisms are continuous affine maps. Note that for any $A\in EA$, $\Sigma(A)$ is a convex subset in $[0,1]^A\subset \mathbb R^A$, closed in the product topology, hence compact. Moreover, for any $f:A\to A'$, $\Sigma(f):\Sigma(A')\to \Sigma(A)$ is continuous. It follows that $\Sigma$ defines a functor $EA\to  CConv^{op}$. To avoid confusion, the functor in this case will be denoted by $\Sigma_c$. Let also $E_c:CConv^{op}\to EA$ be defined similarly as $E$, but now we also require the effect to be continuous. Put $T_c=E_c\circ\Sigma_c$.
+
+
+It is well known that for any $K\in CConv$, $\Sigma_cE_c(K)\simeq K$, this induces a natural isomorphism $\mu^c:T_c^2\implies T_c$. Together with the unit $\eta: id\to T_c$, given by the evaluation map, $(T_c,\eta_c,\mu_c)$ defines a monad. Since $\mu$ is a natural isomorphism, this monad is idempotent and consequently, all algebras are isomorphisms. Hence if
+$A\in EA^{T_c}$, $A\simeq T_c(A)$, so that $A$ is a complete archimedean. Conversely, if $A$ is complete archimedean, 
+ then $a\mapsto ev_a$ establishes an isomorphism $A\simeq T_c(A)$. 
+
+
+Let us return to  $\Sigma: EA\to BConv^{op}$, $E:BConv^{op}\to EA$.
+
+\begin{lemma}\label{lemma:bas} Let $K\in BConv$. Then $VEK$ is an order unit Banach space with predual $V_bK$ and for any $f: K_1\to K_2$,
+ $VEf=f^*$, where $f^*$ is the adjoint map of the extension  $f: V_bK_1\to V_bK_2$.
+
+\end{lemma}
+
+\begin{proof} Note that $VEK$ is the space $A_b(K)$ of bounded affine functions $K\to \mathbb R$. This is clearly an order unit Banach space, where the order unit norm is given by $\|f\|=\sup_K|f(x)|$. It is clear that any $f\in A_b(K)$ 
+extends to a linear functional on $V_bK$ and for $v=\lambda x-\mu y$ we have
+\[
+|f(v)|\le \lambda|f(x)|+\mu|f(y)|\le (\lambda+\mu)\|f\|.
+\]
+Taking the infimum over all expressions for $v$ we obtain the result. Conversely, any $\varphi\in V_b(K)^*$ defines a 
+ bounded affine map over $K$.
+
+\end{proof}
+
+\section{Monadicity}
+
+We want to prove that the adjunction is monadic, applying the monadicity theorem, see \cite{leinster}. For this, we have to draw some diagrams.
+
+Let $K,L\in BConv$ and let $f,g:K\to L$ be an $E$-absolute coequalizer pair in $BCOnv^{op}$. This means that there is some $A\in EA$ and an arrow $q:E(L)\to A$ such that
+\begin{equation}\label{eq:absolute}\tag{*}
+\xymatrix{
+E(K) \ar@<.5ex>[r]^{Ef} \ar@<-.5ex>[r]_{Eg} &E(L)\ar[r]^q & A}
+\end{equation}
+is an absolute coequalizer diagram. That is, applying any functor $F: EA\to \mathcal C$ to \eqref{eq:absolute} yields a coequalizer diagram in $\mathcal C$. We have to show that
+\begin{enumerate}
+\item[(a)] there is some $e: L\to L'$ in $BConv^{op}$ such that 
+\begin{equation}
+\xymatrix{
+E(K) \ar@<.5ex>[r]^{Ef} \ar@<-.5ex>[r]_{Eg} &E(L)\ar[r]^{Ee} & E(L')}
+\end{equation}
+is a coequalizer in $EA$
+\item[(b)] each $e$ as in (a) is a coequalizer of $f$ and $g$ in $BConv^{op}$.
+\end{enumerate}
+
+Note first that since $E(K)$ and $E(L)$ are complete archimedean, we have 
+\[
+\xymatrix{
+E(K) \ar@<.5ex>[r]^{Ef} \ar@<-.5ex>[r]_{Eg} \ar@{<->}^{\simeq}[d]&E(L)\ar[r]^q \ar@{<->}^\simeq[d]& A\\
+T_cE(K)\ar@<.5ex>[r]^{T_cEf} \ar@<-.5ex>[r]_{T_cEg} &T_cE(L)\ar[r]^{T_cq}& T_c(A) }
+\]
+and since there is a coequalizer diagram in both lines, we obtain an isomorphism $T_c(A)\simeq A$. This implies that 
+ $A$ is complete archimedean as well.
+
+Let us now apply the functor $V:EA\to OVSu$ and  obtain the coequalizer diagram 
+\begin{equation}\label{eq:absolute_aous}\tag{**}
+\xymatrix{
+VE(K) \ar@<.5ex>[r]^{f^*} \ar@<-.5ex>[r]_{g^*} &VE(L)\ar[r]^{Vq} & VA }
+\end{equation}
+where $f^*$, $g^*$ are as in Lemma \ref{lemma:bas}. Note also that since $AOUS$ is a full subcategory in $OVSu$,  \eqref{eq:absolute_aous}  is a coequalizer diagram also in the category $AOUS$. Since  \eqref{eq:absolute_aous} is an absolute coequalizer diagram, applying the forgetful functor $U: OVSu\to Vect$ we obtain a coequalizer diagram in $Vect$. It follows that there is an isomorphism $VA\simeq VE(L)|_{Ran((f-g)^*)}$ in $Vect$ such that the diagram
+\[
+\xymatrix{VE(L)\ar[r]^{Vq} \ar[rd]^{q'}& VA \ar[d]^{\simeq} \\  & VE(L)|_{Ran((f-g)^*)}} 
+\] 
+commutes (in $Vect$), here $q'$ is the quotient map. It follows that 
+\[
+Ran((f-g)^*)=(Vq)^{-1}(0)
+\]
+ is closed (in the norm topology of $VE(L)$). It follows that \cite{??} $Ran((f-g)^*)=Ker(f-g)^\perp$ and
+\[
+\xymatrix{VE(L)\ar[r]^{Vq} \ar[rd]^{q'} \ar[rdd]_{e^*=VEe}& VA \ar[d]^{\simeq} \\  & VE(L)|_{Ker(f-g)^\perp}\ar[d]^\simeq \\
+& \left[Ker(f-g)\right]^*}
+\]
+where $e: Ker(f-g)\to V_b(L)$ is the embedding. We need to show that $Ker(f-g)$ is positively generated, that is, 
+$Ker(f-g)=V_b(L')$, where 
+\[
+L':=Ker(f-g)\cap L=\{x\in L, f(x)=g(x)\}.
+\]
+
+
+
+
+ 
+\end{document}
+
