@@ -38,7 +38,7 @@ extends to a linear functional on $V_bK$ and for $v=\lambda x-\mu y$ we have
 \[
 |f(v)|\le \lambda|f(x)|+\mu|f(y)|\le (\lambda+\mu)\|f\|.
 \]
-Taking the infimum over all expressions for $v$ we obtain the result. Conversely, any $\varphi\in V_b(K)^*$ defines a 
+Taking the infimum over all expressions for $v$ we obtain that $f\in V_b(K)$. Conversely, any $\varphi\in V_b(K)^*$ defines a 
  bounded affine map over $K$.
 
 \end{proof}
@@ -72,20 +72,27 @@ T_cE(K)\ar@<.5ex>[r]^{T_cEf} \ar@<-.5ex>[r]_{T_cEg} &T_cE(L)\ar[r]^{T_cq}& T_c(A
 and since there is a coequalizer diagram in both lines, we obtain an isomorphism $T_c(A)\simeq A$. This implies that 
  $A$ is complete archimedean as well.
 
-Let us now apply the functor $V:EA\to OVSu$ and  obtain the coequalizer diagram 
+Let us now apply the functor $V:EA\to OVSu$ and  obtain the absolute coequalizer diagram 
 \begin{equation}\label{eq:absolute_aous}\tag{**}
 \xymatrix{
 VE(K) \ar@<.5ex>[r]^{f^*} \ar@<-.5ex>[r]_{g^*} &VE(L)\ar[r]^{Vq} & VA }
 \end{equation}
-where $f^*$, $g^*$ are as in Lemma \ref{lemma:bas}. Note also that since $AOUS$ is a full subcategory in $OVSu$,  \eqref{eq:absolute_aous}  is a coequalizer diagram also in the category $AOUS$. Since  \eqref{eq:absolute_aous} is an absolute coequalizer diagram, applying the forgetful functor $U: OVSu\to Vect$ we obtain a coequalizer diagram in $Vect$. It follows that there is an isomorphism $VA\simeq VE(L)|_{Ran((f-g)^*)}$ in $Vect$ such that the diagram
+where $f^*$, $g^*$ are as in Lemma \ref{lemma:bas}. Note that $VE(K)$, $VE(L)$ and $VA$ are order unit Banach spaces and $f^*,g^*$ and $Vq$ are bounded linear maps.
+%Note also that since $AOUS$ is a full subcategory in $OVSu$,  \eqref{eq:absolute_aous}  is a coequalizer diagram also in the category $AOUS$.
+ Since  \eqref{eq:absolute_aous} is an absolute coequalizer diagram, applying the forgetful functor $U: OVSu\to Vect$ we obtain a coequalizer diagram in $Vect$. It follows that there is an isomorphism $VA\simeq VE(L)|_{R(f^*-g^*)}$ in $Vect$ such that the diagram
 \[
-\xymatrix{VE(L)\ar[r]^{Vq} \ar[rd]^{q'}& VA \ar[d]^{\simeq} \\  & VE(L)|_{Ran((f-g)^*)}} 
+\xymatrix{VE(L)\ar[r]^{Vq} \ar[rd]^{q'}& VA \ar[d]^{\simeq} \\  & VE(L)|_{R(f^*-g^*)}} 
 \] 
 commutes (in $Vect$), here $q'$ is the quotient map. It follows that 
 \[
-Ran((f-g)^*)=(Vq)^{-1}(0)
+R((f-g)^*)=R(f^*-g^*)=(Vq)^{-1}(0)
 \]
- is closed (in the norm topology of $VE(L)$). It follows that \cite{??} $Ran((f-g)^*)=Ker(f-g)^\perp$ and
+ and since $Vq$ is continuous, $R((f-g)^*)$ is closed (in the order unit norm topology of $VE(L)$). By the closed range theorem, it follows that
+\[ 
+R((f-g)^*)=N(f-g)^\perp
+\]
+where $N(f-g)=\{x\in V_b(L), (f-g)(x)=0\}$.
+ and
 \[
 \xymatrix{VE(L)\ar[r]^{Vq} \ar[rd]^{q'} \ar[rdd]_{e^*=VEe}& VA \ar[d]^{\simeq} \\  & VE(L)|_{Ker(f-g)^\perp}\ar[d]^\simeq \\
 & \left[Ker(f-g)\right]^*}
