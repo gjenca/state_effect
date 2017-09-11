@@ -1,0 +1,165 @@
+
+\documentclass[12pt]{article}
+\usepackage{amsmath, amsfonts, amsthm}
+\usepackage[all]{xy}
+\newtheorem{lemma}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newcommand{\<}{\langle}
+\def\>{\rangle}
+\newcommand{\ct}[1]{\mathbf{#1}}
+
+
+
+\begin{document}
+
+\section{Ordered vector spaces and order unit spaces}
+
+Let $V$ be a real vector space, $P\subseteq V$. Then $P$ is a convex cone if for any $a,b\in \mathbb R^+$, $x,y\in P$, we have $ax+by\in P$. A convex cone $P$ is pointed
+ if $P\cap -P=\{0\}$ and generating if $V=P-P$.
+
+
+\section{The categories $\ct{Conv}$ and $\ct{Bconv}$}
+
+
+A general convex set, or a convex structure, was defined in \cite{gudder} as a set $X$ endowed with a ternary operation $\<\cdot,\cdot,\cdot\>: [0,1]\times X\times X\to X$,
+ satisfying certain relations. For subsets in a vector space, we may put $\<s,x,y\>=sx+(1-s)y$ for $s\in [0,1]$ and $x,y\in X$, to obtain the usual definition of a convex set.  If $(X,\<\cdot,\cdot,\cdot\>_X)$ and $(Y,\<\cdot,\cdot,\cdot\>_Y)$ are convex structures, a map $f:X\to Y$ is called affine if it satisfies
+\[
+\<s,f(x),f(y)\>_Y=f(\<s,x,y\>_X),\qquad s\in [0,1],\ x,y\in X.
+\]
+The category of convex structures with affine maps as morphisms will be denoted by $\ct{Conv}$. 
+
+For $X\in \ct{Conv}$, elements of $Hom(X,\mathbb R)$ are called functionals. Note that $Hom(X,\mathbb R)$ can be given a structure of a vector space, this will be denoted by $\widetilde A(X)$.  Let $A(X)$ be the vector subspace of bounded functionals, $A(X)^+$ the set of positive bounded functionals and let $1_X$ denote the constant $1_X(x)\equiv 1$. It is easy to see that $A(X)^+$ is a pointed convex cone and that $(A(X),A(X)^+,1_X)$ is an  order unit Banach space, with order unit norm satisfying
+\[
+\|f\|_{1_X}=\sup_{x\in X} |f(x)|.
+\]
+Let also $E(X):=Hom(X,[0,1])$, then $E(X)$ is the interval between 0 and $1_X$ in $(A(X),A(X)^+)$. Functionals in  $E(X)$ will be called effects.
+
+
+
+
+
+A nonempty convex structure $X$ is geometric if it is isomorphic to a convex subset of a vector space. Any such isomorphism will be called a geometric representation of $X$.
+Let $\phi:X\to V$ be a geometric representation and let $\tilde \phi:X\to V\oplus \mathbb R$ be defined by $\tilde \phi(x)=(\phi(x),1)$, then $\tilde \phi$ is a geometric 
+representation  such that the image $\phi(X)$ lies in a hyperplane not containing 0. We may therefore assume without loss of generality  that any geometric representation has this property.
+
+ Note that not all convex structures are geometric (Example?). We have the following characterization of geometric convex structures.
+\begin{thm}(\cite[Thm. 2.2]{gudder}) A convex structure $X\neq \emptyset$ is geometric if and only if it is separated by elements of $\widetilde A(X)$, 
+that is, for all $x\ne y\in X$, there is some functional $f\in \widetilde A(X)$ such that $f(x)\ne f(y)$. 
+\end{thm}
+
+
+Let $\phi:X\to V$ be a geometric representation and let $V(X):=\mathrm{span}\{\phi(X)\}$. Strictly speaking, this definition depends on the representation $\phi$, but all
+ these  spaces  are isomorphic. We will also identify $x\equiv \phi(x)$ for all $x\in X$. By our assumption on the representation, there is a linear functional $\xi\in V(X)^*$ such that 
+ $\xi(x)=1$ for all $x\in X$. Put $V(X)^+:=\cup_{\lambda\ge 0} \lambda X$. We now list some standard results.
+
+\begin{lemma} %vynech%
+$V(X)^+$ is a pointed and generating convex cone in $V(X)$, with base $X$.
+
+\end{lemma}
+
+\begin{proof} $V(X)^+$ is a generating convex cone in $V(X)$ by definition. Let $v\in V(X)^+\cap -V(X)^+$, so that there are some $a,b\in \mathbb R^+$ and $x,y\in X$ such that $v=ax=-by$. Assume $a+b>0$, then by convexity 
+\[
+0=\frac a{a+b}x+\frac b{a+b}y\in X,
+\]
+ which is impossible. Hence $a=b=0$ and $v=0$. To show that $X$ is a base of $V(X)^+$, it suffices to observe that $X=\{v\in V(X)^+, \xi(v)=1\}$.
+
+
+\end{proof}
+
+
+
+\begin{lemma} Any $f\in A(X)$ extends to a (unique) linear functional on $V(X)$, which is positive if and only if $f\in A(X)^+$.
+
+\end{lemma}
+
+\begin{proof} Put $f(0):=0$ and for $v=ax-by$, put $f(v):=ax-by$. We only need to prove that this extension is well defined. Assume that $v=ax-by=cx'-dy'$ for $a,b,c,d\in \mathbb R^+$ and $x,x',y,y'\in X$.
+
+
+\end{proof}
+
+
+\begin{lemma} Let $P$ be a pointed generating convex cone in a vector space $V$, with base $K$. For $v\in V$, put 
+\[
+\|v\|=\inf\{a+b,\ v=a x-b y,\ a,b\in \mathbb R^+, x,y\in K\}.
+\]
+This defines a seminorm in $V$, which is a norm if and only if $S:=co(K\cup -K)$ is linearly bounded. (linearly bounded means that the intersection of $S$ with any line is either empty or a bounded segment)
+
+\end{lemma}
+
+\begin{proof} Note that $\|\cdot\|$ is the Minkowski functional of $S$, that is
+\[
+\|v\|= \inf\{\lambda>0, v\in \lambda S\}.
+\]
+To see this, observe that $S=\{s x-(1-s)y,\ s\in [0,1],\ x,y\in K\}$. Denote the Minkowski functional by $p_S$. If $v=ax-by$ for some $a,b\in \mathbb R^+$ and $x,y\in K$, then if $a+b=0$, we must have 
+$v=0$ and the equality obviously holds. Otherwise, 
+\[
+v=(a+b)(\frac a{a+b} x-\frac b{a+b} y)\in (a+b) S,
+\]
+so that $p_S(v)\le \|v\|$. On the other hand, let $v\in \lambda S$ for some $\lambda>0$. Then $v=\lambda(sx-(1-s)y)$ for some $s\in [0,1]$ and $x,y\in K$, so that 
+\[
+\|v\|\le \lambda s+(1-\lambda)(1-s)=\lambda,
+\]
+hence $\|v\|\le p_S(v)$. It is easy to see that $S$ is convex, balanced and absorbing in $V$, so that $p_S$ is a seminorm.  
+
+Assume that $\|\cdot\|$ is a norm and let $v_t:=v+tw$ be a line in $V$. Then $\|w\|>0$ and $v_t\in  S$ implies that $1\ge \|v_t\|\ge |\|v\|-|t|\|w\||$, so that $|t|\le \tfrac{1+\|v\|}{\|w\|}$. Conversely, assume that $S$ is linearly bounded and let $\|v\|=0$. This implies $tv\in S$ for all $t\in \mathbb R$, hence we must have $v=0$. 
+
+\end{proof}
+
+
+
+The (semi)norm in the above lemma is called  the base (semi)norm in $V$. If $\|\cdot\|$ is a norm, the triple $(V,P,K)$ is called a base-normed space. We will denote 
+by $\ct{BN}$ the category of base-normed spaces, with morphisms $f: (V_1,P_1,K_1)\to (V_2,P_2,K_2)$ given by linear maps $f:V_1\to V_2$ such that $f(X_1)\subseteq X_2$. It is easy to see that any morphism is a contraction with respect to the corresponding base norms.
+
+
+
+Let $X$ be a geometric convex structure such that $co(X\cup -X)$ is linearly bounded in $V(X)$, then we will say that $X$ is bounded.
+ The (sub)category of  bounded convex structures will be denoted by $\ct{Bconv}$. It is clear that $\ct{Bconv}$ and $\ct{BN}$ are equivalent categories. In particular,
+for $X\in \ct{Bconv}$, $(V(X),V(X)^+,X)\in \ct{BN}$ and any morphism $f:X\to Y$ extends to a morphism of the corresponding base-normed spaces. 
+
+
+We have the following characterization of objects in $\ct{Bconv}$.
+\begin{prop} Let $X$ be a nonempty convex structure. Then the following conditions  are equivalent.
+\begin{enumerate}
+\item[(i)] $X$ is separated by $A(X)$.
+\item[(ii)] $X$ is separated by $E(X)$.
+\item[(iii)] $X$ is bounded.
+\end{enumerate}
+
+\end{prop}
+
+
+\begin{proof} Note that since $E(X)$ contains an order unit, $A(X)$ is spanned by $E(X)$, so that (i) and (ii) are equivalent. Assume (i), then by
+ Theorem \ref{thm:gudder}, $X$ is geometric. We will first show that any $f\in E(X)$ extends uniquely to a linear functional on $V(X)$.
+
+
+
+Let $S=co(X\cup -X)$ and let $v_t:=v+tw$ for $v,w\in V(X)$, $w\ne 0$ and $t\in \mathbb R$. 
+Note that there must be some $f\in E(X)$ such that $f(w)\ne0$. Indeed, we have $w=ax-by$ for $a,b\in \mathbb R^+$ and $x,y\in X$. If $f(w)=0$ for all $f\in E(X)$, 
+ then also $a-b=1_X(w)=0$, hence $a=b$ and $w=a(x-y)$. 
+  
+
+
+\end{proof}
+
+
+\begin{lemma} Let $X$ be a bounded convex structure. Then  $A(X)$ is the dual of $V(X)$ as a normed space, $A(X)^+$ is the dual cone to $V(X)^+$ and 
+\[
+X=\{v\in V(X)^+, 1_X(v)=1\}.
+\]
+\end{lemma}
+
+\begin{proof} Let $V(X)^*$ denote the set of bounded linear functionals on $V(X)$ with the base norm. Clearly, any $\varphi\in V(X)^*$ restricts to an affine map 
+$f_\varphi:X\to \mathbb R$ and since $\varphi$ is bounded, we have
+\[
+\sup_{x\in X} |f_\varphi(x)|\le \sup_{v\in co(X\cup -X)}|\varphi(v)|\le \sup_{\|v\|\le 1}|\varphi(v)|=\|\varphi\|,
+\]
+so that $f_\varphi\in A(X)$, with $\|f_\varphi\|\le \|\varphi\|$.
+
+
+\end{proof}
+
+
+
+\end{document}
+
