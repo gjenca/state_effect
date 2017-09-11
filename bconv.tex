@@ -41,17 +41,17 @@ Let also $E(X):=Hom(X,[0,1])$, then $E(X)$ is the interval between 0 and $1_X$ i
 
 A nonempty convex structure $X$ is geometric if it is isomorphic to a convex subset of a vector space. Any such isomorphism will be called a geometric representation of $X$.
 Let $\phi:X\to V$ be a geometric representation and let $\tilde \phi:X\to V\oplus \mathbb R$ be defined by $\tilde \phi(x)=(\phi(x),1)$, then $\tilde \phi$ is a geometric 
-representation  such that the image $\phi(X)$ lies in a hyperplane not containing 0. We may therefore assume without loss of generality  that any geometric representation has this property.
+representation  such that the image $\tilde \phi(X)$ lies in a hyperplane not containing 0. We may therefore assume without loss of generality  that any geometric representation has this property.
 
  Note that not all convex structures are geometric (Example?). We have the following characterization of geometric convex structures.
-\begin{thm}(\cite[Thm. 2.2]{gudder}) A convex structure $X\neq \emptyset$ is geometric if and only if it is separated by elements of $\widetilde A(X)$, 
+\begin{thm}(\cite[Thm. 2.2]{gudder}) \label{thm:gudder} A convex structure $X\neq \emptyset$ is geometric if and only if it is separated by elements of $\widetilde A(X)$, 
 that is, for all $x\ne y\in X$, there is some functional $f\in \widetilde A(X)$ such that $f(x)\ne f(y)$. 
 \end{thm}
 
 
 Let $\phi:X\to V$ be a geometric representation and let $V(X):=\mathrm{span}\{\phi(X)\}$. Strictly speaking, this definition depends on the representation $\phi$, but all
- these  spaces  are isomorphic. We will also identify $x\equiv \phi(x)$ for all $x\in X$. By our assumption on the representation, there is a linear functional $\xi\in V(X)^*$ such that 
- $\xi(x)=1$ for all $x\in X$. Put $V(X)^+:=\cup_{\lambda\ge 0} \lambda X$. We now list some standard results.
+ these  spaces  are isomorphic. We will also identify $x\equiv \phi(x)$ for all $x\in X$. By our assumption on the representation, there is a linear functional $1_X\in V(X)^*$ such that 
+ $1_X(x)=1$ for all $x\in X$. Put $V(X)^+:=\cup_{\lambda\ge 0} \lambda X$. We now list some standard results.
 
 \begin{lemma} %vynech%
 $V(X)^+$ is a pointed and generating convex cone in $V(X)$, with base $X$.
@@ -62,20 +62,23 @@ $V(X)^+$ is a pointed and generating convex cone in $V(X)$, with base $X$.
 \[
 0=\frac a{a+b}x+\frac b{a+b}y\in X,
 \]
- which is impossible. Hence $a=b=0$ and $v=0$. To show that $X$ is a base of $V(X)^+$, it suffices to observe that $X=\{v\in V(X)^+, \xi(v)=1\}$.
+ which is impossible. Hence $a=b=0$ and $v=0$. To show that $X$ is a base of $V(X)^+$, it suffices to observe that $X=\{v\in V(X)^+, 1_X(v)=1\}$.
 
 
 \end{proof}
 
 
 
-\begin{lemma} Any $f\in A(X)$ extends to a (unique) linear functional on $V(X)$, which is positive if and only if $f\in A(X)^+$.
+\begin{lemma}\label{lemma:extension} Any $f\in A(X)$ extends to a (unique) linear functional on $V(X)$, which is positive if and only if $f\in A(X)^+$.
 
 \end{lemma}
 
-\begin{proof} Put $f(0):=0$ and for $v=ax-by$, put $f(v):=ax-by$. We only need to prove that this extension is well defined. Assume that $v=ax-by=cx'-dy'$ for $a,b,c,d\in \mathbb R^+$ and $x,x',y,y'\in X$.
-
-
+\begin{proof} Put $f(0):=0$ and for $v=ax-by$, put $f(v):=ax-by$. We only need to prove that this extension is well defined, all the other  statements are obvious. Assume that $v=ax-by=cx'-dy'$ for $a,b,c,d\in \mathbb R^+$ and $x,x',y,y'\in X$. Then $ax+dy'=cx'+by$ and applying $1_X$ implies that $a+d=c+b$.
+ If $a+d=0$, then $v=0$ and $f(v)=0=af(x)-bf(y)$. Otherwise, we obtain 
+ \[
+\frac a{a+d}x+ \frac d{a+d}y'=\frac c{c+b} x'+\frac b{c+b} y
+ \]
+and since $f$ is affine, we get back to $af(x)-bf(y)=cf(x')-df(y')$. 
 \end{proof}
 
 
@@ -119,7 +122,7 @@ for $X\in \ct{Bconv}$, $(V(X),V(X)^+,X)\in \ct{BN}$ and any morphism $f:X\to Y$ 
 
 
 We have the following characterization of objects in $\ct{Bconv}$.
-\begin{prop} Let $X$ be a nonempty convex structure. Then the following conditions  are equivalent.
+\begin{prop}\label{prop:bounded} Let $X$ be a nonempty convex structure. Then the following conditions  are equivalent.
 \begin{enumerate}
 \item[(i)] $X$ is separated by $A(X)$.
 \item[(ii)] $X$ is separated by $E(X)$.
@@ -129,32 +132,43 @@ We have the following characterization of objects in $\ct{Bconv}$.
 \end{prop}
 
 
-\begin{proof} Note that since $E(X)$ contains an order unit, $A(X)$ is spanned by $E(X)$, so that (i) and (ii) are equivalent. Assume (i), then by
- Theorem \ref{thm:gudder}, $X$ is geometric. We will first show that any $f\in E(X)$ extends uniquely to a linear functional on $V(X)$.
-
-
+\begin{proof} Note that since $E(X)$ contains an order unit, $A(X)$ is spanned by $E(X)$, so that (i) and (ii) are equivalent. Assume 
+(i), then by Theorem \ref{thm:gudder}, $X$ is geometric. By Lemma \ref{lemma:extension}, any $f\in E(X)$ extends uniquely to a linear functional on $V(X)$. 
 
 Let $S=co(X\cup -X)$ and let $v_t:=v+tw$ for $v,w\in V(X)$, $w\ne 0$ and $t\in \mathbb R$. 
 Note that there must be some $f\in E(X)$ such that $f(w)\ne0$. Indeed, we have $w=ax-by$ for $a,b\in \mathbb R^+$ and $x,y\in X$. If $f(w)=0$ for all $f\in E(X)$, 
- then also $a-b=1_X(w)=0$, hence $a=b$ and $w=a(x-y)$. 
-  
+ then also $a-b=1_X(w)=0$, hence $a=b$ and $w=a(x-y)$. It follows that either $a=0$ or $x=y$, but then $w=0$. If $v_t\in S$, 
+  then 
+  \[
+  f(v_t)=f(v)+tf(w)\in f(S)=co(f(X)\cup -f(X))\subseteq [-1,1],
+  \]
+   and since $f(w)\ne 0$, this implies that $t$ must be in a bounded interval. Hence (iii) holds. 
+
+Finally, if (iii) is true, then $(V(X), V(X)^+, X)$ is a base-normed space. Let $V(X)^*$ denote the normed space dual. 
+Clearly, any $\varphi\in V(X)^*$ restricts to an affine map 
+$f_\varphi:X\to \mathbb R$ and  we have
+\begin{equation}\label{eq:dualnorm}
+\sup_{x\in X} |f_\varphi(x)|\le \sup_{v\in co(X\cup -X)}|\varphi(v)|\le \sup_{\|v\|\le 1}|\varphi(v)|=\|\varphi\|,
+\end{equation}
+so that $f_\varphi\in A(X)$. Since the elements of $V(X)^*$ separate points of $V(X)$, this implies (i).
 
 
 \end{proof}
 
 
-\begin{lemma} Let $X$ be a bounded convex structure. Then  $A(X)$ is the dual of $V(X)$ as a normed space, $A(X)^+$ is the dual cone to $V(X)^+$ and 
+\begin{lemma} Let $X$ be a bounded convex structure. Then  $A(X)$ is isometrically isomorphic to the dual of $V(X)$ as a normed space,  the dual cone to $V(X)^+$ is given by $A(X)^+$ and 
 \[
 X=\{v\in V(X)^+, 1_X(v)=1\}.
 \]
 \end{lemma}
 
-\begin{proof} Let $V(X)^*$ denote the set of bounded linear functionals on $V(X)$ with the base norm. Clearly, any $\varphi\in V(X)^*$ restricts to an affine map 
-$f_\varphi:X\to \mathbb R$ and since $\varphi$ is bounded, we have
+\begin{proof} By \eqref{eq:dualnorm}, any $\varphi\in V(X)^*$ restricts to an  element  
+ $f_\varphi\in A(X)$, with $\|f_\varphi\|\le \|\varphi\|$.  Conversely, by Lemma \ref{lemma:extension}, any $f\in A(X)$ extends to a unique linear functional $\varphi_f$ on $V(X)$
+and clearly $\varphi_{f_\varphi}=\varphi$, $f_{\varphi_f}=f$. Let $v=ax-by$, then
 \[
-\sup_{x\in X} |f_\varphi(x)|\le \sup_{v\in co(X\cup -X)}|\varphi(v)|\le \sup_{\|v\|\le 1}|\varphi(v)|=\|\varphi\|,
+|\varphi_f(v)|=|af(x)-bf(y)|\le a|f(x)|+b|f(y)|\le (a+b)\|f\|,
 \]
-so that $f_\varphi\in A(X)$, with $\|f_\varphi\|\le \|\varphi\|$.
+it follows that $|\varphi_f(v)|\le \|v\|\|f\|$, so that $\|\varphi_f\|\le \|f\|$. The rest is easy.
 
 
 \end{proof}
