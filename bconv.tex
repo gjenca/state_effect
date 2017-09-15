@@ -13,11 +13,77 @@
 
 \begin{document}
 
-\section{Ordered vector spaces and order unit spaces}
+\section{Ordered vector spaces }
 
-Let $V$ be a real vector space, $P\subseteq V$. Then $P$ is a convex cone if for any $a,b\in \mathbb R^+$, $x,y\in P$, we have $ax+by\in P$. A convex cone $P$ is pointed
- if $P\cap -P=\{0\}$ and generating if $V=P-P$.
+Let $V$ be a real vector space. A subset $A\subset V$ is linearly bounded if the intersection of $A$ with any line is either empty or a bounded segment.
+We say that $a\in A$ is an algebraic interior point of $A$ if for any $x\in V$ there is some $\delta>0$ such that $a+sx\in A$ for any $s\in [0,\delta]$. The set of all such points is called the algebraic interior of $A$ and is denoted by $aint(A)$. A is algebraically open if $A=aint(A)$ and algebraically closed if $V\setminus A$ is algebraically open. The smallest algebraically closed  set containing $A$ is called the algebraic closure of $A$, denoted by $acl(A)$. 
 
+
+Let $P\subseteq V$. Then $P$ is a convex cone if for any $a,b\in \mathbb R^+$, $x,y\in P$, we have $ax+by\in P$. A convex cone $P$ is pointed
+ if $P\cap -P=\{0\}$ and generating if $V=P-P$. A pointed convex cone defines a partial order in $V$ by $v\ge w$ if $v-w\in P$. 
+ The pair $(V,P)$ is called an ordered vector space.
+
+ An element $u\in V$ is an order unit in $(V,P)$ if for any $v\in V$, there is some $\lambda\in \mathbb R^+$ such that 
+ $v\le \lambda u$. This is equivalent to $u\in aint(P)$. If $aint(P)\ne \emptyset$, $P$ is generating.  For an order unit $u$, put
+ \[
+\|v\|_u=\inf\{\lambda>0,\ -\lambda u\le v\le \lambda u\}.
+ \]
+Then $\|\cdot\|_u$ is a seminorm in $V$. It is a norm if and only if  $u$ is almost Archimedean, that is
+\[
+-u\le nv \le u,\quad \forall n\in \mathbb N \implies v=0.
+\]
+Equivalently, $acl(P)$ is a convex cone (Breckner, Jameson). We say that $u$ is Archimedean if 
+\[
+nv\le u,\quad \forall n\in \mathbb N \implies v\le 0.
+\]
+This is equivalent to $P=acl(P)$. An ordered vector space with an Archimedean order unit $u$ is called an order unit space $(V,P,u)$.
+We will denote by $\ct{AOS}$ the category of order unit spaces with positive and unit preserving linear maps as morphisms, that is $f: (V_1,P_1,u_1)\to (V_2,P_2,u_2)$ is a linera map $f:V_1\to V_2$ such that $f(P_1)\subseteq P_2$ and $f(u_1)=u_2$.
+
+Let $(V,P)$ be an ordered vector space. A convex subset $K\subset P$ is called a base of $P$ if for any nonzero $p\in P$ there is a unique $\lambda>0$ and a unique element $x\in K$ such that $p=\lambda x$. The cone $P$ has a base if and only if there exists a linear functional $\xi$ on $X$ which is strictly positive on $P$, we then may put $K=\{p\in P, \xi(p)=1\}$ (Ellis). The following results also can be found in (Ellis). 
+
+
+\begin{lemma} Let $P$ be a pointed generating convex cone in a vector space $V$, with base $K$. For $v\in V$, put 
+\[
+\|v\|=\inf\{a+b,\ v=a x-b y,\ a,b\in \mathbb R^+, x,y\in K\}.
+\]
+This defines a seminorm in $V$, which is a norm if and only if $S:=co(K\cup -K)$ is linearly bounded. 
+
+\end{lemma}
+
+\begin{proof} Note that $\|\cdot\|$ is the Minkowski functional of $S$, that is
+\[
+\|v\|= \inf\{\lambda>0, v\in \lambda S\}.
+\]
+To see this, observe that $S=\{s x-(1-s)y,\ s\in [0,1],\ x,y\in K\}$. Denote the Minkowski functional by $p_S$. If $v=ax-by$ for some $a,b\in \mathbb R^+$ and $x,y\in K$, then if $a+b=0$, we must have 
+$v=0$ and the equality obviously holds. Otherwise, 
+\[
+v=(a+b)(\frac a{a+b} x-\frac b{a+b} y)\in (a+b) S,
+\]
+so that $p_S(v)\le \|v\|$. On the other hand, let $v\in \lambda S$ for some $\lambda>0$. Then $v=\lambda(sx-(1-s)y)$ for some $s\in [0,1]$ and $x,y\in K$, so that 
+\[
+\|v\|\le \lambda s+(1-\lambda)(1-s)=\lambda,
+\]
+hence $\|v\|\le p_S(v)$. It is easy to see that $S$ is convex, balanced and absorbing in $V$, so that $p_S$ is a seminorm.  
+
+Assume that $\|\cdot\|$ is a norm and let $v_t:=v+tw$ be a line in $V$. Then $\|w\|>0$ and $v_t\in  S$ implies that $1\ge \|v_t\|\ge |\|v\|-|t|\|w\||$, so that $|t|\le \tfrac{1+\|v\|}{\|w\|}$. Conversely, assume that $S$ is linearly bounded and let $\|v\|=0$. This implies $tv\in S$ for all $t\in \mathbb R$, hence we must have $v=0$. 
+
+\end{proof}
+
+The (semi)norm in the above lemma is called  the base (semi)norm in $V$. If $\|\cdot\|$ is a norm, the triple $(V,P,K)$ is called a base-normed space. We will denote 
+by $\ct{BN}$ the category of base-normed spaces, with morphisms $f: (V_1,P_1,K_1)\to (V_2,P_2,K_2)$ given by linear maps $f:V_1\to V_2$ such that $f(X_1)\subseteq X_2$. It is easy to see that any morphism is a contraction with respect to the corresponding base norms.
+
+Let $(V,P,K)\in \ct{BN}$ and let $V^*$ be the dual space of linear functionals that are bounded with respect to the base norm. Let 
+\[
+P^*:=\{ \varphi\in V^*,\ \varphi(p)\ge 0,\ \forall p\in P\}
+\]
+and let $u$ be the functional such that $K=\{p\in P,\ u(p)=1\}$. Then $P^*$ is clearly a pointed convex cone.
+Since $(\mathbb R, \mathbb R^+, 1)$ is a base-normed space with the usual norm in $\mathbb R$ as the base norm, $u$ is a morphism in $\ct{BN}$ and hence it is bounded. Moreover, it is easy to see that  $\varphi\in V^*$ satisfies
+\[
+\varphi(ay)=a\varphi(y)\le a\sup_{x\in K}|\varphi(x)|=\|\varphi\|u(ay),\quad \forall  a>0, y\in K.
+\]
+It follows that $u$ is an order unit in $(V^*,P^*)$, with $\|\varphi\|_u=\|\varphi\|$. Let $n\varphi\le u$ for all $n$, then for all $x\in K$, we have $\varphi(x)\le n^{-1}$, so that $\varphi\le 0$. We see that $(V^*,P^*,u)$ is an order unit space which is complete in the order unit norm, hence an order unit Banach space.
+
+ 
 
 \section{The categories $\ct{Conv}$ and $\ct{Bconv}$}
 
@@ -82,37 +148,7 @@ and since $f$ is affine, we get back to $af(x)-bf(y)=cf(x')-df(y')$.
 \end{proof}
 
 
-\begin{lemma} Let $P$ be a pointed generating convex cone in a vector space $V$, with base $K$. For $v\in V$, put 
-\[
-\|v\|=\inf\{a+b,\ v=a x-b y,\ a,b\in \mathbb R^+, x,y\in K\}.
-\]
-This defines a seminorm in $V$, which is a norm if and only if $S:=co(K\cup -K)$ is linearly bounded. (linearly bounded means that the intersection of $S$ with any line is either empty or a bounded segment)
 
-\end{lemma}
-
-\begin{proof} Note that $\|\cdot\|$ is the Minkowski functional of $S$, that is
-\[
-\|v\|= \inf\{\lambda>0, v\in \lambda S\}.
-\]
-To see this, observe that $S=\{s x-(1-s)y,\ s\in [0,1],\ x,y\in K\}$. Denote the Minkowski functional by $p_S$. If $v=ax-by$ for some $a,b\in \mathbb R^+$ and $x,y\in K$, then if $a+b=0$, we must have 
-$v=0$ and the equality obviously holds. Otherwise, 
-\[
-v=(a+b)(\frac a{a+b} x-\frac b{a+b} y)\in (a+b) S,
-\]
-so that $p_S(v)\le \|v\|$. On the other hand, let $v\in \lambda S$ for some $\lambda>0$. Then $v=\lambda(sx-(1-s)y)$ for some $s\in [0,1]$ and $x,y\in K$, so that 
-\[
-\|v\|\le \lambda s+(1-\lambda)(1-s)=\lambda,
-\]
-hence $\|v\|\le p_S(v)$. It is easy to see that $S$ is convex, balanced and absorbing in $V$, so that $p_S$ is a seminorm.  
-
-Assume that $\|\cdot\|$ is a norm and let $v_t:=v+tw$ be a line in $V$. Then $\|w\|>0$ and $v_t\in  S$ implies that $1\ge \|v_t\|\ge |\|v\|-|t|\|w\||$, so that $|t|\le \tfrac{1+\|v\|}{\|w\|}$. Conversely, assume that $S$ is linearly bounded and let $\|v\|=0$. This implies $tv\in S$ for all $t\in \mathbb R$, hence we must have $v=0$. 
-
-\end{proof}
-
-
-
-The (semi)norm in the above lemma is called  the base (semi)norm in $V$. If $\|\cdot\|$ is a norm, the triple $(V,P,K)$ is called a base-normed space. We will denote 
-by $\ct{BN}$ the category of base-normed spaces, with morphisms $f: (V_1,P_1,K_1)\to (V_2,P_2,K_2)$ given by linear maps $f:V_1\to V_2$ such that $f(X_1)\subseteq X_2$. It is easy to see that any morphism is a contraction with respect to the corresponding base norms.
 
 
 
