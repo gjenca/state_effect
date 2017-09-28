@@ -15,131 +15,132 @@
 
 \section{Ordered vector spaces }
 
-Let $V$ be a real vector space. A subset $A\subset V$ is linearly bounded if the intersection of $A$ with any line is either empty or a bounded segment.
-We say that $a\in A$ is an algebraic interior point of $A$ if for any $x\in V$ there is some $\delta>0$ such that $a+sx\in A$ for any $s\in [0,\delta]$. The set of all such points is called the algebraic interior of $A$ and is denoted by $aint(A)$. A is algebraically open if $A=aint(A)$ and algebraically closed if $V\setminus A$ is algebraically open. The smallest algebraically closed  set containing $A$ is called the algebraic closure of $A$, denoted by $acl(A)$. 
+Let $X$ be a real vector space. A subset $A\subset X$ is linearly bounded if the intersection of $A$ with any line is either empty or a bounded segment.
+We say that $a\in A$ is an algebraic interior point of $A$ if for any $x\in X$ there is some $\delta>0$ such that $a+sx\in A$ for any $s\in [0,\delta]$. The set of all such points is called the algebraic interior of $A$ and is denoted by $aint(A)$. A is algebraically open if $A=aint(A)$ and algebraically closed if $X\setminus A$ is algebraically open. The smallest algebraically closed  set containing $A$ is called the algebraic closure of $A$, denoted by $acl(A)$. 
 
 
-Let $P\subseteq V$. Then $P$ is a convex cone if for any $a,b\in \mathbb R^+$, $x,y\in P$, we have $ax+by\in P$. A convex cone $P$ is pointed
- if $P\cap -P=\{0\}$ and generating if $V=P-P$. A pointed convex cone defines a partial order in $V$ by $v\ge w$ if $v-w\in P$. 
- The pair $(V,P)$ is called an ordered vector space.
+Let $P\subseteq X$. Then $P$ is a  wedge if for any $a,b\in \mathbb R^+$, $x,y\in P$, we have $ax+by\in P$. A wedge $P$ defines an ordering in  $X$ by $x\le y$ if $x-y\in P$. The pair $(X,P)$ is called an ordered vector space. The ordering is a partial order iff $P\cap -P=\{0\}$, in this case $P$ is called a cone. $X$ with this ordering is directed  iff $P$ is generating, that is,  $X=P-P$. 
 
- An element $u\in V$ is an order unit in $(V,P)$ if for any $v\in V$, there is some $\lambda\in \mathbb R^+$ such that 
- $v\le \lambda u$. This is equivalent to $u\in aint(P)$. If $aint(P)\ne \emptyset$, $P$ is generating.  For an order unit $u$, put
+ An element $u\in X$ is an order unit in $(X,P)$ if for any $x\in X$, there is some $\lambda\in \mathbb R^+$ such that 
+ $x\le \lambda u$. This is equivalent to $u\in aint(P)$. If $aint(P)\ne \emptyset$, $P$ is generating.  For an order unit $u$, put
  \[
-\|v\|_u=\inf\{\lambda>0,\ -\lambda u\le v\le \lambda u\}.
+\|x\|_u=\inf\{\lambda>0,\ -\lambda u\le x\le \lambda u\}.
  \]
-Then $\|\cdot\|_u$ is a seminorm in $V$. It is a norm if and only if  $u$ is almost Archimedean, that is
+Then $\|\cdot\|_u$ is a seminorm in $X$. It is a norm if and only if  $u$ is almost Archimedean, that is
 \[
--u\le nv \le u,\quad \forall n\in \mathbb N \implies v=0.
+-u\le nx \le u,\quad \forall n\in \mathbb N \implies x=0.
 \]
-Equivalently, $acl(P)$ is a convex cone (Breckner, Jameson). We say that $u$ is Archimedean if 
+Equivalently, $acl(P)$ is a cone (Breckner, Jameson). We say that $u$ is Archimedean if 
 \[
-nv\le u,\quad \forall n\in \mathbb N \implies v\le 0.
+nx\le u,\quad \forall n\in \mathbb N \implies x\le 0.
 \]
-This is equivalent to $P=acl(P)$. An ordered vector space with an Archimedean order unit $u$ is called an order unit space $(V,P,u)$.
-We will denote by $\ct{AOS}$ the category of order unit spaces with positive and unit preserving linear maps as morphisms, that is $f: (V_1,P_1,u_1)\to (V_2,P_2,u_2)$ is a linera map $f:V_1\to V_2$ such that $f(P_1)\subseteq P_2$ and $f(u_1)=u_2$.
+This is equivalent to $P=acl(P)$. An ordered vector space with an Archimedean order unit $u$ is called an order unit space $(X,P,u)$.
+We will denote by $\ct{AOS}$ the category of order unit spaces with positive and unit preserving linear maps as morphisms, that is $f: (X_1,P_1,u_1)\to (X_2,P_2,u_2)$ is a linear map $f:X_1\to X_2$ such that $f(P_1)\subseteq P_2$ and $f(u_1)=u_2$.
 
-Let $(V,P)$ be an ordered vector space. A convex subset $K\subset P$ is called a base of $P$ if for any nonzero $p\in P$ there is a unique $\lambda>0$ and a unique element $x\in K$ such that $p=\lambda x$. The cone $P$ has a base if and only if there exists a linear functional $\xi$ on $X$ which is strictly positive on $P$, we then may put $K=\{p\in P, \xi(p)=1\}$ (Ellis). The following results also can be found in (Ellis). 
+Let $(X,P)$ be an ordered vector space. A convex subset $K\subset P$ is called a base of $P$ if for any nonzero $p\in P$ there is a unique $\lambda>0$  such that 
+$\lambda p\in K$.  The wedge  $P$ has a base if and only if $P$ is a cone and there exists a linear functional $\xi$ on $X$ which is strictly positive on $P$, then 
+ $K=\{p\in P, \xi(p)=1\}$. The following results also can be found in (Ellis). 
 
 
-\begin{lemma} Let $P$ be a pointed generating convex cone in a vector space $V$, with base $K$. For $v\in V$, put 
+\begin{lemma} Let $P$ be a  generating cone in a vector space $X$, with base $K$. For $x\in X$, put 
 \[
-\|v\|=\inf\{a+b,\ v=a x-b y,\ a,b\in \mathbb R^+, x,y\in K\}.
+\|x\|_K:=\inf\{a+b,\ x=a p-b q,\ a,b\in \mathbb R^+, p,q\in K\}.
 \]
-This defines a seminorm in $V$, which is a norm if and only if $S:=co(K\cup -K)$ is linearly bounded. 
+This defines a seminorm in $X$, which is a norm if and only if $S:=co(K\cup -K)$ is linearly bounded. 
 
 \end{lemma}
 
-\begin{proof} Note that $\|\cdot\|$ is the Minkowski functional of $S$, that is
+\begin{proof} Note that $\|\cdot\|_K$ is the Minkowski functional of $S$, that is
 \[
-\|v\|= \inf\{\lambda>0, v\in \lambda S\}.
+\|x\|_K= \inf\{\lambda>0, x\in \lambda S\}.
 \]
-To see this, observe that $S=\{s x-(1-s)y,\ s\in [0,1],\ x,y\in K\}$. Denote the Minkowski functional by $p_S$. If $v=ax-by$ for some $a,b\in \mathbb R^+$ and $x,y\in K$, then if $a+b=0$, we must have 
-$v=0$ and the equality obviously holds. Otherwise, 
+To see this, observe that $S=\{s p-(1-s)q,\ s\in [0,1],\ p,q\in K\}$. Denote the Minkowski functional by $p_S$. If $x=ap-bq$ for some $a,b\in \mathbb R^+$ and $p,q\in K$, then if $a+b=0$, we must have 
+$x=0$ and the equality obviously holds. Otherwise, 
 \[
-v=(a+b)(\frac a{a+b} x-\frac b{a+b} y)\in (a+b) S,
+x=(a+b)(\frac a{a+b} p-\frac b{a+b} q)\in (a+b) S,
 \]
-so that $p_S(v)\le \|v\|$. On the other hand, let $v\in \lambda S$ for some $\lambda>0$. Then $v=\lambda(sx-(1-s)y)$ for some $s\in [0,1]$ and $x,y\in K$, so that 
+so that $p_S(x)\le \|x\|_K$. On the other hand, let $x\in \lambda S$ for some $\lambda>0$. Then $x=\lambda(sp-(1-s)q)$ for some $s\in [0,1]$ and $p,q\in K$, so that 
 \[
-\|v\|\le \lambda s+(1-\lambda)(1-s)=\lambda,
+\|x\|_K\le \lambda s+(1-\lambda)(1-s)=\lambda,
 \]
-hence $\|v\|\le p_S(v)$. It is easy to see that $S$ is convex, balanced and absorbing in $V$, so that $p_S$ is a seminorm.  
+hence $\|x\|_K\le p_S(x)$. It is easy to see that $S$ is convex, balanced and absorbing in $X$, so that $\|\cdot\|_K=p_S$ is a seminorm.  
 
-Assume that $\|\cdot\|$ is a norm and let $v_t:=v+tw$ be a line in $V$. Then $\|w\|>0$ and $v_t\in  S$ implies that $1\ge \|v_t\|\ge |\|v\|-|t|\|w\||$, so that $|t|\le \tfrac{1+\|v\|}{\|w\|}$. Conversely, assume that $S$ is linearly bounded and let $\|v\|=0$. This implies $tv\in S$ for all $t\in \mathbb R$, hence we must have $v=0$. 
+Assume that $\|\cdot\|_K$ is a norm and let $x_t:=x+ty$ be a line in $X$. Then $\|y\|_K>0$ and $x_t\in  S$ implies that $1\ge \|x_t\|_K\ge |\|x\|_K-|t|\|y\|_K|$, so that $|t|\le \tfrac{1+\|x\|_K}{\|y\|_K}$. Conversely, assume that $S$ is linearly bounded and let $\|x\|_K=0$. This implies $tx\in S$ for all $t\in \mathbb R$, hence we must have 
+$x=0$. 
 
 \end{proof}
 
-The (semi)norm in the above lemma is called  the base (semi)norm in $V$. If $\|\cdot\|$ is a norm, the triple $(V,P,K)$ is called a base-normed space. We will denote 
-by $\ct{BN}$ the category of base-normed spaces, with morphisms $f: (V_1,P_1,K_1)\to (V_2,P_2,K_2)$ given by linear maps $f:V_1\to V_2$ such that $f(X_1)\subseteq X_2$. It is easy to see that any morphism is a contraction with respect to the corresponding base norms.
+The (semi)norm in the above lemma is called  the base (semi)norm in $X$. If $\|\cdot\|_K$ is a norm, the triple $(X,P,K)$ is called a base-normed space. We will denote 
+by $\ct{BN}$ the category of base-normed spaces, with morphisms $f: (X_1,P_1,K_1)\to (X_2,P_2,K_2)$ given by linear maps $f:X_1\to X_2$ such that $f(K_1)\subseteq K_2$. It is easy to see that any morphism is a contraction with respect to the corresponding base norms.
 
-Let $(V,P,K)\in \ct{BN}$ and let $V^*$ be the dual space of linear functionals that are bounded with respect to the base norm. Let 
+Let $(X,P,K)\in \ct{BN}$ and let $X^*$ be the dual space of linear functionals that are bounded with respect to the base norm. Let 
 \[
-P^*:=\{ \varphi\in V^*,\ \varphi(p)\ge 0,\ \forall p\in P\}
+P^*:=\{ \varphi\in X^*,\ \varphi(p)\ge 0,\ \forall p\in P\}
 \]
-and let $u$ be the functional such that $K=\{p\in P,\ u(p)=1\}$. Then $P^*$ is clearly a pointed convex cone.
+and let $u$ be the functional such that $K=\{p\in P,\ u(p)=1\}$. Then $P^*$ is clearly a  cone.
 Since $(\mathbb R, \mathbb R^+, 1)$ is a base-normed space with the usual norm in $\mathbb R$ as the base norm, $u$ is a morphism in $\ct{BN}$ and hence it is bounded. Moreover, it is easy to see that  $\varphi\in V^*$ satisfies
 \[
 \varphi(ay)=a\varphi(y)\le a\sup_{x\in K}|\varphi(x)|=\|\varphi\|u(ay),\quad \forall  a>0, y\in K.
 \]
-It follows that $u$ is an order unit in $(V^*,P^*)$, with $\|\varphi\|_u=\|\varphi\|$. Let $n\varphi\le u$ for all $n$, then for all $x\in K$, we have $\varphi(x)\le n^{-1}$, so that $\varphi\le 0$. We see that $(V^*,P^*,u)$ is an order unit space which is complete in the order unit norm, hence an order unit Banach space.
+It follows that $u$ is an order unit in $(X^*,P^*)$, with $\|\varphi\|_u=\|\varphi\|$. Let $n\varphi\le u$ for all $n$, then for all $x\in K$, we have $\varphi(x)\le n^{-1}$, so that $\varphi\le 0$. We see that $(X^*,P^*,u)$ is an order unit space which is complete in the order unit norm, hence an order unit Banach space.
 
  
 
 \section{The categories $\ct{Conv}$ and $\ct{Bconv}$}
 
 
-A general convex set, or a convex structure, was defined in \cite{gudder} as a set $X$ endowed with a ternary operation $\<\cdot,\cdot,\cdot\>: [0,1]\times X\times X\to X$,
- satisfying certain relations. For subsets in a vector space, we may put $\<s,x,y\>=sx+(1-s)y$ for $s\in [0,1]$ and $x,y\in X$, to obtain the usual definition of a convex set.  If $(X,\<\cdot,\cdot,\cdot\>_X)$ and $(Y,\<\cdot,\cdot,\cdot\>_Y)$ are convex structures, a map $f:X\to Y$ is called affine if it satisfies
+A general convex set, or a convex structure, was defined in \cite{gudder} as a set $K$ endowed with a ternary operation $\<\cdot,\cdot,\cdot\>: [0,1]\times K\times K\to K$,
+ satisfying certain relations. For subsets in a vector space, we may put $\<s,x,y\>=sx+(1-s)y$ for $s\in [0,1]$ and $x,y\in K$, to obtain the usual definition of a convex set.  If $(K,\<\cdot,\cdot,\cdot\>_K)$ and $(Y,\<\cdot,\cdot,\cdot\>_Y)$ are convex structures, a map $f:K\to Y$ is called affine if it satisfies
 \[
-\<s,f(x),f(y)\>_Y=f(\<s,x,y\>_X),\qquad s\in [0,1],\ x,y\in X.
+\<s,f(x),f(y)\>_Y=f(\<s,x,y\>_K),\qquad s\in [0,1],\ x,y\in K.
 \]
 The category of convex structures with affine maps as morphisms will be denoted by $\ct{Conv}$. 
 
-For $X\in \ct{Conv}$, elements of $Hom(X,\mathbb R)$ are called functionals. Note that $Hom(X,\mathbb R)$ can be given a structure of a vector space, this will be denoted by $\widetilde A(X)$.  Let $A(X)$ be the vector subspace of bounded functionals, $A(X)^+$ the set of positive bounded functionals and let $1_X$ denote the constant $1_X(x)\equiv 1$. It is easy to see that $A(X)^+$ is a pointed convex cone and that $(A(X),A(X)^+,1_X)$ is an  order unit Banach space, with order unit norm satisfying
+For $K\in \ct{Conv}$, elements of $Hom(K,\mathbb R)$ are called functionals. Note that $Hom(K,\mathbb R)$ can be given a structure of a vector space, this will be denoted by $\widetilde A(K)$.  Let $A(K)$ be the vector subspace of bounded functionals, $A(K)^+$ the set of positive bounded functionals and let $1_K$ denote the constant $1_K(x)\equiv 1$. It is easy to see that $A(K)^+$ is a pointed convex cone and that $(A(K),A(K)^+,1_K)$ is an  order unit Banach space, with order unit norm satisfying
 \[
-\|f\|_{1_X}=\sup_{x\in X} |f(x)|.
+\|f\|_{1_K}=\sup_{x\in K} |f(x)|.
 \]
-Let also $E(X):=Hom(X,[0,1])$, then $E(X)$ is the interval between 0 and $1_X$ in $(A(X),A(X)^+)$. Functionals in  $E(X)$ will be called effects.
+Let also $E(K):=Hom(K,[0,1])$, then $E(K)$ is the interval between 0 and $1_K$ in $(A(K),A(K)^+)$. Functionals in  $E(K)$ will be called effects.
 
 
 
 
 
-A nonempty convex structure $X$ is geometric if it is isomorphic to a convex subset of a vector space. Any such isomorphism will be called a geometric representation of $X$.
-Let $\phi:X\to V$ be a geometric representation and let $\tilde \phi:X\to V\oplus \mathbb R$ be defined by $\tilde \phi(x)=(\phi(x),1)$, then $\tilde \phi$ is a geometric 
-representation  such that the image $\tilde \phi(X)$ lies in a hyperplane not containing 0. We may therefore assume without loss of generality  that any geometric representation has this property.
+A nonempty convex structure $K$ is geometric if it is isomorphic to a convex subset of a vector space. Any such isomorphism will be called a geometric representation of $K$.
+Let $\phi:K\to V$ be a geometric representation and let $\tilde \phi:K\to V\oplus \mathbb R$ be defined by $\tilde \phi(x)=(\phi(x),1)$, then $\tilde \phi$ is a geometric 
+representation  such that the image $\tilde \phi(K)$ lies in a hyperplane not containing 0. We may therefore assume without loss of generality  that any geometric representation has this property.
 
  Note that not all convex structures are geometric (Example?). We have the following characterization of geometric convex structures.
-\begin{thm}(\cite[Thm. 2.2]{gudder}) \label{thm:gudder} A convex structure $X\neq \emptyset$ is geometric if and only if it is separated by elements of $\widetilde A(X)$, 
-that is, for all $x\ne y\in X$, there is some functional $f\in \widetilde A(X)$ such that $f(x)\ne f(y)$. 
+\begin{thm}(\cite[Thm. 2.2]{gudder}) \label{thm:gudder} A convex structure $K\neq \emptyset$ is geometric if and only if it is separated by elements of $\widetilde A(K)$, 
+that is, for all $x\ne y\in K$, there is some functional $f\in \widetilde A(K)$ such that $f(x)\ne f(y)$. 
 \end{thm}
 
 
-Let $\phi:X\to V$ be a geometric representation and let $V(X):=\mathrm{span}\{\phi(X)\}$. Strictly speaking, this definition depends on the representation $\phi$, but all
- these  spaces  are isomorphic. We will also identify $x\equiv \phi(x)$ for all $x\in X$. By our assumption on the representation, there is a linear functional $1_X\in V(X)^*$ such that 
- $1_X(x)=1$ for all $x\in X$. Put $V(X)^+:=\cup_{\lambda\ge 0} \lambda X$. We now list some standard results.
+Let $\phi:K\to V$ be a geometric representation and let $V(K):=\mathrm{span}\{\phi(K)\}$. Strictly speaking, this definition depends on the representation $\phi$, but all
+ these  spaces  are isomorphic. We will also identify $x\equiv \phi(x)$ for all $x\in K$. By our assumption on the representation, there is a linear functional $1_K\in V(K)^*$ such that 
+ $1_K(x)=1$ for all $x\in K$. Put $V(K)^+:=\cup_{\lambda\ge 0} \lambda K$. We now list some standard results.
 
 \begin{lemma} %vynech%
-$V(X)^+$ is a pointed and generating convex cone in $V(X)$, with base $X$.
+$V(K)^+$ is a pointed and generating convex cone in $V(K)$, with base $K$.
 
 \end{lemma}
 
-\begin{proof} $V(X)^+$ is a generating convex cone in $V(X)$ by definition. Let $v\in V(X)^+\cap -V(X)^+$, so that there are some $a,b\in \mathbb R^+$ and $x,y\in X$ such that $v=ax=-by$. Assume $a+b>0$, then by convexity 
+\begin{proof} $V(K)^+$ is a generating convex cone in $V(K)$ by definition. Let $v\in V(K)^+\cap -V(K)^+$, so that there are some $a,b\in \mathbb R^+$ and $x,y\in K$ such that $v=ax=-by$. Assume $a+b>0$, then by convexity 
 \[
-0=\frac a{a+b}x+\frac b{a+b}y\in X,
+0=\frac a{a+b}x+\frac b{a+b}y\in K,
 \]
- which is impossible. Hence $a=b=0$ and $v=0$. To show that $X$ is a base of $V(X)^+$, it suffices to observe that $X=\{v\in V(X)^+, 1_X(v)=1\}$.
+ which is impossible. Hence $a=b=0$ and $v=0$. To show that $K$ is a base of $V(K)^+$, it suffices to observe that $K=\{v\in V(K)^+, 1_K(v)=1\}$.
 
 
 \end{proof}
 
 
 
-\begin{lemma}\label{lemma:extension} Any $f\in A(X)$ extends to a (unique) linear functional on $V(X)$, which is positive if and only if $f\in A(X)^+$.
+\begin{lemma}\label{lemma:extension} Any $f\in A(K)$ extends to a (unique) linear functional on $V(K)$, which is positive if and only if $f\in A(K)^+$.
 
 \end{lemma}
 
-\begin{proof} Put $f(0):=0$ and for $v=ax-by$, put $f(v):=ax-by$. We only need to prove that this extension is well defined, all the other  statements are obvious. Assume that $v=ax-by=cx'-dy'$ for $a,b,c,d\in \mathbb R^+$ and $x,x',y,y'\in X$. Then $ax+dy'=cx'+by$ and applying $1_X$ implies that $a+d=c+b$.
+\begin{proof} Put $f(0):=0$ and for $v=ax-by$, put $f(v):=ax-by$. We only need to prove that this extension is well defined, all the other  statements are obvious. Assume that $v=ax-by=cx'-dy'$ for $a,b,c,d\in \mathbb R^+$ and $x,x',y,y'\in K$. Then $ax+dy'=cx'+by$ and applying $1_K$ implies that $a+d=c+b$.
  If $a+d=0$, then $v=0$ and $f(v)=0=af(x)-bf(y)$. Otherwise, we obtain 
  \[
 \frac a{a+d}x+ \frac d{a+d}y'=\frac c{c+b} x'+\frac b{c+b} y
@@ -152,54 +153,54 @@ and since $f$ is affine, we get back to $af(x)-bf(y)=cf(x')-df(y')$.
 
 
 
-Let $X$ be a geometric convex structure such that $co(X\cup -X)$ is linearly bounded in $V(X)$, then we will say that $X$ is bounded.
+Let $K$ be a geometric convex structure such that $co(K\cup -K)$ is linearly bounded in $V(K)$, then we will say that $K$ is bounded.
  The (sub)category of  bounded convex structures will be denoted by $\ct{Bconv}$. It is clear that $\ct{Bconv}$ and $\ct{BN}$ are equivalent categories. In particular,
-for $X\in \ct{Bconv}$, $(V(X),V(X)^+,X)\in \ct{BN}$ and any morphism $f:X\to Y$ extends to a morphism of the corresponding base-normed spaces. 
+for $K\in \ct{Bconv}$, $(V(K),V(K)^+,K)\in \ct{BN}$ and any morphism $f:K\to Y$ extends to a morphism of the corresponding base-normed spaces. 
 
 
 We have the following characterization of objects in $\ct{Bconv}$.
-\begin{prop}\label{prop:bounded} Let $X$ be a nonempty convex structure. Then the following conditions  are equivalent.
+\begin{prop}\label{prop:bounded} Let $K$ be a nonempty convex structure. Then the following conditions  are equivalent.
 \begin{enumerate}
-\item[(i)] $X$ is separated by $A(X)$.
-\item[(ii)] $X$ is separated by $E(X)$.
-\item[(iii)] $X$ is bounded.
+\item[(i)] $K$ is separated by $A(K)$.
+\item[(ii)] $K$ is separated by $E(K)$.
+\item[(iii)] $K$ is bounded.
 \end{enumerate}
 
 \end{prop}
 
 
-\begin{proof} Note that since $E(X)$ contains an order unit, $A(X)$ is spanned by $E(X)$, so that (i) and (ii) are equivalent. Assume 
-(i), then by Theorem \ref{thm:gudder}, $X$ is geometric. By Lemma \ref{lemma:extension}, any $f\in E(X)$ extends uniquely to a linear functional on $V(X)$. 
+\begin{proof} Note that since $E(K)$ contains an order unit, $A(K)$ is spanned by $E(K)$, so that (i) and (ii) are equivalent. Assume 
+(i), then by Theorem \ref{thm:gudder}, $K$ is geometric. By Lemma \ref{lemma:extension}, any $f\in E(K)$ extends uniquely to a linear functional on $V(K)$. 
 
-Let $S=co(X\cup -X)$ and let $v_t:=v+tw$ for $v,w\in V(X)$, $w\ne 0$ and $t\in \mathbb R$. 
-Note that there must be some $f\in E(X)$ such that $f(w)\ne0$. Indeed, we have $w=ax-by$ for $a,b\in \mathbb R^+$ and $x,y\in X$. If $f(w)=0$ for all $f\in E(X)$, 
- then also $a-b=1_X(w)=0$, hence $a=b$ and $w=a(x-y)$. It follows that either $a=0$ or $x=y$, but then $w=0$. If $v_t\in S$, 
+Let $S=co(K\cup -K)$ and let $v_t:=v+tw$ for $v,w\in V(K)$, $w\ne 0$ and $t\in \mathbb R$. 
+Note that there must be some $f\in E(K)$ such that $f(w)\ne0$. Indeed, we have $w=ax-by$ for $a,b\in \mathbb R^+$ and $x,y\in K$. If $f(w)=0$ for all $f\in E(K)$, 
+ then also $a-b=1_K(w)=0$, hence $a=b$ and $w=a(x-y)$. It follows that either $a=0$ or $x=y$, but then $w=0$. If $v_t\in S$, 
   then 
   \[
-  f(v_t)=f(v)+tf(w)\in f(S)=co(f(X)\cup -f(X))\subseteq [-1,1],
+  f(v_t)=f(v)+tf(w)\in f(S)=co(f(K)\cup -f(K))\subseteq [-1,1],
   \]
    and since $f(w)\ne 0$, this implies that $t$ must be in a bounded interval. Hence (iii) holds. 
 
-Finally, if (iii) is true, then $(V(X), V(X)^+, X)$ is a base-normed space. Let $V(X)^*$ denote the normed space dual. 
-Clearly, any $\varphi\in V(X)^*$ restricts to an affine map 
-$f_\varphi:X\to \mathbb R$ and  we have
+Finally, if (iii) is true, then $(V(K), V(K)^+, K)$ is a base-normed space. Let $V(K)^*$ denote the normed space dual. 
+Clearly, any $\varphi\in V(K)^*$ restricts to an affine map 
+$f_\varphi:K\to \mathbb R$ and  we have
 \begin{equation}\label{eq:dualnorm}
-\sup_{x\in X} |f_\varphi(x)|\le \sup_{v\in co(X\cup -X)}|\varphi(v)|\le \sup_{\|v\|\le 1}|\varphi(v)|=\|\varphi\|,
+\sup_{x\in K} |f_\varphi(x)|\le \sup_{v\in co(K\cup -K)}|\varphi(v)|\le \sup_{\|v\|\le 1}|\varphi(v)|=\|\varphi\|,
 \end{equation}
-so that $f_\varphi\in A(X)$. Since the elements of $V(X)^*$ separate points of $V(X)$, this implies (i).
+so that $f_\varphi\in A(K)$. Since the elements of $V(K)^*$ separate points of $V(K)$, this implies (i).
 
 
 \end{proof}
 
 
-\begin{lemma} Let $X$ be a bounded convex structure. Then  $A(X)$ is isometrically isomorphic to the dual of $V(X)$ as a normed space,  the dual cone to $V(X)^+$ is given by $A(X)^+$ and 
+\begin{lemma} Let $K$ be a bounded convex structure. Then  $A(K)$ is isometrically isomorphic to the dual of $V(K)$ as a normed space,  the dual cone to $V(K)^+$ is given by $A(K)^+$ and 
 \[
-X=\{v\in V(X)^+, 1_X(v)=1\}.
+K=\{v\in V(K)^+, 1_K(v)=1\}.
 \]
 \end{lemma}
 
-\begin{proof} By \eqref{eq:dualnorm}, any $\varphi\in V(X)^*$ restricts to an  element  
- $f_\varphi\in A(X)$, with $\|f_\varphi\|\le \|\varphi\|$.  Conversely, by Lemma \ref{lemma:extension}, any $f\in A(X)$ extends to a unique linear functional $\varphi_f$ on $V(X)$
+\begin{proof} By \eqref{eq:dualnorm}, any $\varphi\in V(K)^*$ restricts to an  element  
+ $f_\varphi\in A(K)$, with $\|f_\varphi\|\le \|\varphi\|$.  Conversely, by Lemma \ref{lemma:extension}, any $f\in A(K)$ extends to a unique linear functional $\varphi_f$ on $V(K)$
 and clearly $\varphi_{f_\varphi}=\varphi$, $f_{\varphi_f}=f$. Let $v=ax-by$, then
 \[
 |\varphi_f(v)|=|af(x)-bf(y)|\le a|f(x)|+b|f(y)|\le (a+b)\|f\|,
