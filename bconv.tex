@@ -1,10 +1,12 @@
 
 \documentclass[12pt]{article}
-\usepackage{amsmath, amsfonts, amsthm}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
 \usepackage[all]{xy}
 \newtheorem{lemma}{Lemma}
 \newtheorem{thm}{Theorem}
 \newtheorem{prop}{Proposition}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
 \newcommand{\<}{\langle}
 \def\>{\rangle}
 \newcommand{\ct}[1]{\mathbf{#1}}
@@ -15,62 +17,250 @@
 
 \section{Ordered vector spaces }
 
-Let $X$ be a real vector space. A subset $A\subset X$ is linearly bounded if the intersection of $A$ with any line is either empty or a bounded segment.
-We say that $a\in A$ is an algebraic interior point of $A$ if for any $x\in X$ there is some $\delta>0$ such that $a+sx\in A$ for any $s\in [0,\delta]$. The set of all such points is called the algebraic interior of $A$ and is denoted by $aint(A)$. A is algebraically open if $A=aint(A)$ and algebraically closed if $X\setminus A$ is algebraically open. The smallest algebraically closed  set containing $A$ is called the algebraic closure of $A$, denoted by $acl(A)$. 
+Overall reference:  \cite{jameson}
 
+\subsubsection*{Basic definitions}
 
-Let $P\subseteq X$. Then $P$ is a  wedge if for any $a,b\in \mathbb R^+$, $x,y\in P$, we have $ax+by\in P$. A wedge $P$ defines an ordering in  $X$ by $x\le y$ if $x-y\in P$. The pair $(X,P)$ is called an ordered vector space. The ordering is a partial order iff $P\cap -P=\{0\}$, in this case $P$ is called a cone. $X$ with this ordering is directed  iff $P$ is generating, that is,  $X=P-P$. 
+Let $X$ be a real vector space. A subset $A\subseteq X$ is 
+\begin{itemize}
+\item algebraically open (closed) if the intersection of any line with $A$ is an open (closed) subset of the line
+\item linearly bounded if the intersection of $A$ with any line is  a bounded subset of the line
+\end{itemize}
+We say that $a\in A$ is an algebraic interior point of $A$ if it is an interior point of the intersection of any line with $A$, that is, 
+for any $x\in X$ there is some $\delta>0$ such that $a+sx\in A$ for all $|s|\le \delta$. 
+ The set of all such points is called the algebraic interior of $A$ and is denoted by $aint(A)$. The algebraic closure of $A$ is $acl(A)=X\setminus aint(X\setminus A)$.
+If $A$ is convex, then
+\[
+acl(A)=\{x\in X,\ \exists y\in X,\ x+\lambda y\in A,\ \forall \lambda\in (0,1)\}.
+\]
+$A$ is algebraically open iff $A=aint(A)$ and algebraically closed iff $A=acl(A)$. If $A$ is convex, then both $aint(A)$ and $acl(A)$ are convex as well.
+
+\begin{rem} (cf. \cite[\S 16]{kothe}) 
+If $A$ is convex, then $aint(A)$ is algebraically open, but  in general $aint(aint(A))\subsetneq aint(A)$. The algebraic closure is not necessarily algebraically closed even if $A$ is convex. If $A$ is convex and $aint(A)\ne \emptyset$, then $acl(acl(A))=acl(A)$. \end{rem}
+
+%For $A\subseteq X$, the associated Minkowski functional $\mu_A: X\to \mathbb R^+\cup\{\infty\}$ is defined as 
+%\[
+%\mu_A(x):=\inf\{\lambda>0, x\in \lambda A\},\qquad x\in X
+%\]
+%If $A$ is convex and $aint(A)\ne \emtyset$, $\mu_A$ is a seminorm in $X$. 
+
+\subsubsection*{Wedges, cones and orderings}
+
+A subset $P\subseteq X$ is called a  wedge if $P+P\subseteq P$ and $\lambda P\subseteq P$ for any $\lambda\ge 0$. The preorder $x\le y$ if $x-y\in P$ is compatible with the linear structure, such a preorder is called an ordering in $X$. Conversely, for any ordering, the set of positive elements  is a wedge.
+
+The pair $(X,P)$ where $P$ is a wedge is called an ordered vector space. 
+The corresponding ordering is a partial order iff $P\cap -P=\{0\}$, in this case $P$ is called a cone. 
+$X$ with this ordering is directed  iff $P$ is generating, that is,  $X=P-P$. 
+
+\subsubsection*{Positive maps}
+
+Let $(X,P)$ and $(Y,Q)$ be ordered vector spaces. A  linear map $F:X\to Y$ is called positive if $F(P)\subseteq Q$.
+ Let  $(P,Q)$ denote the set of positive maps, then $(P,Q)$ is a wedge in the vector space $L(X,Y)$ of all linear maps $X\to Y$. We have
+
+\begin{lemma}\label{lemma:duality_morph} $(P,Q)$ is a cone if and only if $P$ is generating and $Q$ is a cone.
+
+\end{lemma}
+
+\subsubsection*{Archimedean and almost Archimedean orderings}
+
+Let $(X,P)$ be an ordered vector space. We say that the ordering (or $P$) is Archimedean if 
+ $x\le \lambda y$ for some $y\in X$ and all $\lambda> 0$ implies that $x\le 0$. 
+\begin{prop}
+The following are equivalent.
+\begin{enumerate}
+\item[(i)] the ordering is Archimedean.
+\item[(ii)]  $\exists y\in X, \epsilon >0$ such that  $x\le \lambda y$ for all $\epsilon\ge \lambda>0$ $\implies$ $x\le 0$.
+\item[(iii)] $\exists y\in P, \epsilon >0$ such that  $x\le \lambda y$ for all $\epsilon\ge \lambda>0$ $\implies$ $x\le 0$.
+\item[(iv)] $P=acl(P)$.
+\end{enumerate}
+\end{prop}
+
+The ordering (or $P$) is almost Archimedean if $-\lambda y\le x\le \lambda y$ for some $y\in X$ and  all $\lambda> 0$ implies  $x=0$.
+
+\begin{prop}
+The following are equivalent.
+\begin{enumerate}
+\item[(i)] the ordering is almost Archimedean.
+\item[(ii)]  $\exists y\in X, \epsilon >0$ such that  $-\lambda y\le x\le \lambda y$ for all $\epsilon\ge \lambda>0$ $\implies$ $x= 0$.
+\item[(iii)] $\exists y\in P, \epsilon >0$ such that  $-\lambda y\le x\le \lambda y$ for all $\epsilon\ge \lambda>0$ $\implies$ $x= 0$.
+\item[(iv)] $acl(P)$ is a cone.
+\end{enumerate}
+\end{prop}
+
+\begin{rem}
+Note that an almost Archimedean wedge must be a cone. An Archimedean  wedge is almost Archimedean iff it is a cone.
+\end{rem}
+
+\subsubsection*{Order units and seminorms}
 
  An element $u\in X$ is an order unit in $(X,P)$ if for any $x\in X$, there is some $\lambda\in \mathbb R^+$ such that 
- $x\le \lambda u$. This is equivalent to $u\in aint(P)$. If $aint(P)\ne \emptyset$, $P$ is generating.  For an order unit $u$, put
+ $x\le \lambda u$. This is equivalent to $u\in aint(P)$. If $aint(P)\ne \emptyset$, $P$ is generating.  
+
+If $u$ is an order unit, then $P$ is (almost) Archimedean iff 
+$u$ is (almost) Archimedean: $x\le \lambda u$ for all $\lambda>0$ implies $x\le 0$ (resp. $-\lambda u\le x\le \lambda u$ for all $\lambda>0$ implies $x=0$). 
+
+
+
+For an order unit $u$, put
  \[
 \|x\|_u=\inf\{\lambda>0,\ -\lambda u\le x\le \lambda u\}.
  \]
-Then $\|\cdot\|_u$ is a seminorm in $X$. It is a norm if and only if  $u$ is almost Archimedean, that is
-\[
--u\le nx \le u,\quad \forall n\in \mathbb N \implies x=0.
-\]
-Equivalently, $acl(P)$ is a cone (Breckner, Jameson). We say that $u$ is Archimedean if 
-\[
-nx\le u,\quad \forall n\in \mathbb N \implies x\le 0.
-\]
-This is equivalent to $P=acl(P)$. An ordered vector space with an Archimedean order unit $u$ is called an order unit space $(X,P,u)$.
-We will denote by $\ct{AOS}$ the category of order unit spaces with positive and unit preserving linear maps as morphisms, that is $f: (X_1,P_1,u_1)\to (X_2,P_2,u_2)$ is a linear map $f:X_1\to X_2$ such that $f(P_1)\subseteq P_2$ and $f(u_1)=u_2$.
+Then $\|\cdot\|_u$ is a seminorm in $X$. It is a norm iff  $u$ is almost Archimedean. 
+
+\begin{rem}
+If $u_1,u_2\in aint(P)$, the associated seminorms $\|\cdot\|_{u_1}$ and $\|\cdot\|_{u_2}$ are equivalent. The corresponding topology is thus a property of the ordering rather than the order unit. In fact, this topology is the finest locally convex topology 
+ making all order intervals bounded.
+\end{rem}
+ 
+
+\begin{lemma} Let $u$ be Archimedean. Then $[-u,u]=\{x,\in X,\ \|x\|_u\le 1\}$ and the wedge $P$ is closed in the topology given by $\|\cdot\|_u$.
+
+\end{lemma}
+
+\begin{proof} Let $x\in [-u,u]$, then clearly $\|x\|_u\le 1$. Conversely, assume that $\|x\|_u\le 1$, then $-(1+\epsilon) u\le x\le (1+\epsilon) u$ for all $\epsilon>0$. 
+This implies that $\pm x-u\le \epsilon u$ for all $\epsilon>0$ and since $u$ is Archimedean, this implies $\pm x\le u$, that is, $x\in [-u,u]$.
+
+For the second statement, let $x\in \bar P$ (the closure of $P$ w.r. to $\|\cdot\|_u$). Then for all $n\in \mathbb N$, there is some $p_n\in P$ such that $\|x-p_n\|_u\le \tfrac1n$. This implies that $-x\le p_n-x\le \tfrac 1n u$ for all $n$ and since  $u$ is Archimedean, $-x\le 0$, so that $x\in P$.
+
+\end{proof}
+
+\subsubsection*{Order unit spaces}
+
+A triple $(X,P,u)$ where $X$ is a vector space, $P\subseteq X$ an Archimedean  cone and $u\in aint(P)$ is called an order unit space. To summarize, in this case, 
+$\|\cdot\|_u$ is a norm in $X$, $[-u,u]$ is the corresponding closed unit ball and $P$ is norm closed.
+If $(X_i,P_i,u_i)$, $i=1,2$ are order unit spaces, a linear map $f:X_1\to X_2$ is called unital if $f(u_1)=u_2$.
+
+\begin{prop} Let $(X_i,P_i,u_i)$, $i=1,2$ be order unit spaces. Any positive unital map $f:X_1\to X_2$ is a contraction.
+\end{prop}
+
+\subsubsection*{Bases and seminorms}
 
 Let $(X,P)$ be an ordered vector space. A convex subset $K\subset P$ is called a base of $P$ if for any nonzero $p\in P$ there is a unique $\lambda>0$  such that 
-$\lambda p\in K$.  The wedge  $P$ has a base if and only if $P$ is a cone and there exists a linear functional $\xi$ on $X$ which is strictly positive on $P$, then 
- $K=\{p\in P, \xi(p)=1\}$. The following results also can be found in (Ellis). 
+$\lambda p\in K$.  
 
 
-\begin{lemma} Let $P$ be a  generating cone in a vector space $X$, with base $K$. For $x\in X$, put 
+\begin{lemma} The wedge  $P$ has a base if and only if $P$ is a cone and there exists a linear functional $\xi$ on $X$ which is strictly positive on $P$. Then 
+ $K=\{p\in P, \xi(p)=1\}$. 
+\end{lemma}
+
+\begin{proof} Let $K$ be a base of $P$, and let $0\neq x\in P\cap -P$. Then there are $\lambda,\mu >0$ such that $\lambda x=x_1\in K$ and $-\mu x=x_2\in K$.  
+It follows that $\lambda^{-1}x_1=-\mu^{-1}x_2$ and then  $\tfrac{\mu}{\lambda+\mu}x_1+\tfrac{\lambda}{\lambda+\mu}x_2=0$. Since $K$ is convex, we obtain $0\in K$, but then 
+ for any $p\in K$,  $\lambda p\in K$ for all $\lambda\in[0,1]$. Hence $P$ must be a cone.  For $p\in P$, let $\xi(p)$ be the unique positive number such that 
+$\xi(p)^{-1}p\in K$. Then clearly $\xi(sp)=s\xi(p)$. Further, let $p,q\in P$ and let $\alpha=\xi(p)+\xi(q)$, then 
+\[
+\alpha^{-1}(p+q)=\frac{\xi(p)}{\alpha} \xi(p)^{-1}p+ \frac{\xi(q)}{\alpha} \xi(q)^{-1}q\in K,
+\]
+so that  $p\mapsto \xi(p)$ is an additive function  $\xi: P\to \mathbb R^+$. The function $\xi$ easily extends to $P-P$ and has an extension to all of $X$ by Hahn-Banach theorem. This extension is obviously positive and $K=\{p\in P,\ \xi(p)=1\}$.  
+
+Conversely, let $\xi:X\to \mathbb R$ be strictly positive, then $K=\{p\in P, \xi(p)=1\}$ is a convex subset of $P$ and $\xi(p)^{-1}p\in K$ for any $p\in P$. Uniqueness is obvious. 
+
+
+
+\end{proof}
+
+
+
+\begin{prop} (\cite{ellis}) Let $P$ be a generating cone in a vector space $X$ and let $K$ be a base of $P$. For $x\in X$, put 
 \[
 \|x\|_K:=\inf\{a+b,\ x=a p-b q,\ a,b\in \mathbb R^+, p,q\in K\}.
 \]
 This defines a seminorm in $X$, which is a norm if and only if $S:=co(K\cup -K)$ is linearly bounded. 
 
-\end{lemma}
+\end{prop}
 
-\begin{proof} Note that $\|\cdot\|_K$ is the Minkowski functional of $S$, that is
-\[
-\|x\|_K= \inf\{\lambda>0, x\in \lambda S\}.
-\]
-To see this, observe that $S=\{s p-(1-s)q,\ s\in [0,1],\ p,q\in K\}$. Denote the Minkowski functional by $p_S$. If $x=ap-bq$ for some $a,b\in \mathbb R^+$ and $p,q\in K$, then if $a+b=0$, we must have 
-$x=0$ and the equality obviously holds. Otherwise, 
-\[
-x=(a+b)(\frac a{a+b} p-\frac b{a+b} q)\in (a+b) S,
-\]
-so that $p_S(x)\le \|x\|_K$. On the other hand, let $x\in \lambda S$ for some $\lambda>0$. Then $x=\lambda(sp-(1-s)q)$ for some $s\in [0,1]$ and $p,q\in K$, so that 
-\[
-\|x\|_K\le \lambda s+(1-\lambda)(1-s)=\lambda,
-\]
-hence $\|x\|_K\le p_S(x)$. It is easy to see that $S$ is convex, balanced and absorbing in $X$, so that $\|\cdot\|_K=p_S$ is a seminorm.  
-
+\begin{proof}
+It can be checked easily that $\|\cdot\|_K$ is a seminorm. Note also that $x\in S$ implies $\|x\|_K\le 1$. Indeed, any $x\in S$ has the form $x=\lambda p-(1-\lambda)q$ for some  $\lambda\in [0,1]$, $p,q\in K$ and then  $\|x\|_K\le \lambda+(1-\lambda)=1$.  
 Assume that $\|\cdot\|_K$ is a norm and let $x_t:=x+ty$ be a line in $X$. Then $\|y\|_K>0$ and $x_t\in  S$ implies that $1\ge \|x_t\|_K\ge |\|x\|_K-|t|\|y\|_K|$, so that $|t|\le \tfrac{1+\|x\|_K}{\|y\|_K}$. Conversely, assume that $S$ is linearly bounded and let $\|x\|_K=0$. This implies $tx\in S$ for all $t\in \mathbb R$, hence we must have 
 $x=0$. 
+ 
+%Note that $\|\cdot\|_K$ is the Minkowski functional of $S$, that is
+%%\[
+%\|x\|_K= \inf\{\lambda>0, x\in \lambda S\}.
+%\]
+%To see this, observe that $S=\{s p-(1-s)q,\ s\in [0,1],\ p,q\in K\}$. Denote the Minkowski functional by $p_S$. If $x=ap-bq$ for some $a,b\in \mathbb R^+$ and $p,q\in K$, then if $a+b=0$, we must have 
+%$x=0$ and the equality obviously holds. Otherwise, 
+%\[
+%x=(a+b)(\frac a{a+b} p-\frac b{a+b} q)\in (a+b) S,
+%\]
+%so that $p_S(x)\le \|x\|_K$. On the other hand, let $x\in \lambda S$ for some $\lambda>0$. Then $x=\lambda(sp-(1-s)q)$ for some $s\in [0,1]$ and $p,q\in K$, so that 
+%\[
+%\|x\|_K\le \lambda s+(1-\lambda)(1-s)=\lambda,
+%\]
+%hence $\|x\|_K\le p_S(x)$. It is easy to see that $S$ is convex, balanced and absorbing in $X$, so that $\|\cdot\|_K=p_S$ is a seminorm.  
+%
+
 
 \end{proof}
 
-The (semi)norm in the above lemma is called  the base (semi)norm in $X$. If $\|\cdot\|_K$ is a norm, the triple $(X,P,K)$ is called a base-normed space. We will denote 
+The (semi)norm in the above proposition  is called  the base (semi)norm in $X$. 
+
+\begin{rem} Linear boundedness of $K$ is in general not enough. There are some weird infinite dimensional examples such that $K$ is linearly bounded but $co(K\cup -K)$ is not.
+
+\end{rem}
+
+\subsubsection*{Base-normed spaces}
+
+A triple $(X,P,K)$, where $X$ is a vector space, $P$ a generating cone and $K$ a base of $P$ such that $co(K\cup-K)$ is linearly bounded is called a base-normed space. 
+Let $(X_i,P_i,K_i)$ be base-normed spaces. A linear map $f:X_1\to X_2$ is called base-preserving if $f(K_1)\subset K_2$.
+
+
+\begin{prop} Let $(X_i,P_i,K_i)$, $i=1,2$ be base-normed spaces. Any base-preserving linear  map $f:X_1\to X_2$ is a positive contraction.
+\end{prop}
+
+%\begin{prop}\label{prop:bn_complete}\cite{alfsen}  Let $(X,P,K)$ be a base-normed space and asume that $X$ carries a locally convex topology $\tau$ such that $K$ is $\tau$-compact.
+%Then $X$ is $\|\cdot\|_K$-complete.
+
+%\end{prop}
+
+
+\subsubsection*{The order dual}
+
+Let $(X,P)$ be an ordered vector space and let $X'$ denote the algebraic dual of $X$. Then the dual wedge of $P$ is defined as
+\[
+P':=\{\varphi\in X', \varphi(p)\ge 0, \forall p\in P\}
+\]
+Then $(X',P')$ is an ordered vector space: the order dual of $X$. Note that  $P'=(P,\mathbb R^+)$ and it follows by  Lemma \ref{lemma:duality_morph} that 
+	$P'$ is a cone iff $P$ is generating. Further, note that $p\in P\cap -P$ implies that $\varphi(p)=0$ for all $\varphi\in P'$, hence if $P'$ is generating, $P$ must be a cone. The converse is not true in general.
+
+
+\subsubsection*{The dual of a vector space with an order unit norm} 
+
+Let $(X,P)$ be an ordered vector space with an order unit $u$ such that $\|\cdot \|_u$ is a norm. This implies that $P$ is generating and almost Archimedean, hence a cone. We do not assume that $(X,P,u)$ is an order unit space, so $u$ does not have to be Archimedean. Let $X^*$ be the normed space dual of $(X, \|\cdot\|_u)$ and let $\|\cdot\|_u^*$ be the norm in $X^*$. Put also $P^*=P'\cap X^*$, clearly, $(X^*,P^*)$ is an ordered vector space.
+
+\begin{thm} $P^*$ has a $w^*$-compact base $K$ such that $(X^*,P^*,K)$ is a base-normed space and $\|\cdot\|_K=\|\cdot\|_u^*$. 
+
+\end{thm}
+
+
+\begin{proof} Put $K=\{\varphi\in P^*, \varphi(u)=1\}$, then clearly $K$ is convex and $w^*$-compact. 
+Since $u$ is an order unit, $\varphi\mapsto \varphi(u)$ is strictly positive and hence $K$ is a base of $P^*$. We will show that the base seminorm $\|\cdot\|_K$ equals to the dual norm in $X^*$ and hence is itself a norm.
+
+Let $Y=X\times X$ be ordered by the wedge $P\times P$, then $(u,u)$ is an order unit. 
+Let 
+\[
+Z=\{t(u,u)-(x,-x),\ t\in \mathbb R, x\in X\},
+\]
+then $Z$ is a linear subspace in $Y$ containing the order unit. 
+Let  $\varphi\in X^*$ and  put 
+\[
+F_\varphi(z)=t\|\varphi\|_u^*-\varphi(x), \qquad z=t(u,u)-(x,-x)\in Z
+\]
+This defines a linear functional on $Z$. Moreover, note that $z=t(u,u)-(x,-x)\in P\times P$ iff $\|x\|_u\le t$ and then $F_\varphi(z)\ge (t-\|x\|_u)\|\varphi\|_u^*\ge 0$.
+Since $Z$ contains the order unit, $F_\varphi$ extends to a positive linear functional on $Y$ (e.g. Krein's theorem). Put 
+\[
+\psi_1(x)=F_\varphi(x,0),\quad \psi_2(x)=F_\varphi(0,x),\qquad x\in X
+\]
+then $\psi_1,\psi_2\in P^'$
+
+
+\end{proof}
+
+
+
+
+
+
+We will denote 
 by $\ct{BN}$ the category of base-normed spaces, with morphisms $f: (X_1,P_1,K_1)\to (X_2,P_2,K_2)$ given by linear maps $f:X_1\to X_2$ such that $f(K_1)\subseteq K_2$. It is easy to see that any morphism is a contraction with respect to the corresponding base norms.
 
 Let $(X,P,K)\in \ct{BN}$ and let $X^*$ be the dual space of linear functionals that are bounded with respect to the base norm. Let 
@@ -84,7 +274,6 @@ Since $(\mathbb R, \mathbb R^+, 1)$ is a base-normed space with the usual norm i
 \]
 It follows that $u$ is an order unit in $(X^*,P^*)$, with $\|\varphi\|_u=\|\varphi\|$. Let $n\varphi\le u$ for all $n$, then for all $x\in K$, we have $\varphi(x)\le n^{-1}$, so that $\varphi\le 0$. We see that $(X^*,P^*,u)$ is an order unit space which is complete in the order unit norm, hence an order unit Banach space.
 
- 
 
 \section{The categories $\ct{Conv}$ and $\ct{Bconv}$}
 
