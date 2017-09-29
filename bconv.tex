@@ -225,41 +225,69 @@ Then $(X',P')$ is an ordered vector space: the order dual of $X$. Note that  $P'
 
 \subsubsection*{The dual of a vector space with an order unit norm} 
 
-Let $(X,P)$ be an ordered vector space with an order unit $u$ such that $\|\cdot \|_u$ is a norm. This implies that $P$ is generating and almost Archimedean, hence a cone. We do not assume that $(X,P,u)$ is an order unit space, so $u$ does not have to be Archimedean. Let $X^*$ be the normed space dual of $(X, \|\cdot\|_u)$ and let $\|\cdot\|_u^*$ be the norm in $X^*$. Put also $P^*=P'\cap X^*$, clearly, $(X^*,P^*)$ is an ordered vector space.
+Let $(X,P)$ be an ordered vector space with an order unit $u$ such that $\|\cdot \|_u$ is a norm. This implies that $P$ is generating and almost Archimedean, hence a cone. We do not assume that $(X,P,u)$ is an order unit space, so $u$ does not have to be Archimedean. Let $X^*$ be the normed space dual of $(X, \|\cdot\|_u)$ and let $\|\cdot\|_u^*$ be the norm in $X^*$. 
+It is easy to see that  $ P'\subset X^*$ and $\|\varphi\|_u^*=\varphi(u)$ for any $\varphi\in P'$.
 
-\begin{thm} $P^*$ has a $w^*$-compact base $K$ such that $(X^*,P^*,K)$ is a base-normed space and $\|\cdot\|_K=\|\cdot\|_u^*$. 
+
+
+\begin{thm} $P'$  has a $w^*$-compact base $K$ such that  $(X^*,P',K)$ is a base-normed space and $\|\cdot\|_K=\|\cdot\|_u^*$. 
 
 \end{thm}
 
 
-\begin{proof} Put $K=\{\varphi\in P^*, \varphi(u)=1\}$, then clearly $K$ is convex and $w^*$-compact. 
-Since $u$ is an order unit, $\varphi\mapsto \varphi(u)$ is strictly positive and hence $K$ is a base of $P^*$. We will show that the base seminorm $\|\cdot\|_K$ equals to the dual norm in $X^*$ and hence is itself a norm.
+\begin{proof}\cite{ellis? jameson?} The set $K=\{\varphi\in P', \varphi(u)=1\}$  is a  $w^*$-compact  base of $P'$. We will show that the base seminorm $\|\cdot\|_K$ equals to the dual norm in $X^*$ and hence is itself a norm.
 
-Let $Y=X\times X$ be ordered by the wedge $P\times P$, then $(u,u)$ is an order unit. 
+Let $Y=X\times X$ be ordered by the wedge $Q=P\times P$, then $(u,u)$ is an order unit in $(Y,Q)$.
 Let 
 \[
 Z=\{t(u,u)-(x,-x),\ t\in \mathbb R, x\in X\},
 \]
 then $Z$ is a linear subspace in $Y$ containing the order unit. 
-Let  $\varphi\in X^*$ and  put 
+For  $\varphi\in X^*$,  put 
 \[
 F_\varphi(z)=t\|\varphi\|_u^*-\varphi(x), \qquad z=t(u,u)-(x,-x)\in Z
 \]
-This defines a linear functional on $Z$. Moreover, note that $z=t(u,u)-(x,-x)\in P\times P$ iff $\|x\|_u\le t$ and then $F_\varphi(z)\ge (t-\|x\|_u)\|\varphi\|_u^*\ge 0$.
+This defines a linear functional on $Z$. Moreover, note that $z=t(u,u)-(x,-x)\in Q$ iff $\|x\|_u\le t$ and then $F_\varphi(z)\ge (t-\|x\|_u)\|\varphi\|_u^*\ge 0$.
 Since $Z$ contains the order unit, $F_\varphi$ extends to a positive linear functional on $Y$ (e.g. Krein's theorem). Put 
 \[
-\psi_1(x)=F_\varphi(x,0),\quad \psi_2(x)=F_\varphi(0,x),\qquad x\in X
+\psi_1(x)=F_\varphi(x,0),\quad \psi_2(x)=F_\varphi(0,x),\qquad x\in X.
 \]
-then $\psi_1,\psi_2\in P^'$
-
+Then $\psi_1,\psi_2\in P'$ and $\varphi=\psi_2-\psi_1$, this shows that $P'$ is generating in $X^*$. Moreover, $F_\varphi(u,u)=\|\varphi\|_u^*$
+\[
+\|\varphi\|_u^*=F_\varphi(u,u)= \psi_1(u)+\psi_2(u)\ge \|\varphi\|_K
+\]
+On the other hand, let $\varphi=a\varphi_1- b\varphi_2$ with $a,b\ge 0$, $\varphi_1,\varphi_2\in K$, then
+$\|\varphi\|_u\le a+b$, this shows the opposite inequality.
 
 \end{proof}
 
 
+\subsubsection*{The dual of a base-normed space}
+
+Let $(X,P,K)$ be a base-normed space and let $X^*$ be the normed space dual of $(X,\|\cdot\|_K)$. Let $P^*= P'\cap X^*$.
+
+\begin{thm} There is an order unit $u\in X^*$ such that $(X^*,P^*,u)$  is an order unit space.  
+
+\end{thm}
+
+\begin{proof} Let $(X,P,K)$ be a base-normed space. Note first that for any $\varphi\in X'$, we have
+\[
+\|\varphi\|_K^*=\sup_{x\in S} |\varphi(x)|=\sup_{x\in K} |\varphi(x)|,
+\]
+where $S=co(K\cup -K)$. There is a strictly positive functional $u\in X'$ such that 
+$K=\{p\in P, u(p)=1\}$. Note that $u$ is a base-preserving linear map into the base-normed space $(\mathbb R,\mathbb R^+,1)$, hence 
+is a positive contraction. Moreover, for  $\varphi\in X^*$ and $x\in K$, we have
+$-\|\varphi\|_K\le \varphi(x)\le \|\varphi\|_K$, so that $-\|\varphi\|_Ku\le \varphi\le \|\varphi\|_Ku$, it follows that $u$ is an order unit in $(X^*, P'\cap X^*)$ and $\|\varphi\|_u\le \|\varphi\|_K^*$. Conversely,  $-\lambda u\le \varphi\le \lambda u$ 
+implies that $\sup_{x\in K}|\varphi(x)|\le \lambda$, so that $\|\varphi\|_u= \|\varphi\|_K^*$. To show that $u$ is Archimedean, 
+ let $\varphi\le \lambda u$ for all $\lambda>0$. Then for $x\in K$, $\varphi(x)\le \lambda$ for any $\lambda>0$, hence $\varphi(x)\le 0$. 
+
+\end{proof}
 
 
+\subsubsection*{Preduals}
 
 
+\subsubsection*{Categories of ordered vector spaces}
 We will denote 
 by $\ct{BN}$ the category of base-normed spaces, with morphisms $f: (X_1,P_1,K_1)\to (X_2,P_2,K_2)$ given by linear maps $f:X_1\to X_2$ such that $f(K_1)\subseteq K_2$. It is easy to see that any morphism is a contraction with respect to the corresponding base norms.
 
