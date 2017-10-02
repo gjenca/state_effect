@@ -312,35 +312,61 @@ We give some sufficient conditions for completeness of order unit norms and base
 
 \subsubsection*{Preduals}
 
-We next discuss the Banach space preduals of order unit and base-normed spaces.
+We next discuss the Banach space preduals of order unit and base-normed spaces. Here $(X,\|\cdot\|)$ is a Banach space and $(X^*,\|\cdot\|^*)$ the dual space.  If $P\in X$ is a wedge, we will denote 
+$
+P^*:=\{\varphi\in X^*,\ \varphi(p)\ge 0,\ \forall p\in P\}= P'\cap X^*.
+$
+Similarly, if $Q$ is a wedge in $X^*$, we will denote 
+$
+Q_*:=\{x\in X,\ q(x)\ge 0,\ \forall q\in Q\}.
+$
+It is clear that $P^*$ and $Q_*$ are wedges. Moreover, $(P^*)_*=\bar P$ and $(Q_*)^*$ is the weak*-closure of $Q$. 
 
-\begin{thm}\cite{ellis?} Let $(X,\|\cdot\|)$ be a Banach space and assume that the dual space $(X^*,\|\cdot\|^*)$ is an order unit space, that is, there is an Archimedean 
-ordering in $X^*$ and an order unit $u\in X^*$ such that $\|\cdot\|^*=\|\cdot\|_u$. Then there is a cone $P\subset X$ with base $K$, such that $(X,P,K)$ is a base-normed 
-space and $\|\cdot\|=\|\cdot\|_K$.
+\begin{thm}\cite{ellis?, asell} Let $X^*$ be  an order unit space with weak*-closed positive cone. Then $X$ is base-normed. More precisely, 
+if there is an Archimedean weak*-closed cone $Q\subset X^*$ with an order unit $u$  such that $\|\cdot\|^*=\|\cdot\|_u$, 
+ then  $Q_*\subset X$ has a base $K=\{p\in Q_*, u(p)=1\}$ and $(X,Q_*,K)$ is a base-normed 
+space with $\|\cdot\|=\|\cdot\|_K$.
 
 \end{thm}
 
 \begin{proof}
-Let $P^*$ denote the positive wedge in $X^*$ (since the ordering is Archimedean, $P^*$ is a cone). Let 
-\[
-P:=\{x\in X, \ \varphi(x)\ge 0,\ \forall \varphi\in P^*\},\quad K:=\{ p\in P,\ u(p)=1\}.
-\]
-Obviously, $P$ is a wedge and $u$ defines a strictly positive linear functional on $(X,P)$. Indeed, if $p\in P$ is such that $u(p)=0$, then for any $\varphi\in P^*$, 
+Let $p\in Q_*$ be such that $u(p)=0$, then for any $\varphi\in Q$, 
 \[
 0\le \varphi(p)\le \|\varphi\|_u\varphi(u)=0.
 \]
-Since  $X^*=P^*-P^*$ separates points in $X$, we obtain $p=0$. Hence $u$ is strictly positive and $K$ is a base of $P$. Moreover, for $p\in P$, we have
+Since  $X^*=Q-Q$ separates points in $X$, we obtain $p=0$. Hence 
+$u$ defines a strictly positive linear functional on $(X,Q_*)$  and $K$ is a base of $Q_*$. 
+For $p\in Q_*$, we have
 \[
 \|p\|=\sup_{\varphi\in [-u,u]}|\varphi(p)|=u(p),
 \]
-it follows that $S=co(K\cup -K)$ is a subset of the unit ball of $X$. Moreover, we have for $\varphi\in X^*$:
+it follows that $S=co(K\cup -K)$ is a subset of the unit ball of $X$. Hence $\|\cdot\|\le \|\cdot\|_K$ (since $\|\cdot\|_K$ is the Minkowski functional of $S$).   Since $Q=(Q_*)^*$, we have for $\varphi\in X^*$:
+\begin{align*}
+\|\varphi\|_u&=\inf\{\lambda >0,\ \lambda u\pm \varphi\in Q\}=\inf\{\lambda >0,\ (\lambda u\pm \varphi)(p)\ge 0,\ \forall p \in Q_*\}\\
+&= \inf\{\lambda>0,\ |\varphi(p)|\le \lambda,\ \forall p\in K\}=\sup_{p\in K}|\varphi(p)|.
+\end{align*}
+Assume that $x_0\in X$ is such that $\|x_0\|\le 1$ and $x_0\ne \bar S$, then by Hahn-Banach separation theorem, there is some $\varphi\in X^*$ such that 
 \[
-\|\varphi\|_u=\inf\{\lambda >0,\ -\lambda u\le \varphi\le \lambda u\}
+\|\varphi\|_u=\sup_{p\in K}|\varphi(p)|=\sup_{x\in S}\varphi(x)< \varphi(x_0)\le \|\varphi\|^*=\|\varphi\|_u.
 \]
+It follows that $S$ is dense in the unit ball $X_1$ of $X$.  Choose any $\alpha>1$ and let $\alpha_n>0$ be a sequence such that  $1+\sum_n\alpha_n<\alpha$. There is some element $x_1\in S$ such that $\|x_0-x_1\|< \alpha_1$. Similarly, there is some $x_2\in \alpha_1S$ 
+such that $\|x_0-x_1-x_2\|<\alpha_2$. Continuing by induction, we obtain a sequence $\{x_n\}$ in $X$ such that $\|x_n\|_K\le \alpha_{n-1}$ and  $\|x_0-\sum_n x_n\|<\alpha_n\to 0$. Hence  
+\[
+\|x_0\|_K=\|\sum_n x_n\|_K\le \sum_n\|x_n\|_K\le 1+\sum_n\alpha_n<\alpha,
+\]
+so that  $X_1\subset \alpha S$ and consequently $X=Q_*-Q_*$. Since the above inequality holds for all $\alpha>1$, we have
+$\|\cdot\|=\|\cdot\|_K$.
 
 
 
-Let $\bar S$ be the norm closure and assume that 
+%We will use  polar calculus. For $A\subset X$, let $A^\circ=\{\varphi\in X^*,\ \varphi(x)\le 1,\ \forall x\in A\}$. For $B\subset X^*$, $B^\circ$ is defined similarly. The following properties are shown easily: 
+%\begin{enumerate}
+%\item[(i)] $A^{\circ\circ}=\bar{co}(A\cup\{0\})$ ... etc
+%\end{enumerate}
+%
+
+
+
 
 \end{proof}
 
