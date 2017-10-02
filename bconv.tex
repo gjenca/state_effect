@@ -28,7 +28,7 @@ Let $X$ be a real vector space. A subset $A\subseteq X$ is
 \end{itemize}
 We say that $a\in A$ is an algebraic interior point of $A$ if it is an interior point of the intersection of any line with $A$, that is, 
 for any $x\in X$ there is some $\delta>0$ such that $a+sx\in A$ for all $|s|\le \delta$. 
- The set of all such points is called the algebraic interior of $A$ and is denoted by $aint(A)$. The algebraic closure of $A$ is $acl(A)=X\setminus aint(X\setminus A)$.
+ The set of all such points is called the algebraic interior of $A$ and is denoted by $aint(A)$. The algebraic closure of $A$ is $acl(A):=X\setminus aint(X\setminus A)$.
 If $A$ is convex, then
 \[
 acl(A)=\{x\in X,\ \exists y\in X,\ x+\lambda y\in A,\ \forall \lambda\in (0,1)\}.
@@ -36,7 +36,7 @@ acl(A)=\{x\in X,\ \exists y\in X,\ x+\lambda y\in A,\ \forall \lambda\in (0,1)\}
 $A$ is algebraically open iff $A=aint(A)$ and algebraically closed iff $A=acl(A)$. If $A$ is convex, then both $aint(A)$ and $acl(A)$ are convex as well.
 
 \begin{rem} (cf. \cite[\S 16]{kothe}) 
-If $A$ is convex, then $aint(A)$ is algebraically open, but  in general $aint(aint(A))\subsetneq aint(A)$. The algebraic closure is not necessarily algebraically closed even if $A$ is convex. If $A$ is convex and $aint(A)\ne \emptyset$, then $acl(acl(A))=acl(A)$. \end{rem}
+If $A$ is convex, then $aint(A)$ is algebraically open, but  in general $aint(aint(A))\subsetneq aint(A)$. The algebraic closure is not necessarily algebraically closed even if $A$ is convex. But if $A$ is convex and $aint(A)\ne \emptyset$, then $acl(acl(A))=acl(A)$. \end{rem}
 
 %For $A\subseteq X$, the associated Minkowski functional $\mu_A: X\to \mathbb R^+\cup\{\infty\}$ is defined as 
 %\[
@@ -225,8 +225,28 @@ Then $(X',P')$ is an ordered vector space: the order dual of $X$. Note that  $P'
 
 \subsubsection*{The dual of a vector space with an order unit norm} 
 
-Let $(X,P)$ be an ordered vector space with an order unit $u$ such that $\|\cdot \|_u$ is a norm. This implies that $P$ is generating and almost Archimedean, hence a cone. We do not assume that $(X,P,u)$ is an order unit space, so $u$ does not have to be Archimedean. Let $X^*$ be the normed space dual of $(X, \|\cdot\|_u)$ and let $\|\cdot\|_u^*$ be the norm in $X^*$. 
-It is easy to see that  $ P'\subset X^*$ and $\|\varphi\|_u^*=\varphi(u)$ for any $\varphi\in P'$.
+Let $(X,P)$ be an ordered vector space with an order unit $u$ such that $\|\cdot \|_u$ is a norm. This implies that $P$ is generating and almost Archimedean, hence a cone. We do not assume that $(X,P,u)$ is an order unit space, so $u$ does not have to be Archimedean. 
+
+
+Let $X^*$ be the normed space dual of $(X, \|\cdot\|_u)$ and let $\|\cdot\|_u^*$ be the norm in $X^*$. 
+
+\begin{lemma} 
+\begin{enumerate}
+\item[(i)] Any $\varphi\in P'$ is bounded, with $\|\varphi\|_u^*=\varphi(u)$.
+\item[(ii)] If $\varphi\in X^*$ is such that $\|\varphi\|_u^*=\varphi(u)$, then $\varphi\in P'$.
+\end{enumerate}
+
+
+\end{lemma}
+\begin{proof}
+ (i) is quite easy. For (ii), we may assume $\varphi(u)=1$. Let $x\in P$ and let $\lambda>0$ be such that $0\le x\le \lambda u$. Then
+ $\|x-\lambda u\|_u\le \lambda$ and we have
+ \[
+|\varphi(x)-\lambda|=|\varphi(x-\lambda u)|\le \|\varphi\|_u^*\|x-\lambda u\|_u\le \lambda.
+ \]
+This implies $\varphi(x)\ge 0$.
+
+\end{proof}
 
 
 
@@ -282,6 +302,17 @@ implies that $\sup_{x\in K}|\varphi(x)|\le \lambda$, so that $\|\varphi\|_u= \|\
  let $\varphi\le \lambda u$ for all $\lambda>0$. Then for $x\in K$, $\varphi(x)\le \lambda$ for any $\lambda>0$, hence $\varphi(x)\le 0$. 
 
 \end{proof}
+
+\begin{thebibliography}{99}
+\bibitem{ellis} A. J. Ellis, The duality of partially ordered normed linear spaces, J. London Math. Soc. \textbf{39} (1964), 730-744
+\bibitem{jameson} 
+G. Jameson, \emph{Ordered Linear Spaces}, Lecture Notes in Mathematics, Springer, 1970
+\bibitem{kothe} G. K\" othe, \emph{Topological Vector Spaces}, Springer, 1983
+\end{thebibliography}
+
+
+\end{document}
+
 
 
 \subsubsection*{Preduals}
