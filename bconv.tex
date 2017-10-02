@@ -303,6 +303,54 @@ implies that $\sup_{x\in K}|\varphi(x)|\le \lambda$, so that $\|\varphi\|_u= \|\
 
 \end{proof}
 
+
+
+\subsubsection*{Completeness}
+
+We give some sufficient conditions for completeness of order unit norms and base norms. 
+
+
+\subsubsection*{Preduals}
+
+We next discuss the Banach space preduals of order unit and base-normed spaces.
+
+\begin{thm}\cite{ellis?} Let $(X,\|\cdot\|)$ be a Banach space and assume that the dual space $(X^*,\|\cdot\|^*)$ is an order unit space, that is, there is an Archimedean 
+ordering in $X^*$ and an order unit $u\in X^*$ such that $\|\cdot\|^*=\|\cdot\|_u$. Then there is a cone $P\subset X$ with base $K$, such that $(X,P,K)$ is a base-normed 
+space and $\|\cdot\|=\|\cdot\|_K$.
+
+\end{thm}
+
+\begin{proof}
+Let $P^*$ denote the positive wedge in $X^*$ (since the ordering is Archimedean, $P^*$ is a cone). Let 
+\[
+P:=\{x\in X, \ \varphi(x)\ge 0,\ \forall \varphi\in P^*\},\quad K:=\{ p\in P,\ u(p)=1\}.
+\]
+Obviously, $P$ is a wedge and $u$ defines a strictly positive linear functional on $(X,P)$. Indeed, if $p\in P$ is such that $u(p)=0$, then for any $\varphi\in P^*$, 
+\[
+0\le \varphi(p)\le \|\varphi\|_u\varphi(u)=0.
+\]
+Since  $X^*=P^*-P^*$ separates points in $X$, we obtain $p=0$. Hence $u$ is strictly positive and $K$ is a base of $P$. Moreover, for $p\in P$, we have
+\[
+\|p\|=\sup_{\varphi\in [-u,u]}|\varphi(p)|=u(p),
+\]
+it follows that $S=co(K\cup -K)$ is a subset of the unit ball of $X$. Moreover, we have for $\varphi\in X^*$:
+\[
+\|\varphi\|_u=\inf\{\lambda >0,\ -\lambda u\le \varphi\le \lambda u\}
+\]
+
+
+
+Let $\bar S$ be the norm closure and assume that 
+
+\end{proof}
+
+
+
+
+
+\subsubsection*{Categories of ordered vector spaces}
+
+
 \begin{thebibliography}{99}
 \bibitem{ellis} A. J. Ellis, The duality of partially ordered normed linear spaces, J. London Math. Soc. \textbf{39} (1964), 730-744
 \bibitem{jameson} 
@@ -313,12 +361,6 @@ G. Jameson, \emph{Ordered Linear Spaces}, Lecture Notes in Mathematics, Springer
 
 \end{document}
 
-
-
-\subsubsection*{Preduals}
-
-
-\subsubsection*{Categories of ordered vector spaces}
 We will denote 
 by $\ct{BN}$ the category of base-normed spaces, with morphisms $f: (X_1,P_1,K_1)\to (X_2,P_2,K_2)$ given by linear maps $f:X_1\to X_2$ such that $f(K_1)\subseteq K_2$. It is easy to see that any morphism is a contraction with respect to the corresponding base norms.
 
