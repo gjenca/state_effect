@@ -19,7 +19,7 @@
 
 Overall reference:  \cite{jameson}
 
-\subsubsection*{Basic definitions}
+\subsection{Basic definitions}
 
 Let $X$ be a real vector space. A subset $A\subseteq X$ is 
 \begin{itemize}
@@ -90,6 +90,9 @@ The following are equivalent.
 \begin{rem}
 Note that an almost Archimedean wedge must be a cone. An Archimedean  wedge is almost Archimedean iff it is a cone.
 \end{rem}
+
+\subsection{Order units and bases}
+
 
 \subsubsection*{Order units and seminorms}
 
@@ -173,26 +176,30 @@ It can be checked easily that $\|\cdot\|_K$ is a seminorm. Note also that $x\in 
 Assume that $\|\cdot\|_K$ is a norm and let $x_t:=x+ty$ be a line in $X$. Then $\|y\|_K>0$ and $x_t\in  S$ implies that $1\ge \|x_t\|_K\ge |\|x\|_K-|t|\|y\|_K|$, so that $|t|\le \tfrac{1+\|x\|_K}{\|y\|_K}$. Conversely, assume that $S$ is linearly bounded and let $\|x\|_K=0$. This implies $tx\in S$ for all $t\in \mathbb R$, hence we must have 
 $x=0$. 
  
-%Note that $\|\cdot\|_K$ is the Minkowski functional of $S$, that is
-%%\[
-%\|x\|_K= \inf\{\lambda>0, x\in \lambda S\}.
-%\]
-%To see this, observe that $S=\{s p-(1-s)q,\ s\in [0,1],\ p,q\in K\}$. Denote the Minkowski functional by $p_S$. If $x=ap-bq$ for some $a,b\in \mathbb R^+$ and $p,q\in K$, then if $a+b=0$, we must have 
-%$x=0$ and the equality obviously holds. Otherwise, 
-%\[
-%x=(a+b)(\frac a{a+b} p-\frac b{a+b} q)\in (a+b) S,
-%\]
-%so that $p_S(x)\le \|x\|_K$. On the other hand, let $x\in \lambda S$ for some $\lambda>0$. Then $x=\lambda(sp-(1-s)q)$ for some $s\in [0,1]$ and $p,q\in K$, so that 
-%\[
-%\|x\|_K\le \lambda s+(1-\lambda)(1-s)=\lambda,
-%\]
-%hence $\|x\|_K\le p_S(x)$. It is easy to see that $S$ is convex, balanced and absorbing in $X$, so that $\|\cdot\|_K=p_S$ is a seminorm.  
-%
-
 
 \end{proof}
 
 The (semi)norm in the above proposition  is called  the base (semi)norm in $X$. 
+
+\begin{rem}
+Note that $\|\cdot\|_K$ is the Minkowski functional of $S$, that is
+\[
+\|x\|_K= \inf\{\lambda>0, x\in \lambda S\}.
+\]
+To see this, observe that $S=\{s p-(1-s)q,\ s\in [0,1],\ p,q\in K\}$. Denote the Minkowski functional by $p_S$. If $x=ap-bq$ for some $a,b\in \mathbb R^+$ and $p,q\in K$, then if $a+b=0$, we must have 
+$x=0$ and the equality obviously holds. Otherwise, 
+\[
+x=(a+b)(\frac a{a+b} p-\frac b{a+b} q)\in (a+b) S,
+\]
+so that $p_S(x)\le \|x\|_K$. On the other hand, let $x\in \lambda S$ for some $\lambda>0$. Then $x=\lambda(sp-(1-s)q)$ for some $s\in [0,1]$ and $p,q\in K$, so that 
+\[
+\|x\|_K\le \lambda s+(1-\lambda)(1-s)=\lambda,
+\]
+hence $\|x\|_K\le p_S(x)$. The set $S$ is convex, balanced and absorbing in $X$, so that $\|\cdot\|_K=p_S$ is a seminorm.  
+\end{rem}
+
+
+
 
 \begin{rem} Linear boundedness of $K$ is in general not enough. There are some weird infinite dimensional examples such that $K$ is linearly bounded but $co(K\cup -K)$ is not.
 
@@ -211,8 +218,13 @@ Let $(X_i,P_i,K_i)$ be base-normed spaces. A linear map $f:X_1\to X_2$ is called
 %Then $X$ is $\|\cdot\|_K$-complete.
 
 %\end{prop}
+%\subsubsection*{Completeness}
+
+%We give some sufficient conditions for completeness of order unit norms and base norms. 
 
 
+
+\subsection{Duality}
 \subsubsection*{The order dual}
 
 Let $(X,P)$ be an ordered vector space and let $X'$ denote the algebraic dual of $X$. Then the dual wedge of $P$ is defined as
@@ -223,7 +235,7 @@ Then $(X',P')$ is an ordered vector space: the order dual of $X$. Note that  $P'
 	$P'$ is a cone iff $P$ is generating. Further, note that $p\in P\cap -P$ implies that $\varphi(p)=0$ for all $\varphi\in P'$, hence if $P'$ is generating, $P$ must be a cone. The converse is not true in general.
 
 
-\subsubsection*{The dual of a vector space with an order unit norm} 
+\subsubsection*{The norm dual of a vector space with an order unit norm} 
 
 Let $(X,P)$ be an ordered vector space with an order unit $u$ such that $\|\cdot \|_u$ is a norm. This implies that $P$ is generating and almost Archimedean, hence a cone. We do not assume that $(X,P,u)$ is an order unit space, so $u$ does not have to be Archimedean. 
 
@@ -282,7 +294,7 @@ $\|\varphi\|_u\le a+b$, this shows the opposite inequality.
 \end{proof}
 
 
-\subsubsection*{The dual of a base-normed space}
+\subsubsection*{The norm dual of a base-normed space}
 
 Let $(X,P,K)$ be a base-normed space and let $X^*$ be the normed space dual of $(X,\|\cdot\|_K)$. Let $P^*= P'\cap X^*$.
 
@@ -305,21 +317,17 @@ implies that $\sup_{x\in K}|\varphi(x)|\le \lambda$, so that $\|\varphi\|_u= \|\
 
 
 
-\subsubsection*{Completeness}
-
-We give some sufficient conditions for completeness of order unit norms and base norms. 
-
 
 \subsubsection*{Preduals}
 
 We next discuss the Banach space preduals of order unit and base-normed spaces. Here $(X,\|\cdot\|)$ is a Banach space and $(X^*,\|\cdot\|^*)$ the dual space.  If $P\in X$ is a wedge, we will denote 
-$
+\[
 P^*:=\{\varphi\in X^*,\ \varphi(p)\ge 0,\ \forall p\in P\}= P'\cap X^*.
-$
+\]
 Similarly, if $Q$ is a wedge in $X^*$, we will denote 
-$
-Q_*:=\{x\in X,\ q(x)\ge 0,\ \forall q\in Q\}.
-$
+\[
+Q_*:=\{x\in X,\ q(x)\ge 0,\ \forall q\in Q\}= Q'\cap X.
+\]
 It is clear that $P^*$ and $Q_*$ are wedges. Moreover, $(P^*)_*=\bar P$ and $(Q_*)^*$ is the weak*-closure of $Q$. 
 
 \begin{thm}\cite{ellis, asell} Let $X^*$ be  an order unit space with weak*-closed positive cone. Then $X$ is base-normed. More precisely, 
@@ -374,7 +382,7 @@ $\|\cdot\|=\|\cdot\|_K$.
 
 
 
-\subsubsection*{Categories of ordered vector spaces}
+\subsection{Categories of ordered vector spaces}
 
 
 \begin{thebibliography}{99}
