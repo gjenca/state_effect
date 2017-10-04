@@ -5,6 +5,8 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{thm}{Theorem}
 \newtheorem{prop}{Proposition}
+\newtheorem{coro}{Corollary}
+
 \theoremstyle{remark}
 \newtheorem{rem}{Remark}
 \newcommand{\<}{\langle}
@@ -237,9 +239,26 @@ Then $(X',P')$ is an ordered vector space: the order dual of $X$. Note that  $P'
 
 \subsubsection*{The norm dual of a vector space with an order unit norm} 
 
-Let $(X,P)$ be an ordered vector space with an order unit $u$ such that $\|\cdot \|_u$ is a norm. This implies that $P$ is generating and almost Archimedean, hence a cone. We do not assume that $(X,P,u)$ is an order unit space, so $u$ does not have to be Archimedean. 
+
+Let $(X,P)$ be an ordered vector space with an order unit $u$. Positive unital linear functionals are called states, the set of all 
+ states will be denoted by $\mathcal S(X,P,u)$.
+
+\begin{lemma}\label{lemma:separates}
+ If  $\mathcal S(X,P,u)$ separates the points of $X$, then $\|\cdot\|_u$ is a norm.
+
+\end{lemma}
+
+\begin{proof}
+Let $x\in X$, $-\lambda u\le x\le \lambda u$ and let $\varphi\in \mathcal S(X,P,u)$. Then $|\varphi(x)|\le \lambda$. It follows that 
+$\sup_{\varphi\in \mathcal S(X,P,u)} |\varphi(x)|\le \|x\|_u$. Let $x\neq 0$ and let $\varphi\in  \mathcal S(X,P,u)$ be such that 
+$\varphi(x)\ne 0$, then $0<|\varphi(x)|\le \|x\|_u$, so that $\|\cdot\|_u$ is a norm.
 
 
+\end{proof}
+
+
+
+Assume now that $\|\cdot \|_u$ is a norm. In this case,  $P$ is an almost Archimedean generating  cone. We do not assume that $(X,P,u)$ is an order unit space, so $u$ does not have to be Archimedean. 
 Let $X^*$ be the normed space dual of $(X, \|\cdot\|_u)$ and let $\|\cdot\|_u^*$ be the norm in $X^*$. 
 
 \begin{lemma} 
@@ -262,12 +281,13 @@ This implies $\varphi(x)\ge 0$.
 
 
 
-\begin{thm} $P'$  has a $w^*$-compact base $K$ such that  $(X^*,P',K)$ is a base-normed space and $\|\cdot\|_K=\|\cdot\|_u^*$. 
+\begin{thm}\label{thm:ou_dual} Let $(X,P)$ be an ordered vector space wwith an order unit norm $\|\cdot\|_u$. Then 
+$P'$  has a $w^*$-compact base $K$ such that  $(X^*,P',K)$ is a base-normed space and $\|\cdot\|_K=\|\cdot\|_u^*$. 
 
 \end{thm}
 
 
-\begin{proof}\cite{ellis? jameson?} The set $K=\{\varphi\in P', \varphi(u)=1\}$  is a  $w^*$-compact  base of $P'$. We will show that the base seminorm $\|\cdot\|_K$ equals to the dual norm in $X^*$ and hence is itself a norm.
+\begin{proof}\cite{ellis} The set $K=\varphi\in \mathcal S(X,P,u)$  is a  $w^*$-compact  base of $P'$. We will show that the base seminorm $\|\cdot\|_K$ equals to the dual norm in $X^*$ and hence is itself a norm.
 
 Let $Y=X\times X$ be ordered by the wedge $Q=P\times P$, then $(u,u)$ is an order unit in $(Y,Q)$.
 Let 
@@ -292,6 +312,20 @@ On the other hand, let $\varphi=a\varphi_1- b\varphi_2$ with $a,b\ge 0$, $\varph
 $\|\varphi\|_u\le a+b$, this shows the opposite inequality.
 
 \end{proof}
+
+
+\begin{coro} Let $(X,P)$ be an ordered vector space with an order unit $u$. Then $u$ is almost Archimedean iff $K=\mathcal S(X,P,u)$ separates the points of $X$.
+
+\end{coro}
+
+\begin{proof} Assume $u$ is almost Archimedean, then $\|\cdot\|_u$ is a norm. Let $X\ni x\ne 0$. By Theorem \ref{thm:ou_dual},
+\[
+\|x\|_u=\sup_{\|\varphi\|_u^*\le 1} |\varphi(x)|=\sup_{\varphi\in S} |\varphi(x)|=\sup_{\varphi\in K}|\varphi(x)|,
+\]
+so that we must have $\varphi(x)\ne 0$ for some state $\varphi$. The converse is Lemma \ref{lemma:separates}.
+
+\end{proof}
+
 
 
 \subsubsection*{The norm dual of a base-normed space}
