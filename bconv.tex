@@ -9,6 +9,8 @@
 
 \theoremstyle{remark}
 \newtheorem{rem}{Remark}
+\newtheorem{ex}{Example}
+
 \newcommand{\<}{\langle}
 \def\>{\rangle}
 \newcommand{\ct}[1]{\mathbf{#1}}
@@ -92,6 +94,36 @@ The following are equivalent.
 \begin{rem}
 Note that an almost Archimedean wedge must be a cone. An Archimedean  wedge is almost Archimedean iff it is a cone.
 \end{rem}
+
+
+\subsubsection*{Examples}
+
+Note that $X$ is always a wedge and $\{0\}$ is a cone. These are the trivial wedges. All other wedges (cones) are called proper.
+If $P$ is a wedge (cone, almost Archimedean, Archimedean) then also $-P$ is a wedge (cone, almost Archimedean, Archimedean).
+
+\begin{ex} \label{ex:R}
+There are 2 proper wedges in $\mathbb R$:  $\mathbb R^+$ and $-\mathbb R^+$.  $\mathbb R^+$ is a generating Archimedean cone, giving the usual ordering in $\mathbb R$. 
+Any positive element is an order unit and at the same time forms  a  base of $\mathbb R^+$. Both the order unit and the base norm corresponding to 1 coincide with the usual norm in $\mathbb R$.
+
+\end{ex}
+
+\begin{ex}\label{ex:function_space} Let $S$ be a set. Then $X=\{f:S\to \mathbb R\}$ is a real vector space with pointwise operations, $P=\{f\in X, f(S)\subseteq \mathbb R^+\}$ is agenerating  Archimedean cone in $X$. If $S$ is finite, any strictly positive function is an order unit. In particular, $1(s)\equiv 1$ is an order unit, with $\|f\|_1=\max_{s\in S} |f(s)|$. Moreover, the set $\{f\in P, \sum_{s\in S} f(s)=1\}$ is a base of $P$, the corresponding base norm is $\|f\|_K=\sum_s|f(s)|$.
+      If $S$ is infinite, then  $aint(P)=\emptyset$ and $P$ has no base.
+
+\end{ex}
+
+\begin{ex}\label{ex:function_bounded} Let $S$ be a set and $X=\{f:S\to \mathbb R, \mbox{ bounded}\}$, $P=\{f\in X, f(S)\subseteq \mathbb R^+\}$. A generating 
+ Archimedean cone, any strictly positive element is an order unit, $\|f\|_1=\sup_{s\in S} |f(s)|$. No base, unless $S$ is finite. 
+
+\end{ex}
+
+\begin{ex}\label{ex:lex} $\mathbb R^2$ with lexicographic ordering. Here $P=\{(x,y), x>0\, \mbox{or}\, x=0,y>0\}$. A cone, not almost Archimedean (the closure of $P$ is the right half-space). Any element $(x,y)$ with $x>0$ is an order unit and $\|(z_1,z_2)\|_{(x,y)}$
+
+\end{ex}
+
+
+
+
 
 \subsection{Order units and bases}
 
