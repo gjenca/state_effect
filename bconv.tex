@@ -40,7 +40,12 @@ acl(A)=\{x\in X,\ \exists y\in X,\ x+\lambda y\in A,\ \forall \lambda\in (0,1)\}
 $A$ is algebraically open iff $A=aint(A)$ and algebraically closed iff $A=acl(A)$. If $A$ is convex, then both $aint(A)$ and $acl(A)$ are convex as well.
 
 \begin{rem} (cf. \cite[\S 16]{kothe}) 
-If $A$ is convex, then $aint(A)$ is algebraically open, but  in general $aint(aint(A))\subsetneq aint(A)$. The algebraic closure is not necessarily algebraically closed even if $A$ is convex. But if $A$ is convex and $aint(A)\ne \emptyset$, then $acl(acl(A))=acl(A)$. \end{rem}
+If $A$ is convex, then $aint(A)$ is algebraically open, but  in general $aint(aint(A))\subsetneq aint(A)$. The algebraic closure is not necessarily algebraically closed even if $A$ is convex. The counterexample is as follows. Let $X$ be an infinite dimensional vector space with algebraic basis $\{x_\alpha\}$. Put 
+\[
+A=\{ x=\sum_\alpha c_\alpha x_\alpha,\ c_\alpha\ge 0\ \forall \alpha,\ \sum_\alpha c_\alpha \ge \frac1{n(x)}\}
+\]
+where $n(x)=\#\{\alpha, x=\sum_\alpha c_\alpha x_\alpha,\ c_\alpha\ne 0\}$. Then $A$ is convex, $acl(A)=\{x=\sum_\alpha c_\alpha x_\alpha,\ c_\alpha\ge 0\  \forall \alpha,\ x\ne 0\}$ and $acl(acl(A))$ contains 0, so that $acl(A)\subsetneq acl(acl(A))$.
+On the other hand, if $A$ is convex and $aint(A)\ne \emptyset$, then $acl(acl(A))=acl(A)$. \end{rem}
 
 %For $A\subseteq X$, the associated Minkowski functional $\mu_A: X\to \mathbb R^+\cup\{\infty\}$ is defined as 
 %\[
@@ -96,31 +101,6 @@ Note that an almost Archimedean wedge must be a cone. An Archimedean  wedge is a
 \end{rem}
 
 
-\subsubsection*{Examples}
-
-Note that $X$ is always a wedge and $\{0\}$ is a cone. These are the trivial wedges. All other wedges (cones) are called proper.
-If $P$ is a wedge (cone, almost Archimedean, Archimedean) then also $-P$ is a wedge (cone, almost Archimedean, Archimedean).
-
-\begin{ex} \label{ex:R}
-There are 2 proper wedges in $\mathbb R$:  $\mathbb R^+$ and $-\mathbb R^+$.  $\mathbb R^+$ is a generating Archimedean cone, giving the usual ordering in $\mathbb R$. 
-Any positive element is an order unit and at the same time forms  a  base of $\mathbb R^+$. Both the order unit and the base norm corresponding to 1 coincide with the usual norm in $\mathbb R$.
-
-\end{ex}
-
-\begin{ex}\label{ex:function_space} Let $S$ be a set. Then $X=\{f:S\to \mathbb R\}$ is a real vector space with pointwise operations, $P=\{f\in X, f(S)\subseteq \mathbb R^+\}$ is agenerating  Archimedean cone in $X$. If $S$ is finite, any strictly positive function is an order unit. In particular, $1(s)\equiv 1$ is an order unit, with $\|f\|_1=\max_{s\in S} |f(s)|$. Moreover, the set $\{f\in P, \sum_{s\in S} f(s)=1\}$ is a base of $P$, the corresponding base norm is $\|f\|_K=\sum_s|f(s)|$.
-      If $S$ is infinite, then  $aint(P)=\emptyset$ and $P$ has no base.
-
-\end{ex}
-
-\begin{ex}\label{ex:function_bounded} Let $S$ be a set and $X=\{f:S\to \mathbb R, \mbox{ bounded}\}$, $P=\{f\in X, f(S)\subseteq \mathbb R^+\}$. A generating 
- Archimedean cone, any strictly positive element is an order unit, $\|f\|_1=\sup_{s\in S} |f(s)|$. No base, unless $S$ is finite. 
-
-\end{ex}
-
-\begin{ex}\label{ex:lex} $\mathbb R^2$ with lexicographic ordering. Here $P=\{(x,y), x>0\, \mbox{or}\, x=0,y>0\}$. A cone, not almost Archimedean (the closure of $P$ is the right half-space). Any element $(x,y)$ with $x>0$ is an order unit and $\|(z_1,z_2)\|_{(x,y)}$
-
-\end{ex}
-
 
 
 
@@ -161,28 +141,34 @@ For the second statement, let $x\in \bar P$ (the closure of $P$ w.r. to $\|\cdot
 
 \end{proof}
 
-\subsubsection*{Order unit spaces}
+Let $(X_i,P_i)$, $i=1,1$ be ordered vector spaces and let $u_i\in X_i$ be order units. A map $f:X_1\to X_2$ is called unital if $f(u_1)=u_2$. The following is immediate.
 
-A triple $(X,P,u)$ where $X$ is a vector space, $P\subseteq X$ an Archimedean  cone and $u\in aint(P)$ is called an order unit space. To summarize, in this case, 
-$\|\cdot\|_u$ is a norm in $X$, $[-u,u]$ is the corresponding closed unit ball and $P$ is norm closed.
-If $(X_i,P_i,u_i)$, $i=1,2$ are order unit spaces, a linear map $f:X_1\to X_2$ is called unital if $f(u_1)=u_2$.
-
-\begin{prop} Let $(X_i,P_i,u_i)$, $i=1,2$ be order unit spaces. Any positive unital map $f:X_1\to X_2$ is a contraction.
+\begin{prop} Let $(X_i,P_i,u_i)$, $i=1,2$ be order unit spaces. Any positive unital map $f:X_1\to X_2$ is a contraction with respect to the seminorms $\|\cdot\|_{u_1}$ and 
+$\|\cdot\|_{u_2}$.
 \end{prop}
+
+
 
 \subsubsection*{Bases and seminorms}
 
 Let $(X,P)$ be an ordered vector space. A convex subset $K\subset P$ is called a base of $P$ if for any nonzero $p\in P$ there is a unique $\lambda>0$  such that 
 $\lambda p\in K$.  
 
+\begin{lemma} Any wedge with a base is a cone.
 
-\begin{lemma} The wedge  $P$ has a base if and only if $P$ is a cone and there exists a linear functional $\xi$ on $X$ which is strictly positive on $P$. Then 
- $K=\{p\in P, \xi(p)=1\}$. 
 \end{lemma}
 
-\begin{proof} Let $K$ be a base of $P$, and let $0\neq x\in P\cap -P$. Then there are $\lambda,\mu >0$ such that $\lambda x=x_1\in K$ and $-\mu x=x_2\in K$.  
+\begin{proof} Let $K$ be a base of a wedge $P$, and let $0\neq x\in P\cap -P$. Then there are $\lambda,\mu >0$ such that $\lambda x=x_1\in K$ and $-\mu x=x_2\in K$.  
 It follows that $\lambda^{-1}x_1=-\mu^{-1}x_2$ and then  $\tfrac{\mu}{\lambda+\mu}x_1+\tfrac{\lambda}{\lambda+\mu}x_2=0$. Since $K$ is convex, we obtain $0\in K$, but then 
- for any $p\in K$,  $\lambda p\in K$ for all $\lambda\in[0,1]$. Hence $P$ must be a cone.  For $p\in P$, let $\xi(p)$ be the unique positive number such that 
+ for any $p\in K$,  $\lambda p\in K$ for all $\lambda\in[0,1]$. Hence $P$ must be a cone. 
+
+\end{proof}
+
+\begin{prop} A wedge  $P$ has a base if and only if there exists a linear functional $\xi$ on $X$ which is strictly positive on $P$. In this case, we may put 
+ $K=\{p\in P, \xi(p)=1\}$. 
+\end{prop}
+
+\begin{proof}  Let $K$ be a base of $P$. For $p\in P$, let $\xi(p)$ be the unique positive number such that 
 $\xi(p)^{-1}p\in K$. Then clearly $\xi(sp)=s\xi(p)$. Further, let $p,q\in P$ and let $\alpha=\xi(p)+\xi(q)$, then 
 \[
 \alpha^{-1}(p+q)=\frac{\xi(p)}{\alpha} \xi(p)^{-1}p+ \frac{\xi(q)}{\alpha} \xi(q)^{-1}q\in K,
@@ -223,13 +209,13 @@ Note that $\|\cdot\|_K$ is the Minkowski functional of $S$, that is
 To see this, observe that $S=\{s p-(1-s)q,\ s\in [0,1],\ p,q\in K\}$. Denote the Minkowski functional by $p_S$. If $x=ap-bq$ for some $a,b\in \mathbb R^+$ and $p,q\in K$, then if $a+b=0$, we must have 
 $x=0$ and the equality obviously holds. Otherwise, 
 \[
-x=(a+b)(\frac a{a+b} p-\frac b{a+b} q)\in (a+b) S,
+x= +b)(\frac a{a+b} p-\frac b{a+b} q)\in (a+b) S,
 \]
 so that $p_S(x)\le \|x\|_K$. On the other hand, let $x\in \lambda S$ for some $\lambda>0$. Then $x=\lambda(sp-(1-s)q)$ for some $s\in [0,1]$ and $p,q\in K$, so that 
 \[
 \|x\|_K\le \lambda s+(1-\lambda)(1-s)=\lambda,
 \]
-hence $\|x\|_K\le p_S(x)$. The set $S$ is convex, balanced and absorbing in $X$, so that $\|\cdot\|_K=p_S$ is a seminorm.  
+hence $\|x\|_K\le p_S(x)$.   
 \end{rem}
 
 
@@ -239,20 +225,56 @@ hence $\|x\|_K\le p_S(x)$. The set $S$ is convex, balanced and absorbing in $X$,
 
 \end{rem}
 
-\subsubsection*{Base-normed spaces}
-
-A triple $(X,P,K)$, where $X$ is a vector space, $P$ a generating cone and $K$ a base of $P$ such that $co(K\cup-K)$ is linearly bounded is called a base-normed space. 
-Let $(X_i,P_i,K_i)$ be base-normed spaces. A linear map $f:X_1\to X_2$ is called base-preserving if $f(K_1)\subset K_2$.
 
 
-\begin{prop} Let $(X_i,P_i,K_i)$, $i=1,2$ be base-normed spaces. Any base-preserving linear  map $f:X_1\to X_2$ is a positive contraction.
+\begin{prop} Let $(X_i,P_i)$, $i=1,2$ be ordered vector spaces and let $K_i\subset P_i$ be a base of $P_i$. 
+ Any base-preserving linear  map $f:X_1\to X_2$ is a positive contraction with respect to the base seminorms.
 \end{prop}
+
+\subsubsection*{Some examples}
+
+The wedges $X$ and $\{0\}$ are trivial.
+
+\begin{enumerate}
+\item The only nontrivial wedges in $\mathbb R$ are $\mathbb R^+$ and $\mathbb R^{-}$.
+\item \label{ex:fs}\textbf{Function spaces:} Let $S$ be a set, $X=\{f:S\to \mathbb R\}$, $P=\{f, f(S)\subseteq \mathbb R^+\}$. $P$ is an Archimedean cone, $(X,\le)$ is a lattice. If $S$ is not finite, $aint(P)=\emptyset$.
+\item  \label{ex:fsb} As \ref{ex:fs}, but bounded functions.  In this case $P$ is an Archimedean cone, $aint(P)$ is the set of strictly positive functions.
+\item If $S$ is a topological (linear, convex,...) space, we may take spaces as in \ref{ex:fs}, \ref{ex:fsb}, but restricting to  continuous (linear, affine,...) functions.\item $X=\{f:\mathbb R\to \mathbb R\} $, with the cone of nondecreasing functions.
+\item \textbf{Sequence spaces:} $X$ the set of all  (or bounded, summable, convergent, converging to 0,...) sequences, with usual positive cone.
+\item $\mathbb R^2$ with the usual or lexicographic ordering, with $P=\{(x,y),\ x>0, y>0\}\cup \{0\}$ or $P=\{(x,y),\ x>0\}\cup \{0\}$.
+\end{enumerate}
+
+
+
+\subsubsection*{Completeness}
+
+We give some sufficient conditions for completeness of order unit norms and base norms.
+
+\begin{prop}\cite{jameson} Let $(X,P)$ be an ordered vector space with an almost Archimedean order unit $u$. If every majorized increasing sequence in $(X,P)$ has a supremum, then $(X,\|\cdot\|_u)$ is complete.
+
+
+\end{prop}
+
+
+\begin{proof} We first show that any increasing Cauchy sequence has a limit. So let $\{x_n\}$ be such a sequence and let $\epsilon>0$. Then $\|x_n-x_m\|_u< \epsilon$ for $m,n\ge N$. We then have for all $m\ge N$, $x_m-x_N\le \epsilon u$, so that $x_m\le x_N+\epsilon u$. It follows that $\{x_n\}$ is a majorized increasing sequence, so that 
+there is some $x_0$ such that $x_0=\sup_n x_n$. For all $m,n \ge N$, we have $x_n\le x_m+\epsilon u$, hence $x_0\le x_m+\epsilon u$ and we have 
+$0\le x_0-x_m\le \epsilon u$. This implies $\|x_0-x_m\|_u\le \epsilon$ for all $m\ge N$, so that $\lim_n x_n=x_0$. 
+
+Let now $\{x_n\}$ be any Cauchy sequence. Let $V_n=\{p-q,\ p,q\in [0,2^{-n}]\}$, then $V_n$ contains the ball with center 0 and radius $2^{-{n+1}}$ and is therefore a neighborhood of 0.  Hence there is a subsequence such that $x_n-x_{n-1}\in V_n$. Let $a_n,b_n\in [0,2^{-n}]$ be such that $x_n-x_{n-1}=a_n-b_n$. Then $\{\sum_{k=1}^n a_k\}$
+ and $\{\sum_{k=1}^n b_k\}$ are increasing Cauchy sequences and hence have a limit by the first part of the proof. Moreover, we have 
+$x_n=\sum_{k=1}^n(a_k-b_k)$, so that $x_n$ converges as well.
+
+
+
+\end{proof}
+
+
 
 %\begin{prop}\label{prop:bn_complete}\cite{alfsen}  Let $(X,P,K)$ be a base-normed space and asume that $X$ carries a locally convex topology $\tau$ such that $K$ is $\tau$-compact.
 %Then $X$ is $\|\cdot\|_K$-complete.
 
 %\end{prop}
-%\subsubsection*{Completeness}
+
 
 %We give some sufficient conditions for completeness of order unit norms and base norms. 
 
@@ -449,7 +471,16 @@ $\|\cdot\|=\|\cdot\|_K$.
 
 
 \subsection{Categories of ordered vector spaces}
+\subsubsection*{Order unit spaces}
 
+A triple $(X,P,u)$ where $X$ is a vector space, $P\subseteq X$ an Archimedean  cone and $u\in aint(P)$ is called an order unit space. To summarize, in this case, 
+$\|\cdot\|_u$ is a norm in $X$, $[-u,u]$ is the corresponding closed unit ball and $P$ is norm closed.
+If $(X_i,P_i,u_i)$, $i=1,2$ are order unit spaces, a linear map $f:X_1\to X_2$ is called unital if $f(u_1)=u_2$.
+
+\subsubsection*{Base-normed spaces}
+
+A triple $(X,P,K)$, where $X$ is a vector space, $P$ a generating cone and $K$ a base of $P$ such that $co(K\cup-K)$ is linearly bounded is called a base-normed space. 
+Let $(X_i,P_i,K_i)$ be base-normed spaces. A linear map $f:X_1\to X_2$ is called base-preserving if $f(K_1)\subset K_2$.
 
 \begin{thebibliography}{99}
 \bibitem{asell} L. Asimow and A. J. Ellis, \emph{ Convexity Theory and its Applications in Functional Analysis}, Academic Press, London, 1980
