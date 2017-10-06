@@ -201,7 +201,7 @@ $x=0$.
 
 The (semi)norm in the above proposition  is called  the base (semi)norm in $X$. 
 
-\begin{rem}
+\begin{rem}\label{rem:minkowski}
 Note that $\|\cdot\|_K$ is the Minkowski functional of $S$, that is
 \[
 \|x\|_K= \inf\{\lambda>0, x\in \lambda S\}.
@@ -270,55 +270,62 @@ $x_n=\sum_{k=1}^n(a_k-b_k)$, so that $x_n$ converges as well.
 
 
 
-%\begin{prop}\label{prop:bn_complete}\cite{alfsen}  Let $(X,P,K)$ be a base-normed space and asume that $X$ carries a locally convex topology $\tau$ such that $K$ is $\tau$-compact.
-%Then $X$ is $\|\cdot\|_K$-complete.
+\begin{prop}\label{prop:bn_complete}\cite{alfsen}  Let $K$ be a base of $P$  and asume that $K$ is compact with respect to some Hausdorff topology $\tau$, compatible with the linear structure of $X$. Then $X$ is $\|\cdot\|_K$-complete.
 
-%\end{prop}
+\end{prop}
 
-
-%We give some sufficient conditions for completeness of order unit norms and base norms. 
-
-
-
-\subsection{Duality}
-\subsubsection*{The order dual}
-
-Let $(X,P)$ be an ordered vector space and let $X'$ denote the algebraic dual of $X$. Then the dual wedge of $P$ is defined as
+\begin{proof} Note that $K$ must be linearly bounded, so $\|\cdot\|_K$ is a norm and it is easy to verify that $S=co(K\cup-K)$ is the closed unit ball. Let $\{x_n\}$ be a Cauchy sequence, then it is norm-bounded, so we may assume that $\{x_n\}\subset S$. Note that $S$ is $\tau$-compact as well. Let $y\in S$ be a $\tau$-accumulation point of $\{x_n\}$. For $\epsilon>0$, $\|x_n-x_m\|_K<\epsilon$ for $n,m\ge N$. This implies that
+$x_n\in x_N+\epsilon S$ for $n\ge N$. Since $S$ is $\tau$-closed,  $y\in x_N+\epsilon S$. It follows  that
 \[
-P':=\{\varphi\in X', \varphi(p)\ge 0, \forall p\in P\}
+\|y-x_n\|_K\le \|y-x_N\|_K+\|x_N-x_n\|_k\le 2\epsilon,
 \]
-Then $(X',P')$ is an ordered vector space: the order dual of $X$. Note that  $P'=(P,\mathbb R^+)$ and it follows by  Lemma \ref{lemma:duality_morph} that 
-	$P'$ is a cone iff $P$ is generating. Further, note that $p\in P\cap -P$ implies that $\varphi(p)=0$ for all $\varphi\in P'$, hence if $P'$ is generating, $P$ must be a cone. The converse is not true in general.
-
-
-\subsubsection*{The norm dual of a vector space with an order unit norm} 
-
-
-Let $(X,P)$ be an ordered vector space with an order unit $u$. Positive unital linear functionals are called states, the set of all 
- states will be denoted by $\mathcal S(X,P,u)$.
-
-\begin{lemma}\label{lemma:separates}
- If  $\mathcal S(X,P,u)$ separates the points of $X$, then $\|\cdot\|_u$ is a norm.
-
-\end{lemma}
-
-\begin{proof}
-Let $x\in X$, $-\lambda u\le x\le \lambda u$ and let $\varphi\in \mathcal S(X,P,u)$. Then $|\varphi(x)|\le \lambda$. It follows that 
-$\sup_{\varphi\in \mathcal S(X,P,u)} |\varphi(x)|\le \|x\|_u$. Let $x\neq 0$ and let $\varphi\in  \mathcal S(X,P,u)$ be such that 
-$\varphi(x)\ne 0$, then $0<|\varphi(x)|\le \|x\|_u$, so that $\|\cdot\|_u$ is a norm.
+this finishes the proof.
 
 
 \end{proof}
 
 
 
-Assume now that $\|\cdot \|_u$ is a norm. In this case,  $P$ is an almost Archimedean generating  cone. We do not assume that $(X,P,u)$ is an order unit space, so $u$ does not have to be Archimedean. 
-Let $X^*$ be the normed space dual of $(X, \|\cdot\|_u)$ and let $\|\cdot\|_u^*$ be the norm in $X^*$. 
+
+
+
+\subsection{Duality}
+\subsubsection*{Positive functionals}
+
+Let $(X,P)$ be an ordered vector space and let $X'$ denote the algebraic dual of $X$. The dual wedge of $P$ is defined as
+\[
+P':=\{\varphi\in X', \varphi(p)\ge 0, \forall p\in P\}
+\]
+  Note that  $P'=(P,\mathbb R^+)$ and it follows by  Lemma \ref{lemma:duality_morph} that 
+	$P'$ is a cone iff $P$ is generating. 
+	
+\begin{rem}
+To see the above duality in this specific case, note that $P$ is a generating wedge in the subspace $P-P$, whose algebraic dual can be identified with the quotient space $X'|_{(P-P)^\perp}$. Here
+\[
+(P-P)^\perp=\{\varphi\in X',\ \varphi(x)=0,\ \forall x\in P-P\}=P'\cap-P'.
+\]
+If $P-P=X$, then $P'\cap-P'=(P-P)^\perp=\{0\}$, so $P'$ is a cone. Conversely, if $P'$ is a cone, then 
+\[
+P-P=(P-P)^{\perp\perp}=\{0\}^\perp=X,
+\]
+this holds since any subspace $E\subseteq X$ satisfies $E^{\perp\perp}=E$. However, this is no longer true for subspaces in $X'$ (\cite{kothe}), so a dual statement does not hold. More precisely, it is easily checked that $P\cap -P\subseteq (P'-P')^\perp$, so that 
+ if $P'$ is generating, $P$ must be a cone. The converse is not true in general: we only have $P'-P'\subseteq (P'-P')^{\perp\perp}=
+ (P\cap -P)^\perp$, so $P'$ may be not generating even of $P$ is a cone (there are indeed counterexamples).
+\end{rem}
+
+
+\subsubsection*{The  dual of a vector space with an order unit } 
+
+
+Let $(X,P)$ be an ordered vector space with an order unit $u$. Positive unital linear functionals are called states, the set of all 
+ states will be denoted by $\mathcal S(X,P,u)$.
+
 
 \begin{lemma} 
 \begin{enumerate}
-\item[(i)] Any $\varphi\in P'$ is bounded, with $\|\varphi\|_u^*=\varphi(u)$.
-\item[(ii)] If $\varphi\in X^*$ is such that $\|\varphi\|_u^*=\varphi(u)$, then $\varphi\in P'$.
+\item[(i)] Any $\varphi\in P'$ is $\|\cdot\|_u$-bounded, with $\|\varphi\|_u^*:=\sup_{\|x\|_u\le 1}|\varphi(x)|=\varphi(u)$.
+\item[(ii)] If $\varphi\in X'$ is such that $\|\varphi\|_u^*=\varphi(u)$, then $\varphi\in P'$.
+\item[(iii)] For $x\in X$, $\|x\|_u=\sup_{\varphi\in \mathcal S(X,P,u)} |\varphi(x)|$.
 \end{enumerate}
 
 
@@ -367,6 +374,23 @@ $\|\varphi\|_u\le a+b$, this shows the opposite inequality.
 
 \end{proof}
 
+\begin{lemma}\label{lemma:separates}
+ If  $\mathcal S(X,P,u)$ separates the points of $X$, then $\|\cdot\|_u$ is a norm.
+
+\end{lemma}
+
+\begin{proof}
+Let $x\in X$, $-\lambda u\le x\le \lambda u$ and let $\varphi\in \mathcal S(X,P,u)$. Then $|\varphi(x)|\le \lambda$. It follows that 
+$\sup_{\varphi\in \mathcal S(X,P,u)} |\varphi(x)|\le \|x\|_u$. Let $x\neq 0$ and let $\varphi\in  \mathcal S(X,P,u)$ be such that 
+$\varphi(x)\ne 0$, then $0<|\varphi(x)|\le \|x\|_u$, so that $\|\cdot\|_u$ is a norm.
+
+
+\end{proof}
+
+
+
+Assume now that $\|\cdot \|_u$ is a norm. In this case,  $P$ is an almost Archimedean generating  cone. We do not assume that $(X,P,u)$ is an order unit space, so $u$ does not have to be Archimedean. 
+Let $X^*$ be the normed space dual of $(X, \|\cdot\|_u)$ and let $\|\cdot\|_u^*$ be the norm in $X^*$. 
 
 \begin{coro} Let $(X,P)$ be an ordered vector space with an order unit $u$. Then $u$ is almost Archimedean iff $K=\mathcal S(X,P,u)$ separates the points of $X$.
 
