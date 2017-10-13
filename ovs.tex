@@ -324,13 +324,18 @@ this holds since any subspace $E\subseteq X$ satisfies $E^{\perp\perp}=E$. Howev
  (P\cap -P)^\perp$, so $P'$ may be not generating even if $P$ is a cone (there are indeed counterexamples).
 \end{rem}
 
+It is also clear from the definition that $P'$ is  Archimedean.
+
 
 \subsubsection*{The  dual of a vector space with an order unit } 
 
 
 Let $(X,P)$ be an ordered vector space with an order unit $u$. Positive unital linear functionals are called states, the set of all 
- states will be denoted by $\mathcal S(X,P,u)$.
-
+ states will be denoted by $\mathcal S(X,P,u)$. We will study the subspace of $\|\cdot\|_u$-bounded functionals
+\[
+X^*:=\{\varphi\in X', \ \|\varphi\|_u^*:=\sup_{\|x\|_u\le 1}|\varphi(x)|<\infty\}.
+\]
+Note that $\|\cdot\|_u^*$ is a norm in $X^*$ and $(X,\|\cdot\|_u^*)$ is a Banach space.
 
 \begin{lemma}\label{lemma:states}
 \begin{enumerate}
@@ -363,7 +368,7 @@ Since we may take either $x_0$ or $-x_0$ for $y$, we have arrived at a contradic
 
 
 \begin{thm}\label{thm:ou_dual} Let $(X,P)$ be an ordered vector space with an order unit $u$ and let $K=\mathcal S(X,P,u)$.
-Then $P'-P'$ is the space of $\|\cdot\|_u$-bounded functionals  and  $(P'-P',P',K)$  is a base-normed space, with $\|\cdot\|_K=\|\cdot\|_u^*$. 
+Then $X^*=P'-P'$   and  $(X^*,P',K)$  is a base-normed space, with $\|\cdot\|_K=\|\cdot\|_u^*$. 
 
 \end{thm}
 
@@ -399,7 +404,7 @@ $\|\varphi\|^*_u\le a+b$, this shows that $\|\varphi\|_u^*=\|\varphi\|_K$. To fi
 
 \end{coro}
 
-\begin{coro} Let $(X,P)$ be an ordered vector space xith an order unit $u$. 
+\begin{coro} Let $(X,P)$ be an ordered vector space with an order unit $u$. 
 \begin{enumerate}
 \item[(i)] $P$ is almost Archimedean iff the set of states is separating.
 \item[(ii)] $P$ is  Archimedean iff the set of states is order-determining.
@@ -409,11 +414,11 @@ $\|\varphi\|^*_u\le a+b$, this shows that $\|\varphi\|_u^*=\|\varphi\|_K$. To fi
 \end{coro}
 
 
-\begin{proof} (i) is immediate from Lemma \ref{lemma:states} (i). For (ii), assume that $P$ is an Archimedean cone, then $\|\cdot\|_u$  is a norm and $P$ is norm-closed, hence also weakly closed. Since $P'$ is contained in the norm dual of $X$, $P$ is equal to its double dual 
-\[
-P''=\{x\in X, \varphi(x)\ge 0,\ \forall \varphi\in P'\}.
-\]
-Since the set of states is a base of $P'$, this implies that it determines the order in $(X,P)$. Conversely, let $L=\{x_t\}$ be any line 
+\begin{proof} (i) is immediate from Lemma \ref{lemma:states} (i). For (ii), assume that $P$ is an Archimedean wedge and let $x\in X$ be such that $\varphi(x)\ge 0$ for all
+ states $\varphi$.   Assume $x\notin P$, then, since $P$ is algebraically closed and $aint(P)\neq \emptyset$, there exists a functional $\psi\in X'$ such that 
+$\psi(x)<c\le \inf_{p\in P} \psi(p)$ (\cite[17.5.(2)]{kothe}). This implies that $\psi(p)\ge 0$ for all $p\in P$, so that $\psi\in P'$. By normalization,  we obtain a state with $\psi(x)<0$, a contradiction.
+
+ Conversely, let $L=\{x_t\}$ be any line 
 in $X$, then $x_t\in P$ iff $\varphi(x_t)\ge 0$ for all states $\varphi$, so that $L\cap P$ is a closed subset in $L$, hence $P$ is algebraically closed.
 
 
@@ -427,28 +432,47 @@ in $X$, then $x_t\in P$ iff $\varphi(x_t)\ge 0$ for all states $\varphi$, so tha
 \subsubsection*{The dual of an ordered vector space with a based cone}
 
 
-Let $(X,P)$ be an ordered vector space and let $K\subset P$ be a base of $P$. By Proposition \ref{prop:base}, there is a strictly positive linear functional $u\in X'$, such that $K=\{p\in P, u(p)=1\}$. 
-
-
-
-\begin{thm} \label{thm:base_dual} Let $X^*\subseteq X'$ be the set of $\|\cdot\|_K$-bounded linear functionals and let $P^*=X^*\cap P'$. Then
- $(X^*,P^*,u)$ is is an order unit space,  isomorphic to $(A_b(K),A_b(K)^+,1_K)$ (see Example \ref{ex:affine}). Moreover,  
+Let $(X,P)$ be an ordered vector space and let $K\subset P$ be a base of $P$. By Proposition \ref{prop:base}, there is a strictly positive linear functional $u\in X'$, such that $K=\{p\in P, u(p)=1\}$. Again, we study the subspace of $\|\cdot\|_K$-bounded functionals
 \[
-\|\varphi\|_K^*:=\sup_{\|x\|_K\le 1} |\varphi(x)|=\|\varphi\|_u=\sup_{x\in K}|\varphi(x)|. 
+X^*=\{\varphi\in X',\ \|\varphi\|_K^*:=\sup_{x\in P-P,\ \|x\|_K\le 1} |\varphi(x)|<\infty\}.
+\] 
+Note that here the seminorm is defined only on the subspace $P-P$, so that $\|\cdot\|_K^*$ is in general only a seminorm. 
+
+
+\begin{thm} \label{thm:base_dual} 
+\begin{enumerate}
+ \item[(i)] Let $\varphi\in X'$, then $\varphi\in X^*$ iff $\varphi$ is bounded over $K$ and 
+\[
+\|\varphi\|_K^*=\sup_{x\in K}|\varphi(x)|.
 \]
+\item[(ii)] Let $P^*=P'\cap X^*$, then  $u$ is an Archimedean order unit in $(X^*,P^*)$ and $\|\cdot\|_u=\|\cdot\|_K^*$.
+\item[(iii)]
+If $X=P-P$, then  
+$(X^*,P^*,u)$ is  an order unit space,  isomorphic to $(A_b(K),A_b(K)^+,1_K)$ (see Example \ref{ex:affine}) (we mean a unital order isomorphism).
+\end{enumerate}
+
 \end{thm}
 
-\begin{proof} It is easy to see that any element $\varphi\in X'$ restricts to a function $\varphi|_K\in A(K)$ and conversely, any 
-function in $A(K)$ extends uniquely to some linear functional in $X'$. Moreover, $\varphi\in P'$ iff $\varphi|_K\in A(K)^+$ and 
-$u|_K=1_K$. Let now $\varphi\in X'$ and let $x\in X$, $\|x\|_K\le 1$. Then for any $\epsilon>0$, $x=a_\epsilon x_1-b_\epsilon x_2$, where $x_1,x_2\in K$ and $a_\epsilon,b_\epsilon\ge 0$ are such that $a_\epsilon+b_\epsilon <1+\epsilon$. Then 
-\begin{equation}\label{eq:K_bdd}
-|\varphi(x)|\le a_\epsilon |\varphi(x_1)|+b_\epsilon |\varphi(x_2)|\le (1+\epsilon)\sup_{x\in K} |\varphi(x)|.
-\end{equation}
-It follows that $\varphi\in X^*$ iff $\varphi|_K\in A_b(K)$. This establishes a unital order  isomorphism between $(X^*,P^*,u)$ and 
+\begin{proof} Let $\varphi\in X'$ and let $x=ax_1-bx_2$ with $a,b\ge 0$ and $x_1,x_2\in K$. Then
+\[
+|\varphi(x)|\le a|\varphi(x_1)|+b|\varphi(x_2)|\le (a+b)\sup_{x\in K}|\varphi(x)|.
+\]
+It follows that $\varphi\in X^*$ if it is bounded over $K$, and also that $\|\varphi\|_K^*\le\sup_{x\in K}|\varphi(x)|$. The rest of (i) is easy.
+
+ Since the dual wedge is Archimedean, $P^*$ is Archimedean as well and $u\in P^*$ by (i). 
+We also obtain that $\|\varphi\|_K^*\le M$ iff $-Mu(x)\le  \varphi(x)\le Mu(x)$ for all $x\in K$  and since $K$ is a base of $P$, this is equivalent to  
+ $-Mu\le \varphi\le Mu$, so that $u$ is an order unit in $(X^*,P^*)$, with $\|\varphi\|_u= \|\varphi\|_K^*$, this proves (ii).
+
+For (iii), assume that $X=P-P$. Then $P'$, and hence also $P^*$, is an Archimedean cone, so that $(X^*,P^*,u)$ is an order unit space.
+Further, any element $\varphi\in X'$ restricts to a function $\varphi|_K\in A(K)$ and conversely, any 
+function in $A(K)$ extends to a unique linear functional in $X'$. It is easy to see  from (i) and (ii) that this defines a unital order isomorphism between $(X^*,P^*,u)$ and 
 $(A_b(K),A_b(K)^+,1_K)$.
-We also have by \eqref{eq:K_bdd} that  $\|\varphi\|_K^*\le \sup_{x\in K}|\varphi(x)|\le \|\varphi\|_K^*$. 
 
 \end{proof}
+
+\begin{coro} The norm dual of a base-normed space is an order unit space.
+
+\end{coro}
 
 
 
@@ -464,7 +488,7 @@ Similarly, if $Q$ is a wedge in $X^*$, we will denote
 \[
 Q_*:=\{x\in X,\ q(x)\ge 0,\ \forall q\in Q\}= Q'\cap X.
 \]
-It is clear that $P^*$ and $Q_*$ are wedges. Moreover, $(P^*)_*=\bar P$ and $(Q_*)^*$ is the weak*-closure of $Q$. 
+It is clear that $P^*$ and $Q_*$ are wedges. Moreover, $(P^*)_*=\bar P$ is the norm=weak closure of $P$  and $(Q_*)^*$ is the weak*-closure of $Q$. 
 
 \begin{thm}\cite{ellis, asell} If $X^*$ is an order unit space with weak*-closed positive cone, then $X$ is base-normed. More precisely, 
 if there is an Archimedean weak*-closed cone $Q\subset X^*$ with an order unit $u$  such that $\|\cdot\|^*=\|\cdot\|_u$, 
@@ -482,26 +506,27 @@ Since  $X^*=Q-Q$ separates points in $X$, we obtain $p=0$. Hence
 $u$ defines a strictly positive linear functional on $(X,Q_*)$  and $K$ is a base of $Q_*$. 
 For $p\in Q_*$, we have
 \[
-\|p\|=\sup_{\varphi\in [-u,u]}|\varphi(p)|=u(p),
+\|p\|=\sup_{\varphi\in [-u,u]}|\varphi(p)|=u(p).
 \]
-it follows that $S=co(K\cup -K)$ is a subset of the unit ball $X_1$ of $X$, so that $\|\cdot\|\le \|\cdot\|_K$ (since $\|\cdot\|_K$ is the Minkowski functional of $S$).   We next show that $S$ is dense in $X_1$. Since $Q=(Q_*)^*$, we have for $\varphi\in X^*$:
+It follows that $S=co(K\cup -K)$ is a subset of the closed unit ball $B_1$ of $X$, so that $\|\cdot\|\le \|\cdot\|_K$ (since $\|\cdot\|_K$ is the Minkowski functional of $S$ and 
+$\|\cdot\|$ is the Minkowski functional of $B_1$).   We next show that $S$ is dense in $B_1$. Since $Q=(Q_*)^*$, we have for $\varphi\in X^*$:
 \begin{align*}
 \|\varphi\|_u&=\inf\{\lambda >0,\ \lambda u\pm \varphi\in Q\}=\inf\{\lambda >0,\ (\lambda u\pm \varphi)(p)\ge 0,\ \forall p \in Q_*\}\\
 &= \inf\{\lambda>0,\ |\varphi(p)|\le \lambda,\ \forall p\in K\}=\sup_{p\in K}|\varphi(p)|.
 \end{align*}
-Assume that $x_0\in X$ is such that $\|x_0\|\le 1$ and $x_0\ne \bar S$, then by Hahn-Banach separation theorem, there is some $\varphi\in X^*$ such that 
+Assume that $x_0\in B_1\setminus \bar S$, then by Hahn-Banach separation theorem, there is some $\varphi\in X^*$ such that 
 \[
 \|\varphi\|_u=\sup_{p\in K}|\varphi(p)|\le \sup_{x\in S}\varphi(x)< \varphi(x_0)\le \|\varphi\|^*=\|\varphi\|_u,
 \]
-a contradiction. It follows that $\bar S=X_1$.  
+a contradiction. It follows that $\bar S=B_1$.  
 
-Further, choose any $\alpha>1$ and let $\alpha_n>0$ be a sequence such that  $1+\sum_n\alpha_n<\alpha$. Since $x_0\in \bar S$, there is some element $x_1\in S$ such that $\|x_0-x_1\|< \alpha_1$. Similarly, there is some $x_2\in \alpha_1S$ 
+Choose any $\alpha>1$ and let $\alpha_n>0$ be a sequence such that  $1+\sum_n\alpha_n<\alpha$. For $x_0\in B_1=\bar S$ there is some element $x_1\in S$ such that $\|x_0-x_1\|< \alpha_1$, that is, $x_0-x_1\in \alpha_1B_1$. But then similarly there is some $x_2\in \alpha_1S$ 
 such that $\|x_0-x_1-x_2\|<\alpha_2$. Continuing by induction, we obtain a sequence $\{x_n\}$ in $X$ such that $\|x_n\|_K\le \alpha_{n-1}$ and  $\|x_0-\sum_n x_n\|<\alpha_n\to 0$. Hence  
 \[
 \|x_0\|_K=\|\sum_n x_n\|_K\le \sum_n\|x_n\|_K\le 1+\sum_n\alpha_n<\alpha,
 \]
 so that  $x_0\in \alpha S$. Since the above inequality holds for all $\alpha>1$, we have
-$1=\|x_0\|\le \|x_0\|_K\le 1$. It also  follows that  $X_1\subset \alpha S$ for any $\alpha>1$ and consequently $X=Q_*-Q_*$. 
+$1=\|x_0\|\le \|x_0\|_K\le 1$. It also  follows that  $B_1\subset \alpha S$ for any $\alpha>1$ and consequently $X=Q_*-Q_*$. 
 
 
 
@@ -510,8 +535,8 @@ $1=\|x_0\|\le \|x_0\|_K\le 1$. It also  follows that  $X_1\subset \alpha S$ for 
 \end{proof}
 
 
-\begin{thm} Let $(X^*,\|\cdot\|^*)$ be a base-normed space with a positive cone $Q$ having a weak*-compact base $K$. 
-Then $(X,Q_*,u)$ is an order unit space, isomorphic to $(A_c(K),A_c(K)^+,1_K)$ and $\|\cdot\|=\|\cdot\|_u$.
+\begin{thm} Let $(X^*,\|\cdot\|^*)$ be a base-normed space with a positive cone $Q$ having a weak*-compact base $K$. Let $u$ be a strictly positive functional corresponding to $K$.  
+Then $u\in X$ and $(X,Q_*,u)$ is an order unit space isomorphic to $(A_c(K),A_c(K)^+,1_K)$, with  $\|\cdot\|_u=\|\cdot\|$.
 
 \end{thm}
 
