@@ -191,7 +191,7 @@ Define $P:=\{ \alpha S_0: \alpha \geq 0\}$, then $P$ is a wedge.
 \begin{definition}\label{de: basenorm} $x\in X$, $\|x\|:=\inf\{ c+d: x=cp-dq; c,d\geq 0; p,q\in S_0\}$.
 \end{definition}
 
-\begin{theorem} If $S_0$ is normalized or radial then $\|p-q\|=2\rho(p,q)$, $p,q\in S_0$. Moreover, $\|.\|$ is a norm iff $\rho$ is a metric.
+\begin{theorem}\label{thm:basenorm} If $S_0$ is normalized or radial then $\|p-q\|=2\rho(p,q)$, $p,q\in S_0$. Moreover, $\|.\|$ is a norm iff $\rho$ is a metric.
 \end{theorem}
 
 \begin{proof} Assume $S_0$ is normalized. For $p,q\in S_0$, if $p-q=cp_1-dq_1$, $p_1,q_1\in S_0$, $c,d\geq 0$, then $p+dq_1=q+cp_1$. which implies
@@ -267,25 +267,25 @@ A convex structure $X$ is called \emph{geometric} if it is isomorphic to a conve
 is a geometric representation of $X$.  We will identify $X$ with its image $\phi(X)$ in $A(X)'$.  Note that this image lies in the hyperplane $\{ \varphi\in A(X)',\ \varphi(1_X)=1\}$, which does not contain 0. 
   Put  $V(X):=\mathrm{span}\{X\}\subseteq A(X)'$, $V(X)^+:=\cup_{\lambda\ge 0} \lambda X\subseteq (A(X)^+)'$. Let $u_X\in V(X)'$ be given by the restriction of the functional $1_X\in A(X)\subseteq A(X)''$.
 
-\begin{lemma} %vynech%
+\begin{proposition}\label{prop:XBN}
 \begin{enumerate}
 \item[(i)] $V(X)^+$ is a generating cone in $V(X)$, with base $X$.
 \item[(ii)] $(A(X),A(X)^+)\simeq (V(X)',(V(X)^+)')$, in the category $\ct{OVS}$.
-\item[(iii)] $(A_b(X),A_b(X)^+,1_X)\simeq (V(X)^*,(V(X)^+)^*,u_X)$, in the category $\ct{OUS}$.
+\item[(iii)] $(A_b(X),A_b(X)^+,1_X)\simeq (V(X)^*,(V(X)^+)^*,u_X)$, in the category $\ct{OUS}$, where $V(X)^*$ is the space of functionals bounded with respect to the base seminorm and $(V(X)^+)^*=V(X)^*\cap (V(X)^+)'$, see \cite{ovs}.
 \end{enumerate}
 
-\end{lemma}
+\end{proposition}
 
 \begin{proof} $V(X)^+$ is a generating wedge in $V(X)$ by definition. Let $v\in V(X)^+\cap -V(X)^+$, so that there are some $a,b\in \mathbb R^+$ and $x,y\in X$ such that 
 $v=ax=-by$. Assume $a+b>0$, then by convexity 
 \[
 0=\frac a{a+b}x+\frac b{a+b}y\in X,
 \]
- which is impossible. Hence $a=b=0$ and $v=0$. To show that $X$ is a base of $V(K)^+$, it suffices to observe that $X=\{v\in V(X)^+, v(1_X)=1\}$. This proves (i).
+ which is impossible. Hence $a=b=0$ and $v=0$. To show that $X$ is a base of $V(K)^+$, it suffices to observe that $X=\{v\in V(X)^+, u_X(v)=1\}$. This proves (i).
 
 To show (ii), let $\varphi\in V(X)'$, then clearly $\varphi|_X\in A(X)$ and $\varphi\in (V(X)^+)'$ iff $\varphi|_X\in A(X)^+$. Conversely, any  $f\in A(X)$ extends to an element $\varphi_f\in V(X)'$, which is unique, since 
  $X$ is generating. To define the extension, put  $\varphi_f(0):=0$ and  $\varphi_f(v):=af(x)-bf(y)$ for  $v=ax-by$ with $a,b\ge 0$ and $x,y\in X$. 
- To show that this  extension is well defined, assume that $v=ax-by=cx'-dy'$ for $a,b,c,d\in \mathbb R^+$ and $x,x',y,y'\in X$. Then $ax+dy'=cx'+by$ and applying $1_X$ implies that $a+d=c+b$.
+ To show that this  extension is well defined, assume that $v=ax-by=cx'-dy'$ for $a,b,c,d\in \mathbb R^+$ and $x,x',y,y'\in X$. Then $ax+dy'=cx'+by$ and applying $u_X$ implies that $a+d=c+b$.
  If $a+d=0$, then $v=0$ and $\varphi_f(v)=0=af(x)-bf(y)$. Otherwise, we obtain 
  \[
 \frac a{a+d}x+ \frac d{a+d}y'=\frac c{c+b} x'+\frac b{c+b} y
@@ -309,62 +309,51 @@ A convex structure $X$ is called \emph{bounded} if $X$ is geometric and $co(X\cu
 
 \begin{proposition} $\ct{Bconv}$ and $\ct{BN}$ are equivalent categories.
 
-\end{proposition}
+\end{proposition}  
+\begin{proof}
+
+For $X\in \ct{Bconv}$, let  $F(X)=(V(X),V(X)^+,X)$ and for an affine map $f:X\to Y$, define $F(f): V(X)\to V(Y)$
+as the unique extension of $F$ (existence an uniqueness is proved similarly as in the proof of Prop. \ref{prop:XBN}). By 
+\cite[Prop. 5]{ovs}, $F$ is a functor $\ct{BConv}\to\ct{BN}$. Since any $(V,P,K)\in \ct{BN}$ is isomorphic to $F(K)$,  $F$ is surjective on objects and it is easy to see that it is also full and faithful. Hence 
+ $F$ yields an equivalence of the two categories. 
+ 
+
+\end{proof}
 
 
-
-It is clear that $\ct{Bconv}$ and $\ct{BN}$ are equivalent categories. In particular,
-for $K\in \ct{Bconv}$, $(V(K),V(K)^+,K)\in \ct{BN}$ and any morphism $f:K\to Y$ extends to a morphism of the corresponding base-normed spaces. 
-
-
-We have the following characterization of objects in $\ct{Bconv}$.
-\begin{proposition}\label{prop:bounded} Let $K$ be a nonempty convex structure. Then the following conditions  are equivalent.
+We have the following characterizations of objects in $\ct{Bconv}$.
+\begin{proposition}\label{prop:bounded} Let $X$ be a  convex structure. Then the following conditions  are equivalent.
 \begin{enumerate}
-\item[(i)] $K$ is separated by $A(K)$.
-\item[(ii)] $K$ is separated by $E(K)$.
-\item[(iii)] $K$ is bounded.
+\item[(i)] The intrinsic semimetric $\rho$ in $X$ is a metric.
+\item[(ii)] If for any $\epsilon \in [0,1]$, there are $p_\epsilon,q_\epsilon\in X$ with $<\epsilon,p,p_\epsilon>=<\epsilon, q,q_\epsilon>$, then $p=q$. 
+\item[(iii)] $X$ is separated by $A_b(X)$.
+\item[(iv)] $X$ is separated by $E(X)$.
+\item[(v)] $X$ is bounded.
 \end{enumerate}
 
 \end{proposition}
 
 
-\begin{proof} Note that since $E(K)$ contains an order unit, $A(K)$ is spanned by $E(K)$, so that (i) and (ii) are equivalent. Assume 
-(i), then by Theorem \ref{theorem:gudder}, $K$ is geometric. By Lemma \ref{lemma:extension}, any $f\in E(K)$ extends uniquely to a linear functional on $V(K)$. 
+\begin{proof} The equivalence of (i) and (ii) is essentially Theorem \ref{th:metric}, since the condition (ii) is equivalent to 
+the condition in this theorem. Indeed,  assume that (ii) holds and let $\lambda_i\in [0,1]$, $p_i,q_i\in X$ be such that $\lambda_i\to 0$ and $<\lambda_i,p,p_i>=<\lambda_i,q,q_i>$. Then for any $\epsilon\in [0,1]$ we can find some $i$ such that $\lambda_i\le \epsilon$. Put $p_\epsilon=<\lambda_i/\epsilon,p,p_i>$, $q_\epsilon=<\lambda_i/\epsilon,q,q_i>$. By conditions (c3) and (c4), we obtain 
+\[
+<\epsilon,p,p_\epsilon>=< \lambda_i,p,p_i>=<\lambda_i,q,q_i>=<\epsilon, q, q_\epsilon>,
+\]
+so that $p=q$. Since the converse is quite obvious, this proves the equivalence (i) $\iff$ (ii). Moreover, the equivalence (i) $\iff$ (v) follows by Theorem \ref{thm:basenorm} and \cite[Prop. 5]{ovs}.  
+Since $E(X)$ contains an order unit, $A_b(X)$ is spanned by $E(X)$, so that (iii) and (iv) are equivalent. 
 
-Let $S=co(K\cup -K)$ and let $v_t:=v+tw$ for $v,w\in V(K)$, $w\ne 0$ and $t\in \mathbb R$. 
-Note that there must be some $f\in E(K)$ such that $f(w)\ne0$. Indeed, we have $w=ax-by$ for $a,b\in \mathbb R^+$ and $x,y\in K$. If $f(w)=0$ for all $f\in E(K)$, 
- then also $a-b=1_K(w)=0$, hence $a=b$ and $w=a(x-y)$. It follows that either $a=0$ or $x=y$, but then $w=0$. If $v_t\in S$, 
-  then 
+Assume (iii), then by Theorem \ref{thm:totla}, $X$ is geometric. By Proposition \ref{prop:XBN}, any $f\in E(X)$ extends uniquely to a linear functional $\varphi_f$ on $V(X)$. Let $S=co(X\cup -X)$ and let $v_t:=v+tw$ for $v,w\in V(X)$, $w\ne 0$ and $t\in \mathbb R$. 
+Note that there must be some $g\in E(X)$ such that $\varphi_g(w)\ne0$. Indeed, we have $w=ax-by$ for $a,b\in \mathbb R^+$ and $x,y\in X$. If $\varphi_f(w)=0$ for all $f\in E(X)$, 
+ then also $a-b=\varphi_{1_X}(w)=0$, hence $a=b$ and $w=a(x-y)$. From $\varphi_f(w)=a(f(x)-f(y))=0$ for all $f\in E(X)$, it follows that either $a=0$ or $x=y$, but in both cases $w=0$. 
+ 
+If $t$ is such that  $v_t\in S$, then 
   \[
-  f(v_t)=f(v)+tf(w)\in f(S)=co(f(K)\cup -f(K))\subseteq [-1,1],
+  \varphi_g(v_t)=\varphi_g(v)+t\varphi_g(w)\in g(S)=co(g(X)\cup -g(X))\subseteq [-1,1],
   \]
-   and since $f(w)\ne 0$, this implies that $t$ must be in a bounded interval. Hence (iii) holds. 
+   and since $\varphi_f(w)\ne 0$, this implies that $t$ must be in a bounded interval. Hence (v) holds. 
 
-Finally, if (iii) is true, then $(V(K), V(K)^+, K)$ is a base-normed space. Let $V(K)^*$ denote the normed space dual. 
-Clearly, any $\varphi\in V(K)^*$ restricts to an affine map 
-$f_\varphi:K\to \mathbb R$ and  we have
-\begin{equation}\label{eq:dualnorm}
-\sup_{x\in K} |f_\varphi(x)|\le \sup_{v\in co(K\cup -K)}|\varphi(v)|\le \sup_{\|v\|\le 1}|\varphi(v)|=\|\varphi\|,
-\end{equation}
-so that $f_\varphi\in A(K)$. Since the elements of $V(K)^*$ separate points of $V(K)$, this implies (i).
-
-
-\end{proof}
-
-
-\begin{lemma} Let $K$ be a bounded convex structure. Then  $A(K)$ is isometrically isomorphic to the dual of $V(K)$ as a normed space,  the dual cone to $V(K)^+$ is given by $A(K)^+$ and 
-\[
-K=\{v\in V(K)^+, 1_K(v)=1\}.
-\]
-\end{lemma}
-
-\begin{proof} By \eqref{eq:dualnorm}, any $\varphi\in V(K)^*$ restricts to an  element  
- $f_\varphi\in A(K)$, with $\|f_\varphi\|\le \|\varphi\|$.  Conversely, by Lemma \ref{lemma:extension}, any $f\in A(K)$ extends to a unique linear functional $\varphi_f$ on $V(K)$
-and clearly $\varphi_{f_\varphi}=\varphi$, $f_{\varphi_f}=f$. Let $v=ax-by$, then
-\[
-|\varphi_f(v)|=|af(x)-bf(y)|\le a|f(x)|+b|f(y)|\le (a+b)\|f\|,
-\]
-it follows that $|\varphi_f(v)|\le \|v\|\|f\|$, so that $\|\varphi_f\|\le \|f\|$. The rest is easy.
+Finally, if (v) is true, then $(V(X), V(X)^+, X)$ is a base-normed space. By Proposition \ref{prop:XBN} (iii), the dual Banach space 
+$V(X)^*$ is isomorphic to $A_b(X)$ and since the elements of $V(K)^*$ separate points of $V(K)$, this implies (iv).
 
 
 \end{proof}
@@ -379,5 +368,6 @@ it follows that $|\varphi_f(v)|\le \|v\|\|f\|$, so that $\|\varphi_f\|\le \|f\|$
 \bibitem{G} Gudder, S., Convex strustures and operational quantum mechanics, Commun. math. Phys.{\bf 29} (1973) 249--264.
 \bibitem{S} M.H. Stone, Postulates for the barycenter calculus, Memiri di M.H. Stone (Chicago, USA)
 \bibitem{CF} Capraro, V., Fritz, T., On the axiomatization of convex sybsets of Banach spaces, arXiv:1105.1270v3[math.MG]20Oct.2015
+\bibitem{ovs} Seminar notes: Ordered vector spaces (Seminar\_notes/ovs.pdf)
 \end{thebibliography}
 \end{document} 
