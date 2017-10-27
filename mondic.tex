@@ -4,19 +4,78 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{thm}{Theorem}
 \newtheorem{prop}{Proposition}
+\newcommand{\<}{\langle}
+\def\>{\rangle}
+\newcommand{\ct}[1]{\mathbf{#1}}
 
 
 \begin{document}
 
-\section{Convex sets, effects and states}
+\section{Categories and functors}
 
-There is a functor $V_b: BConv\to Ban$, mapping each $K$ to the generated base norm space.  $Ban$ is the category of Banach spaces and  contractions.
+Here we list some categories and relations between them. 
+
+\subsection{Ordered vector spaces}
+
+The category of ordered vector spaces with an order unit, with positive unital maps as morphisms will be denoted by $\ct{OVSu}$ and the full subcategory of order unit 
+spaces by  $\ct{OUS}$. An order unit space which is complete with respect to the order unit norm will be called an order unit Banach space. The full subcategory of these spaces will be denoted by $\ct{BOUS}$. $\ct{BOUS}$ is also a (non-full) subcategory of $\ct{Ban}$, the category of Banach spaces with contractios.
+
+
+Let $\ct{BN}$ denote the category of base-normed spaces with positive base-preserving maps and $\ct{BBN}$ the subcategory of complete base-normed spaces. 
+ This is another subcategory of $\ct{Ban}$. Taking the adjoints defines  (contravariant) functors between  $\ct{BBN}$ and $\ct{BOUS}$. 
+
+\subsection{Convex structures and convex sets}
+
+A general convex set, or a convex structure, was defined in \cite{gudder} as a set $K$ endowed with a ternary operation $\<\cdot,\cdot,\cdot\>: [0,1]\times K\times K\to K$,
+ satisfying certain relations. For subsets in a vector space, we may put $\<s,x,y\>=sx+(1-s)y$ for $s\in [0,1]$ and $x,y\in K$, to obtain the usual definition of a convex set.  If $(K,\<\cdot,\cdot,\cdot\>_K)$ and $(Y,\<\cdot,\cdot,\cdot\>_Y)$ are convex structures, a map $f:K\to Y$ is called affine if it satisfies
+\[
+\<s,f(x),f(y)\>_Y=f(\<s,x,y\>_K),\qquad s\in [0,1],\ x,y\in K.
+\]
+The category of convex structures with affine maps as morphisms will be denoted by $\ct{Conv}$. 
+
+
+
+There is a functor $V_b: BConv\to BN$, mapping each $K$ to the generated base norm space.  
+
+
+
+\subsection{Effect algebras and effect modules}
+
+Let $\ct{EA}$ denote the category of effect algebras and $\ct{EMod}$ the category of effect modules (convex effect algebras). By the results of \cite{sylvia_plus3}, 
+$\ct{EMod}$ is a full subcategory of $\ct{EA}$. We also have
+
+\begin{prop}\label{prop:EMod_OVSu}   $\ct{EMod}$ and $\ct{OVSu}$ are equivalent categories.
+
+\end{prop}
+
+
+Let $V: \ct{EMod}\to \ct{OVSu}$ be the functor defined in \cite{sylvia_plus3}. We say that $A\in \ct{EMod}$ is Archimedean if $VA$ is an order unit space and $A$ is called 
+a Banach effect module  if $VA$ is an  order unit Banach space. Banach effect modules are a full subcategory of $\ct{EMod}$ (and of course also of $\ct{EA}$), denoted by 
+$\ct{BEMod}$.
+
+\begin{prop} Let $A\in \ct{EMod}$. Then 
+\begin{enumerate}
+\item[(i)] $A$ is Archimedean iff the set of states $\Sigma(A)$ is order-determining.
+\item[(ii)] $A$ is a Banach effect module iff, in addition to (i), $A$ is complete in the metric
+\[
+d(a,b)=\sup_{s\in \Sigma(A)} |s(a)-s(b)|.
+\] 
+\end{enumerate}
+
+
+\end{prop}
+
+\begin{prop} $\ct{BEMod}$ is a reflective subcategory in $\ct{EA}$.
+
+
+\end{prop}
+
+
 
 
 \section{Convex effect algebras and ordered vector spaces}
 
-Let $V: CEA\to OVSu$ be the functor defined in \cite{sylviaetc}. Here $OVSu$ is the category of ordered vector spaces with an order unit and positive unital linear maps. We say that $A$ is archimedean if $VA$ is an order unit space and $A$ is called  complete archimedean  if $VA$ is an  order unit Banach space. 
-
+Let $V: CEA\to OVSu$ be the functor defined in \cite{sylviaetc}. Here $OVSu$ is the category of ordered vector spaces with an order unit and positive unital linear maps. 
 We will now introduce a monad on $EA$ such that the corresponding algebras are precisely the complete archimedean effect algebras. Let $CConv$ be the category whose objects are compact convex subsets in some Hausdorff topological vector spaces
  and morphisms are continuous affine maps. Note that for any $A\in EA$, $\Sigma(A)$ is a convex subset in $[0,1]^A\subset \mathbb R^A$, closed in the product topology, hence compact. Moreover, for any $f:A\to A'$, $\Sigma(f):\Sigma(A')\to \Sigma(A)$ is continuous. It follows that $\Sigma$ defines a functor $EA\to  CConv^{op}$. To avoid confusion, the functor in this case will be denoted by $\Sigma_c$. Let also $E_c:CConv^{op}\to EA$ be defined similarly as $E$, but now we also require the effect to be continuous. Put $T_c=E_c\circ\Sigma_c$.
 
