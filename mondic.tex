@@ -24,18 +24,29 @@ spaces by  $\ct{OUS}$. An order unit space which is complete with respect to the
 Let $\ct{BN}$ denote the category of base-normed spaces with positive base-preserving maps and $\ct{BBN}$ the subcategory of complete base-normed spaces. 
  This is another subcategory of $\ct{Ban}$. Taking the adjoints defines  (contravariant) functors between  $\ct{BBN}$ and $\ct{BOUS}$. 
 
-\subsection{Convex structures and convex sets}
+\subsection{Convex structures}
 
-A general convex set, or a convex structure, was defined in \cite{gudder} as a set $K$ endowed with a ternary operation $\<\cdot,\cdot,\cdot\>: [0,1]\times K\times K\to K$,
- satisfying certain relations. For subsets in a vector space, we may put $\<s,x,y\>=sx+(1-s)y$ for $s\in [0,1]$ and $x,y\in K$, to obtain the usual definition of a convex set.  If $(K,\<\cdot,\cdot,\cdot\>_K)$ and $(Y,\<\cdot,\cdot,\cdot\>_Y)$ are convex structures, a map $f:K\to Y$ is called affine if it satisfies
+A general convex set, or a convex structure, was defined in \cite{gudder} as a set $X$ endowed with a ternary operation $\<\cdot,\cdot,\cdot\>: [0,1]\times X\times X\to X$,
+ satisfying certain relations. For subsets in a vector space, we may put $\<s,x,y\>=sx+(1-s)y$ for $s\in [0,1]$ and $x,y\in X$, to obtain the usual definition of a convex set.  If $(X,\<\cdot,\cdot,\cdot\>_X)$ and $(Y,\<\cdot,\cdot,\cdot\>_Y)$ are convex structures, a map $f:X\to Y$ is called affine if it satisfies
 \[
-\<s,f(x),f(y)\>_Y=f(\<s,x,y\>_K),\qquad s\in [0,1],\ x,y\in K.
+\<s,f(x),f(y)\>_Y=f(\<s,x,y\>_X),\qquad s\in [0,1],\ x,y\in X.
 \]
-The category of convex structures with affine maps as morphisms will be denoted by $\ct{Conv}$. 
+The category of convex structures with affine maps as morphisms will be denoted by $\ct{Conv}$, the full subcategory of bounded convex sets is denoted by $\ct{BConv}$. The objects of $\ct{CConv}$ are convex subsets of a vector space,  compact with respect to some locally convex topology, with affine continuous maps as morphisms.
+
+\begin{prop} The categories $\ct{Bconv}$ and $\ct{BN}$ are equivalent.
+
+\end{prop}
+
+%netreba asi
+\begin{prop}\cite{} The categories $\ct{CConv}$ and $\ct{BOUS}$ are dually equivalent.
+
+\end{prop}
 
 
 
-There is a functor $V_b: BConv\to BN$, mapping each $K$ to the generated base norm space.  
+
+
+
 
 
 
@@ -48,6 +59,9 @@ $\ct{EMod}$ is a full subcategory of $\ct{EA}$. We also have
 
 \end{prop}
 
+\begin{proof} \cite{sylvia_plus3} 
+
+\end{proof}
 
 Let $V: \ct{EMod}\to \ct{OVSu}$ be the functor defined in \cite{sylvia_plus3}. We say that $A\in \ct{EMod}$ is Archimedean if $VA$ is an order unit space and $A$ is called 
 a Banach effect module  if $VA$ is an  order unit Banach space. Banach effect modules are a full subcategory of $\ct{EMod}$ (and of course also of $\ct{EA}$), denoted by 
@@ -56,7 +70,7 @@ $\ct{BEMod}$.
 \begin{prop} Let $A\in \ct{EMod}$. Then 
 \begin{enumerate}
 \item[(i)] $A$ is Archimedean iff the set of states $\Sigma(A)$ is order-determining.
-\item[(ii)] $A$ is a Banach effect module iff, in addition to (i), $A$ is complete in the metric
+\item[(ii)]\cite{roroy} $A$ is a Banach effect module iff, in addition to (i), $A$ is complete in the metric
 \[
 d(a,b)=\sup_{s\in \Sigma(A)} |s(a)-s(b)|.
 \] 
@@ -69,6 +83,18 @@ d(a,b)=\sup_{s\in \Sigma(A)} |s(a)-s(b)|.
 
 
 \end{prop}
+
+\begin{proof}
+
+\end{proof}
+
+
+\subsection{$\sigma$-effect modules}
+
+A monotone $\sigma$-complete effect module is called a $\sigma$-effect module. If $A$ and $B$ are $\sigma$-effect modules, then 
+ any morphism $f:A\to B$ is a $\sigma$-morphism if $f(\vee a_i)=\vee f(a_i)$ for every increasing sequence $\{a_i\}\in A$. A state
+ $s\in \Sigma(A)$ which is a $\sigma$-morphism $A\to [0,1]$ is called a $\sigma$-state.
+
 
 
 
