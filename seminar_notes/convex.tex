@@ -23,8 +23,6 @@
 \renewcommand\labelenumi{\theenumi} \newcommand\hilb{{\mathfrak H}}
 \newcommand{\sgn}{\operatorname{sgn}} \newcommand{\dg}{\sp{\text{\rm
 o}}}
-\newcommand{\ct}[1]{\mathbf{#1}}
-
 \begin{document}
 \title{Convex sets }
 %\author{SP}
@@ -54,7 +52,7 @@ In \cite{S} and \cite{CF}, also the following axiom is given:
 A convex \emph{prestructure} is a set $S$ with a map $T:[0,1]\times S\times S \to S$ denoted $T(\lambda,p,q)=<\lambda,p,q>$ (no requirements on $T$).
 An \rm{affine functional} is an affine map $f$ from a convex prestucture to the real line $\mathbb R$, that is, $f(<\lambda,p,q>)=(1-\lambda)f(p)+\lambda f(q)$ for all $\lambda \in [0,1]$ and $p,q\in S$. We denote by $S^*$ the set of all affine functional on $S$ and say that $S^*$ is \emph{total} (\emph{separating}) if for $p\neq q\in S$ there is $f\in S^*$ such that $f(p)\neq f(q)$.
 
-\begin{theorem}\label{thm:totla} A convex prestructure $S$ is isomorphic to a convex set iff $S^*$ is total.
+\begin{theorem} A convex prestructure $S$ is isomorphic to a convex set iff $S^*$ is total.
 \end{theorem}
 
 \begin{proof} Suppose $S_0$ is a convex set and $F:S\to S_0$ an isomorphism. If $S_0$ is a convex subset of the linear space $V$, it is well-known that $V^*$ (the algebraic dual)
@@ -64,9 +62,6 @@ Conversely, suppose that $S^*$ is total. For $p\in S$ define $J(p):S^*\to {\math
 
 is total and $p\neq q \in S$, then there is $f\in S^*$ with $f(p)\ne f(q)$ so $J(p)\neq J(q)$, and conversely, if $J$ is injective and $p\neq q\in S$,  then $J(p)\neq J(q)$ so that there is an $f\in S^*$ such that $f(p)=J(p)f\neq J(q)f= f(q)$. If follows that $J:S \to J(S)$ is an isomorphism.
 \end{proof}
-
-
-
 
 The following theorem gives an intrinsic characterization of those convex structures that are convex subsets of a linear space.
 
@@ -183,7 +178,9 @@ $\bullet$  \emph{balanced} iff $x\in S_0$, $|\lambda |\leq 1$ $\implies$ $\lambd
 
 $\bullet$ \emph{radial} iff $x\in S_0$, $0\leq \lambda \leq 1$ $\implies$ $\lambda x\in S_0$.
 
-$\bullet$ \emph{normalized} iff $\in S_0$, $\alpha \neq 1$ $\implies$ $\alpha x\notin S_0$.
+$\bullet$ \emph{normalized} iff $x\in S_0$, $\alpha \neq 1$ $\implies$ $\alpha x\notin S_0$.
+
+$\bullet$ \emph{positive} iff $x\in S_0$, $\alpha<0$ $\implies$ $\alpha x\notin S_0$.
 
 Define $P:=\{ \alpha S_0: \alpha \geq 0\}$, then $P$ is a wedge.
 
@@ -191,7 +188,7 @@ Define $P:=\{ \alpha S_0: \alpha \geq 0\}$, then $P$ is a wedge.
 \begin{definition}\label{de: basenorm} $x\in X$, $\|x\|:=\inf\{ c+d: x=cp-dq; c,d\geq 0; p,q\in S_0\}$.
 \end{definition}
 
-\begin{theorem}\label{thm:basenorm} If $S_0$ is normalized or radial then $\|p-q\|=2\rho(p,q)$, $p,q\in S_0$. Moreover, $\|.\|$ is a norm iff $\rho$ is a metric.
+\begin{theorem} If $S_0$ is normalized or radial then $\|p-q\|=2\rho(p,q)$, $p,q\in S_0$. Moreover, $\|.\|$ is a norm iff $\rho$ is a metric.
 \end{theorem}
 
 \begin{proof} Assume $S_0$ is normalized. For $p,q\in S_0$, if $p-q=cp_1-dq_1$, $p_1,q_1\in S_0$, $c,d\geq 0$, then $p+dq_1=q+cp_1$. which implies
@@ -236,138 +233,73 @@ Let $0=\|x-y\|=\|cp-dq\|\geq \|c\|p\|-d\|q\|\|=|c-d|$, so $c=d$. Hence $0=\|x-y\
 If $c=0$, then again $x=y$.
 \end{proof}
 
+\begin{theorem}\label{th:extension} Let $S_0$ be normalized or positive and radial convex set in a real vector space $V$ and let $\|.\|$ be the induced seminorm
+on $X=P-P\subseteq V$. If $S_0$ is normalized (positive radial) and $T:S_0 \to S_0$ is an affine (and homogeneous) map then $T$ has a unique extension $\hat{T}$ to $X$ and $\|T\|\leq 1$ (i.e., $\|Tx\|\leq \|x\|$ for all $x\in X$). If $T$ is a bijection, then $\hat{T}$ is an isometry.
+\end{theorem}
 
-\section{The categories $\ct{Conv}$, $\ct{GConv}$ and $\ct{Bconv}$}
-
-
-Let $\ct{Conv}$ denote the category whose objects are convex structures satisfying (c1)-(c4), with affine maps as morphisms. This is the Eilenberg-Moore category for the distribution monad.
-
-For $X\in \ct{Conv}$, the elements of $\ct{Conv}(X,\mathbb R)$ are called \emph{functionals}.
- Note that $\ct{Conv}(X,\mathbb R)$ can be given a structure of a vector space, which we denote by $A(X)$, with an ordering defined by the wedge $A(X)^+$ of positive affine maps. Clearly, $A(X)^+$ is an Archimedean cone, but there is no order unit in general.
-
-\begin{example} Let $X=\mathbb R$, with usual affine structure. Any affine map $f:\mathbb R\to \mathbb R$ has the form $f(x)=ax+b$ for some $a,b\in \mathbb R$. It follows that the only elements in $A(X)^+$ are positive constants, none of which can be an order unit. 
-
-\end{example}
-
-Let $A_b(X)$ denote the vector subspace of bounded functionals, $A_b(X)^+$ the set of positive bounded functionals and let $1_K$ denote the constant $1_K(x)\equiv 1$. 
-Then $(A_b(X),A_b(X)^+,1_X)$ is an  order unit Banach space, with order unit norm satisfying
+\begin{proof} For all $x\in X$, $x=cp-dq$, $c,d\geq 0$, $p,q\in S_0$. Define $\hat{T}x:=cTp-dTq$. $\hat{T}$ is well defined: Suppose that also $x=c_1p_1-d_1q_1$, $c_1,d_1\geq 0, p_1,q_1\in S_0$. First suppose that $S_0$ is normalized and $T$ is affine. From $cp-dq=c_1p_1-d_1q_1$ we have $c(c+d_1)^{-1}p+d_1(c+d_1)^{-1}q_1=(c_1+d)(c+d_1)^{-1}.(c_1(_1+d)^{-1}p_1+d(c_1+d)^{-1}q)$, so $c_1+d=c+d_1$ and hence
 \[
-\|f\|_{1_X}=\sup_{x\in X} |f(x)|.
+c(c+d_1)^{-1}Tp+d_1(c+d_1)^{-1}Tq_1=c_1(c+d_1)^{-1}Tp_1+d(c+d_1)^{-1}Tq.
 \]
-Let also $E(X):=\ct{Conv}(X,[0,1])$, then $E(X)$ is the interval between 0 and $1_X$ in $(A_b(X),A_b(X)^+)$. Functionals in  $E(X)$ will be called \emph{effects}.
+It follows that $cTp-dTq=c_1Tp_1-d_1Tq_1$.
 
+Next suppose  $S_0$ is positive, radial and $T$ is affine and homogeneous. Positivity implies that $c_1+d, c+d_1 > 0$.  Either $c_1+d\leq c+d_1$ or $c_1+d\geq c+d_1$.
+Assume the former. Then
+\begin{eqnarray*}
+&c(c+d_1)^{-1}p+d_1(c+d_1)^{-1}q_1\\
+ &=(c+d)(c+d_1)^{-1}(c_1(c_1+d)^{-1}p_1+d(c_1+d)^{-1}q)\in S_0.
+\end{eqnarray*}
+From the facts that $S_0$ is radial and $T$ is affine, homogeneous, we get $cTp-dTq=c_1Tp_1-dTq_1$.
+Thus $\hat{T}$ is well defined and it is easy to show that $\hat{T}$ is a linear operator on $X$.
 
-
-
-
-A convex structure $X$ is called \emph{geometric} if it is isomorphic to a convex subset of a vector space. Any such isomorphism will be called a geometric representation of $X$. The category $\ct{GConv}$ of geometric convex sets is a full subcategory of $\ct{Conv}$. Theorem \ref{th:intrinsic} gives an intrinsic characterization of geometric convex sets. Further, by Theorem \ref{thm:totla}, $X$ is geometric iff it is separated by elements of $A(X)$. In this case, the map $\phi: X\to A(X)'$, given by
-\[
-\phi(x)(f)=f(x),\qquad f\in A(X),\ x\in X,
-\]
-is a geometric representation of $X$.  We will identify $X$ with its image $\phi(X)$ in $A(X)'$.  Note that this image lies in the hyperplane $\{ \varphi\in A(X)',\ \varphi(1_X)=1\}$, which does not contain 0. 
-  Put  $V(X):=\mathrm{span}\{X\}\subseteq A(X)'$, $V(X)^+:=\cup_{\lambda\ge 0} \lambda X\subseteq (A(X)^+)'$. Let $u_X\in V(X)'$ be given by the restriction of the functional $1_X\in A(X)\subseteq A(X)''$.
-
-\begin{proposition}\label{prop:XBN}
-\begin{enumerate}
-\item[(i)] $V(X)^+$ is a generating cone in $V(X)$, with base $X$.
-\item[(ii)] $(A(X),A(X)^+)\simeq (V(X)',(V(X)^+)')$, in the category $\ct{OVS}$.
-\item[(iii)] $(A_b(X),A_b(X)^+,1_X)\simeq (V(X)^*,(V(X)^+)^*,u_X)$, in the category $\ct{OUS}$, where $V(X)^*$ is the space of functionals bounded with respect to the base seminorm and $(V(X)^+)^*=V(X)^*\cap (V(X)^+)'$, see \cite{ovs}.
-\end{enumerate}
-
-\end{proposition}
-
-\begin{proof} $V(X)^+$ is a generating wedge in $V(X)$ by definition. Let $v\in V(X)^+\cap -V(X)^+$, so that there are some $a,b\in \mathbb R^+$ and $x,y\in X$ such that 
-$v=ax=-by$. Assume $a+b>0$, then by convexity 
-\[
-0=\frac a{a+b}x+\frac b{a+b}y\in X,
-\]
- which is impossible. Hence $a=b=0$ and $v=0$. To show that $X$ is a base of $V(K)^+$, it suffices to observe that $X=\{v\in V(X)^+, u_X(v)=1\}$. This proves (i).
-
-To show (ii), let $\varphi\in V(X)'$, then clearly $\varphi|_X\in A(X)$ and $\varphi\in (V(X)^+)'$ iff $\varphi|_X\in A(X)^+$. Conversely, any  $f\in A(X)$ extends to an element $\varphi_f\in V(X)'$, which is unique, since 
- $X$ is generating. To define the extension, put  $\varphi_f(0):=0$ and  $\varphi_f(v):=af(x)-bf(y)$ for  $v=ax-by$ with $a,b\ge 0$ and $x,y\in X$. 
- To show that this  extension is well defined, assume that $v=ax-by=cx'-dy'$ for $a,b,c,d\in \mathbb R^+$ and $x,x',y,y'\in X$. Then $ax+dy'=cx'+by$ and applying $u_X$ implies that $a+d=c+b$.
- If $a+d=0$, then $v=0$ and $\varphi_f(v)=0=af(x)-bf(y)$. Otherwise, we obtain 
- \[
-\frac a{a+d}x+ \frac d{a+d}y'=\frac c{c+b} x'+\frac b{c+b} y
- \]
-and since $f$ is affine, we get back to $af(x)-bf(y)=cf(x')-df(y')$. This shows that  $\varphi\mapsto \varphi|_X$ defines an order isomorphism of $(V(X)',(V(X)^+)')$ and 
-$(A(X),A(X)^+)$.
-
-(iii) follows directly by \cite[Theorem 2 (iii)]{ovs}.
-
+To show that $\hat{T}$ is a contraction we have for $x\in X$,
+\begin{eqnarray*}
+\|\hat{T}x\|=\inf\{ c+d: \hat{T}x=cp-dq, c,d\geq 0, p,q\in S_0\}\\
+\leq \inf\{ c+d: x=cp-dq, c,d\geq 0, p,q\in S_0\}=\|x\|.
+\end{eqnarray*}
 \end{proof}
 
-\begin{remark} Let $\psi:X\to V$ be  any geometric representation.  Let $\tilde \psi:X\to V\oplus \mathbb R$ be defined by $\tilde \psi(x)=(\phi(x),1)$, then the image 
-$\tilde \psi(X)$ lies in the hyperplane $\{(v,a)\in V\oplus \mathbb R,\ u(x,a):=a=1\}$. In all these constructions, we may replace $\phi$ with the representation $\tilde \psi$ and $1_X$ by the functional $u$.  It is easy to see that all the resulting structures will be isomorphic.
+\begin{theorem}\label{th3.7} Let $S_0$ be a normalized or radial convex set in a real vector space $V$ and let $X$ be the generated subspace. Let $\rho$ be the intrinsic semimetric on $S_0$ and $\|.\|$ the induced seminorm on $X$.  If $(S_0,\rho)$ is complete then so is $(X,\|.\|)$.
+\end{theorem}
 
-\end{remark}
-
-
-
-A convex structure $X$ is called \emph{bounded} if $X$ is geometric and $co(X\cup -X)$ is linearly bounded in $V(X)$.
- The full subcategory of  bounded convex structures will be denoted by $\ct{Bconv}$. 
-
-\begin{proposition} $\ct{Bconv}$ and $\ct{BN}$ are equivalent categories.
-
-\end{proposition}  
-\begin{proof}
-
-For $X\in \ct{Bconv}$, let  $F(X)=(V(X),V(X)^+,X)$ and for an affine map $f:X\to Y$, define $F(f): V(X)\to V(Y)$
-as the unique extension of $F$ (existence an uniqueness is proved similarly as in the proof of Prop. \ref{prop:XBN}). By 
-\cite[Prop. 5]{ovs}, $F$ is a functor $\ct{BConv}\to\ct{BN}$. Since any $(V,P,K)\in \ct{BN}$ is isomorphic to $F(K)$,  $F$ is surjective on objects and it is easy to see that it is also full and faithful. Hence 
- $F$ yields an equivalence of the two categories. 
- 
-
-\end{proof}
-
-
-We have the following characterizations of objects in $\ct{Bconv}$.
-\begin{proposition}\label{prop:bounded} Let $X$ be a  convex structure. Then the following conditions  are equivalent.
-\begin{enumerate}
-\item[(i)] The intrinsic semimetric $\rho$ in $X$ is a metric.
-\item[(ii)] If for any $\epsilon \in [0,1]$, there are $p_\epsilon,q_\epsilon\in X$ with $<\epsilon,p,p_\epsilon>=<\epsilon, q,q_\epsilon>$, then $p=q$. 
-\item[(iii)] $X$ is separated by $A_b(X)$.
-\item[(iv)] $X$ is separated by $E(X)$.
-\item[(v)] $X$ is bounded.
-\end{enumerate}
-
-\end{proposition}
-
-
-\begin{proof} The equivalence of (i) and (ii) is essentially Theorem \ref{th:metric}, since the condition (ii) is equivalent to 
-the condition in this theorem. Indeed,  assume that (ii) holds and let $\lambda_i\in [0,1]$, $p_i,q_i\in X$ be such that $\lambda_i\to 0$ and $<\lambda_i,p,p_i>=<\lambda_i,q,q_i>$. Then for any $\epsilon\in [0,1]$ we can find some $i$ such that $\lambda_i\le \epsilon$. Put $p_\epsilon=<\lambda_i/\epsilon,p,p_i>$, $q_\epsilon=<\lambda_i/\epsilon,q,q_i>$. By conditions (c3) and (c4), we obtain 
+\begin{proof} For $p\in S_0$ since $p=1.p$ we have $\|p\|\leq 1$. Assume $(S_0,\rho)$ is complete. Let $(x_n)$ be a Cauchy sequence in $X$. We may assume that $\|x_{n+1}-x_n\|< 2^{-n}$ for $n=1,2,\ldots$. We can write $x_{n+1}-x_n=c_np_n-d_nq_n, 0\leq c_n,d_n<2^{-n}$, $p_n,q_n\in S_0$ and we can assume $c_1,d_1>0$. Let
 \[
-<\epsilon,p,p_\epsilon>=< \lambda_i,p,p_i>=<\lambda_i,q,q_i>=<\epsilon, q, q_\epsilon>,
+a_n:=\sum_{i=1}^nc_i, \ b_n:=\sum_{i=1}^nd_i.
 \]
-so that $p=q$. Since the converse is quite obvious, this proves the equivalence (i) $\iff$ (ii). Moreover, the equivalence (i) $\iff$ (v) follows by Theorem \ref{thm:basenorm} and \cite[Prop. 5]{ovs}.  
-Since $E(X)$ contains an order unit, $A_b(X)$ is spanned by $E(X)$, so that (iii) and (iv) are equivalent. 
-
-Assume (iii), then by Theorem \ref{thm:totla}, $X$ is geometric. By Proposition \ref{prop:XBN}, any $f\in E(X)$ extends uniquely to a linear functional $\varphi_f$ on $V(X)$. Let $S=co(X\cup -X)$ and let $v_t:=v+tw$ for $v,w\in V(X)$, $w\ne 0$ and $t\in \mathbb R$. 
-Note that there must be some $g\in E(X)$ such that $\varphi_g(w)\ne0$. Indeed, we have $w=ax-by$ for $a,b\in \mathbb R^+$ and $x,y\in X$. If $\varphi_f(w)=0$ for all $f\in E(X)$, 
- then also $a-b=\varphi_{1_X}(w)=0$, hence $a=b$ and $w=a(x-y)$. From $\varphi_f(w)=a(f(x)-f(y))=0$ for all $f\in E(X)$, it follows that either $a=0$ or $x=y$, but in both cases $w=0$. 
- 
-If $t$ is such that  $v_t\in S$, then 
-  \[
-  \varphi_g(v_t)=\varphi_g(v)+t\varphi_g(w)\in g(S)=co(g(X)\cup -g(X))\subseteq [-1,1],
-  \]
-   and since $\varphi_f(w)\ne 0$, this implies that $t$ must be in a bounded interval. Hence (v) holds. 
-
-Finally, if (v) is true, then $(V(X), V(X)^+, X)$ is a base-normed space. By Proposition \ref{prop:XBN} (iii), the dual Banach space 
-$V(X)^*$ is isomorphic to $A_b(X)$ and since the elements of $V(K)^*$ separate points of $V(K)$, this implies (iv).
-
+Now
+\[
+\sum_{i=1}^na_n^{-1}c_ip_i, \ i=1,2,\ldots
+\]
+and
+\[
+\sum_{i=1}^nb_n^{-1}d_iq_i, \ i=1,2,\ldots
+\]
+are Cauchy sequences in $S_0$. Indeed, it is clear that $(a_n)$ is a Cauchy sequence
+and we have
+\begin{eqnarray*}
+2\rho(\sum_{i=1}^{n+k}a_{n+k}^{-1}c_ip_i&,&\sum_{i=1}^na_n^{-1}c_ip_i)\\
+&=&\|[a_{n+k}^{-1}-a_n^{-1}]\sum_{i=1}^nc_ip_i+\sum_{i=n+1}^{n+k}a_{n+k}^{-1}c_ip_i\|\\
+&\leq&(a_n^{-1}-a_{n+k}^{-1})\sum_{i=1}^nc_i+a_{n+k}^{-1}\sum_{i=n+1}^{n+k}c_i\\
+&=&(a_n^{-1}-a_{n+k}^{-1})a_n+a_{n+k}^{-1}(a_{n+k}-a_n)\\
+&=& 2(1-a_na_{n+k}^{-1}),
+\end{eqnarray*}
+where the last term approaches to zero and $n,k \to \infty$. Thus there are elements $p,q\in S_0$ such that $\sum_{i=1}^na_n^{-1}c_ip_i \to p$ and $\sum_{i=1}^nb_n^{-1}d_iq_i \to q$.
+Suppose $a_n \to a$, $b_n \to b$, then $x_n \to x_1+ap-bq$. Indeed,
+\begin{eqnarray*}
+\|x_{n+1}-x_1-ap+bq\|&=&\|x_{n+1}-x_n+x_n-x_{n-1}+\cdots +x_2-x_1-ap+bq\|\\
+&\leq&|a|\|\sum_{i=1}^na^{-1}c_ip_i-p\|+|b|\|\sum_{i=1}^nb^{-1}d_iq_i-q\|\\
+&\leq& |a|[\|\sum_{i=1}^n(a^{-1}c_i-a_n^{-1}c_i)p_i\|+\|\sum_{i=1}^na_n^{-1}c_ip_i-p\|]\\
+&+&|b|[\|\sum_{i=1}^n(b^{-1}d_i-b_n^{-1}d_i)q_i\|+\|\sum_{i=1}^nb_n^{-1}d_iq_i-q\|]\\
+&\leq&|a|[1-a^{-1}a_n+\|\sum_{i=1}^na_n^{-1}c_ip_i-p\|]\\
+&+&|b|[1-b^{-1}b_n+\|\sum{i=1}^nb_n^{-1}d_iq_i-q\|] \to 0 (n \to \infty).
+\end{eqnarray*}
 
 \end{proof}
-
-
-
-
-
 
 
 \begin{thebibliography}{WWW}
 \bibitem{G} Gudder, S., Convex strustures and operational quantum mechanics, Commun. math. Phys.{\bf 29} (1973) 249--264.
-\bibitem{S} M.H. Stone, Postulates for the barycenter calculus, Memiri di M.H. Stone (Chicago, USA)
+\bibitem{S} M.H. Stone, Postulates for the barycenter calculus, Memoiri di M.H. Stone (Chicago, USA)
 \bibitem{CF} Capraro, V., Fritz, T., On the axiomatization of convex sybsets of Banach spaces, arXiv:1105.1270v3[math.MG]20Oct.2015
-\bibitem{ovs} Seminar notes: Ordered vector spaces (Seminar\_notes/ovs.pdf)
 \end{thebibliography}
 \end{document} 

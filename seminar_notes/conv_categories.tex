@@ -1,0 +1,207 @@
+
+\documentclass[12pt,letterpaper]{article}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\unitlength=1mm  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% kvoli obrazku !!!
+\renewcommand{\thesection}{\arabic{section}}
+\hyphenation{ar-chi-me-de-an} \setlength\overfullrule{5pt}
+%marks overlong lines in dvi file % Declaration section \swapnumbers
+%Theorems, lemmas, etc. numbered at the left.
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{example}[lemma]{Example}
+\newtheorem{remark}[lemma]{Remark}
+\newtheorem{assumption}[lemma]{Standing Assumption}
+\newcommand{\Nat}{{\mathbb N}} \newcommand\integers{{\mathbb Z}}
+\newcommand\rationals{{\mathbb Q}} \newcommand\reals{{\mathbb R}}
+\newcommand\complex{{\mathbb C}}
+%Label items in an enumeration with small Roman
+%numerals enclosed in parentheses.
+\renewcommand{\theenumi}{{\rm(\roman{enumi})}}
+\renewcommand\labelenumi{\theenumi} \newcommand\hilb{{\mathfrak H}}
+\newcommand{\sgn}{\operatorname{sgn}} \newcommand{\dg}{\sp{\text{\rm
+o}}}
+\newcommand{\ct}[1]{\mathbf{#1}}
+\newcommand{\<}{\langle}
+\def\>{\rangle}
+\begin{document}
+\title{Categories of convex sets}
+%\author{SP}
+%\date{}
+\maketitle
+
+
+
+
+
+\section{The categories $\ct{Conv}$ and $\ct{GConv}$} 
+
+Let $\ct{Conv}$ denote the category whose objects are convex structures satisfying (c1)-(c4), with affine maps as morphisms. This is the Eilenberg-Moore category for the distribution monad.
+
+For $X\in \ct{Conv}$, the elements of $\ct{Conv}(X,\mathbb R)$ are called \emph{functionals}.
+ Note that $\ct{Conv}(X,\mathbb R)$ can be given a structure of a vector space, which we denote by $A(X)$, with an ordering defined by the wedge $A(X)^+$ of positive affine maps. Clearly, $A(X)^+$ is an Archimedean cone, but there is no order unit in general.
+
+\begin{example} Let $X=\mathbb R$, with usual affine structure. Any affine map $f:\mathbb R\to \mathbb R$ has the form $f(x)=ax+b$ for some $a,b\in \mathbb R$. It follows that the only elements in $A(X)^+$ are positive constants, none of which can be an order unit. 
+
+\end{example}
+
+Let $A_b(X)$ denote the vector subspace of bounded functionals, $A_b(X)^+$ the set of positive bounded functionals and let $1_K$ denote the constant $1_K(x)\equiv 1$. 
+Then $(A_b(X),A_b(X)^+,1_X)$ is an  order unit Banach space, with order unit norm satisfying
+\[
+\|f\|_{1_X}=\sup_{x\in X} |f(x)|.
+\]
+Let also $E(X):=\ct{Conv}(X,[0,1])$, then $E(X)$ is the interval between 0 and $1_X$ in $(A_b(X),A_b(X)^+)$. Functionals in  $E(X)$ will be called \emph{effects}.
+
+
+
+
+
+A convex structure $X$ is called \emph{geometric} if it is isomorphic to a convex subset of a vector space. Any such isomorphism will be called a geometric representation of $X$. The category $\ct{GConv}$ of geometric convex sets is a full subcategory of $\ct{Conv}$. \cite[Thm. 1.3]{convex} gives an intrinsic characterization of geometric convex sets. Further, by \cite[Thm. 1.2]{convex}, $X$ is geometric iff it is separated by elements of $A(X)$. In this case, the map $\phi: X\to A(X)'$, given by
+\[
+\phi(x)(f)=f(x),\qquad f\in A(X),\ x\in X,
+\]
+is a geometric representation of $X$.  We will identify $X$ with its image $\phi(X)$ in $A(X)'$.  Note that this image lies in the hyperplane $\{ \varphi\in A(X)',\ \varphi(1_X)=1\}$, which does not contain 0. 
+  Put  $V(X):=\mathrm{span}\{X\}\subseteq A(X)'$, $V(X)^+:=\cup_{\lambda\ge 0} \lambda X\subseteq (A(X)^+)'$. Let $u_X\in V(X)'$ be given by the restriction of the functional $1_X\in A(X)\subseteq A(X)''$.
+
+\begin{proposition}\label{prop:XBN}
+\begin{enumerate}
+\item[(i)] $V(X)^+$ is a generating cone in $V(X)$, with base $X$.
+\item[(ii)] $(A(X),A(X)^+)\simeq (V(X)',(V(X)^+)')$, in the category $\ct{OVS}$.
+\item[(iii)] $(A_b(X),A_b(X)^+,1_X)\simeq (V(X)^*,(V(X)^+)^*,u_X)$, in the category $\ct{OUS}$, where $V(X)^*$ is the space of functionals bounded with respect to the base seminorm and $(V(X)^+)^*=V(X)^*\cap (V(X)^+)'$, see \cite{ovs}.
+\end{enumerate}
+
+\end{proposition}
+
+\begin{proof} $V(X)^+$ is a generating wedge in $V(X)$ by definition. Let $v\in V(X)^+\cap -V(X)^+$, so that there are some $a,b\in \mathbb R^+$ and $x,y\in X$ such that 
+$v=ax=-by$. Assume $a+b>0$, then by convexity 
+\[
+0=\frac a{a+b}x+\frac b{a+b}y\in X,
+\]
+ which is impossible. Hence $a=b=0$ and $v=0$. To show that $X$ is a base of $V(K)^+$, it suffices to observe that $X=\{v\in V(X)^+, u_X(v)=1\}$. This proves (i).
+
+To show (ii), let $\varphi\in V(X)'$, then clearly $\varphi|_X\in A(X)$ and $\varphi\in (V(X)^+)'$ iff $\varphi|_X\in A(X)^+$. Conversely, any  $f\in A(X)$ extends to an element $\varphi_f\in V(X)'$, which is unique, since 
+ $X$ is generating. To define the extension, put  $\varphi_f(0):=0$ and  $\varphi_f(v):=af(x)-bf(y)$ for  $v=ax-by$ with $a,b\ge 0$ and $x,y\in X$. 
+ To show that this  extension is well defined, assume that $v=ax-by=cx'-dy'$ for $a,b,c,d\in \mathbb R^+$ and $x,x',y,y'\in X$. Then $ax+dy'=cx'+by$ and applying $u_X$ implies that $a+d=c+b$.
+ If $a+d=0$, then $v=0$ and $\varphi_f(v)=0=af(x)-bf(y)$. Otherwise, we obtain 
+ \[
+\frac a{a+d}x+ \frac d{a+d}y'=\frac c{c+b} x'+\frac b{c+b} y
+ \]
+and since $f$ is affine, we get back to $af(x)-bf(y)=cf(x')-df(y')$. This shows that  $\varphi\mapsto \varphi|_X$ defines an order isomorphism of $(V(X)',(V(X)^+)')$ and 
+$(A(X),A(X)^+)$.
+
+(iii) follows directly by \cite[Theorem 2 (iii)]{ovs}.
+
+\end{proof}
+
+\begin{remark} Let $\psi:X\to V$ be  any geometric representation.  Let $\tilde \psi:X\to V\oplus \mathbb R$ be defined by $\tilde \psi(x)=(\phi(x),1)$, then the image 
+$\tilde \psi(X)$ lies in the hyperplane $\{(v,a)\in V\oplus \mathbb R,\ u(x,a):=a=1\}$. In all these constructions, we may replace $\phi$ with the representation $\tilde \psi$ and $1_X$ by the functional $u$.  It is easy to see that all the resulting structures will be isomorphic.
+
+\end{remark}
+
+\section{$\ct{BConv}$ and $\ct{CConv}$}
+
+A convex structure $X$ is called \emph{bounded} if $X$ is geometric and $co(X\cup -X)$ is linearly bounded in $V(X)$.
+ The full subcategory of  bounded convex structures will be denoted by $\ct{Bconv}$. 
+
+\begin{proposition} $\ct{Bconv}$ and $\ct{BN}$ are equivalent categories.
+
+\end{proposition}  
+\begin{proof}
+
+For $X\in \ct{Bconv}$, let  $F(X)=(V(X),V(X)^+,X)$ and for an affine map $f:X\to Y$, define $F(f): V(X)\to V(Y)$
+as the unique extension of $f$ (existence an uniqueness is proved similarly as in the proof of Prop. \ref{prop:XBN}). By 
+\cite[Prop. 5]{ovs}, $F$ is a functor $\ct{BConv}\to\ct{BN}$. Since any $(V,P,K)\in \ct{BN}$ is isomorphic to $F(K)$,  $F$ is surjective on objects and it is easy to see that it is also full and faithful. Hence 
+ $F$ yields an equivalence of the two categories. 
+ 
+
+\end{proof}
+
+
+We have the following characterizations of objects in $\ct{Bconv}$.
+\begin{proposition}\label{prop:bounded} Let $X$ be a  convex structure. Then the following conditions  are equivalent.
+\begin{enumerate}
+\item[(i)] $X$ is geometric and the intrinsic semimetric $\rho$ in $X$ is a metric.
+\item[(ii)] (c5) holds and if for any $\epsilon \in (0,1]$, there are $p_\epsilon,q_\epsilon\in X$ with $<\epsilon,p,p_\epsilon>=<\epsilon, q,q_\epsilon>$, then $p=q$. 
+\item[(iii)] $X$ is separated by $A_b(X)$.
+\item[(iv)] $X$ is separated by $E(X)$.
+\item[(v)] $X$ is bounded.
+\end{enumerate}
+
+\end{proposition}
+
+
+\begin{proof} The equivalence of (i) and (ii) follows essentially by \cite[Thms. 1.3 and 2.2]{convex}, since the second condition in (ii) is equivalent to  the condition in \cite[Thm. 2.2]{convex}. Indeed,  assume that (ii) holds and let $\lambda_i\in [0,1]$, $p_i,q_i\in X$ be such that $\lambda_i\to 0$ and $<\lambda_i,p,p_i>=<\lambda_i,q,q_i>$. Then for any $\epsilon\in [0,1]$ we can find some $i$ such that $\lambda_i\le \epsilon$. Put $p_\epsilon=<\lambda_i/\epsilon,p,p_i>$, $q_\epsilon=<\lambda_i/\epsilon,q,q_i>$. By conditions (c3) and (c4), we obtain 
+\[
+<\epsilon,p,p_\epsilon>=< \lambda_i,p,p_i>=<\lambda_i,q,q_i>=<\epsilon, q, q_\epsilon>,
+\]
+so that $p=q$. Since the converse is quite obvious, this proves the equivalence (i) $\iff$ (ii). Moreover, the equivalence (i) $\iff$ (v) follows by \cite[Thm. 2.5]{convex}  and \cite{ellis} (\cite[Prop. 5]{ovs}).  
+Since $E(X)$ contains an order unit, $A_b(X)$ is spanned by $E(X)$, so that (iii) and (iv) are equivalent. 
+
+Assume (iv), then by Theorem \cite[Thm. 1.2]{convex}, $X$ is geometric. By Proposition \ref{prop:XBN}, any $f\in E(X)$ extends uniquely to a linear functional $\varphi_f$ on $V(X)$. Let $S=co(X\cup -X)$ and let $v_t:=v+tw$ for $v,w\in V(X)$, $w\ne 0$ and $t\in \mathbb R$. 
+Note that there must be some $g\in E(X)$ such that $\varphi_g(w)\ne0$. Indeed, we have $w=ax-by$ for $a,b\in \mathbb R^+$ and $x,y\in X$. If $\varphi_f(w)=0$ for all $f\in E(X)$, 
+ then also $a-b=\varphi_{1_X}(w)=0$, hence $a=b$ and $w=a(x-y)$. From $\varphi_f(w)=a(f(x)-f(y))=0$ for all $f\in E(X)$, it follows that either $a=0$ or $x=y$, but in both cases $w=0$. 
+ 
+If $t$ is such that  $v_t\in S$, then 
+  \[
+  \varphi_g(v_t)=\varphi_g(v)+t\varphi_g(w)\in g(S)=co(g(X)\cup -g(X))\subseteq [-1,1],
+  \]
+   and since $\varphi_f(w)\ne 0$, this implies that $t$ must be in a bounded interval. Hence (v) holds. 
+
+Finally, if (v) is true, then $(V(X), V(X)^+, X)$ is a base-normed space. By Proposition \ref{prop:XBN} (iii), the dual Banach space 
+$V(X)^*$ is isomorphic to $A_b(X)$ and since the elements of $V(K)^*$ separate points of $V(K)$, this implies (iii).
+
+
+\end{proof}
+
+
+
+Let $X\in \ct{BConv}$ and let $\tilde V$ be the completion of $V(X)$ with respect to the base norm $\|\cdot\|_X$. Then $V(X)$ is isometrically isomorphic to a norm-dense subspace in $\tilde V$ and hence 
+$\tilde V^*\simeq V(X)^*\simeq A_b(X)$. By \cite[Theorem ]{ovs} and its proof, $\tilde V$ has a structure of a base normed space
+$(\tilde V,\tilde V^+,\tilde K)$,
+ with $\tilde V^+=\{ v\in \tilde V,\ \<f,v\>\ge 0,\ \forall f\in A_b(X)^+\}$ and $\tilde K= \{v\in \tilde V^+,\ \<v,1_X\>=1\}$, moreover, $\|\cdot\|_{\tilde K}=\|\cdot\|_X$ on $V(X)$. 
+
+
+Let $x\in \tilde K$. Since $V(X)$ is dense in $\tilde V$, there is a sequence $v_n\in V(X)$ such that $\|v_n-x\|_{\tilde K}\to 0$, 
+in particular, $\|v_n\|_X=\|v_n\|_{\tilde K}\to \|x\|_{\tilde K}=1$. For any $n\in \mathbb N$, we have
+\[
+v_n=\lambda_n x_n-\mu_n y_n,\quad x_n,y_n\in X,\ \lambda_n,\mu_n\ge 0,\ \lambda_n+\mu_n\le \|v_n\|_X+\frac1n,
+\]
+hence $\lambda_n+\mu_n\to 1$. On the other hand, 
+\[
+\lambda_n-\mu_n=\<1_X,v_n\>\to \<1_X,x\>=1
+\]
+so that $\lambda_n\to 1$ and $\mu_n\to 0$. It follows that
+\[
+\lim_n \lambda_n^{-1}x_n=\lim_n v_n =x
+\]
+so that $x$ is a limit of elements in $X$, hence  $\tilde K$ is the norm closure of $X$ in $\tilde V$. 
+
+
+Assume now that $X$ is complete in the intrinsic metric $\rho$. Since $\rho(x,y)=\|x-y\|_X=\|x-y\|_{\tilde K}$, it follows that we must have $\tilde K=X$ and hence also $V(X)=\tilde V$ is a Banach space.
+This proves the following, see also \cite{G} (\cite[Thm. 2.7]{convex}). 
+
+\begin{theorem}
+Let $X\in \ct{BConv}$ be such that $(X,\rho)$ is a complete metric space. Then $(V(X), V(X)^+, X)$ is a base-normed Banach space.
+\end{theorem}
+
+The full subcategory of bounded convex structures that are complete in $\rho$ will be denoted by $\ct{CConv}$. 
+
+\begin{proposition} $\ct{CConv}$ is equivalent to the category $\ct{BNB}$ of base-normed Banach spaces with a closed base.
+
+\end{proposition}
+
+
+
+
+\begin{thebibliography}{WWW}
+\bibitem{ellis} A. J. Ellis, The duality of partially ordered normed linear spaces, J. London Math. Soc. \textbf{39} (1964), 730-744
+\bibitem{G} Gudder, S., Convex strustures and operational quantum mechanics, Commun. math. Phys.{\bf 29} (1973) 249--264.
+\bibitem{S} M.H. Stone, Postulates for the barycenter calculus, Memiri di M.H. Stone (Chicago, USA)
+\bibitem{CF} Capraro, V., Fritz, T., On the axiomatization of convex sybsets of Banach spaces, arXiv:1105.1270v3[math.MG]20Oct.2015
+\bibitem{ovs} Seminar notes: Ordered vector spaces (Seminar\_notes/ovs.pdf)
+\bibitem{convex} Seminar notes: Convex sets (Seminar\_notes/convex.pdf)
+
+\end{thebibliography}
+\end{document} 
