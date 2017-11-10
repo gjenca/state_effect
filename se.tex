@@ -12,6 +12,37 @@
 \newcommand{\ct}[1]{\mathbf{#1}}
 
 \begin{document}
+\section{Effect algebras, effect modules and ordered vector spaces}
+
+An ordered vector space is a pair $(V,V^+)$ consisting of a real vector space $V$ and a wedge $V^+\subseteq V$, that is, a subset such that  $V+V\subseteq V$ and $\lambda V\subseteq V$ for all $\lambda\ge 0$. If in addition $V^+\cap -V^+ =\{0\}$, $V^+$ is called a cone.The wedge $V^+$ defines a preorder in $V$ by $v\le w$ if $w-v\in V^+$, this preorder is compatible with the linear structure. Such a preorder is called an orderig in $V$. 
+
+An element $u\in V$ is an order unit if for any $v\in V$ there is some $\lambda\ge 0$ such that $v\le\lambda u$. Equivalently, $u$ lies in the algebraic interior of $V^+$. An order unit $u$ is Archimedean if $v\le \lambda u$ for all $\lambda\ge 0$ implies $x\le 0$. 
+The order unit seminorm is defined as
+\[
+\|v\|_u=\inf\{\lambda\ge 0,\ -\lambda u\le v\le \lambda u\}.
+\]
+If $u$ is Archimedean and $V^+$ is a cone, then $\|\cdot\|_u$ is a norm and the triple $(V, V^+,u)$ is called an order unit space. 
+The category of order unit spaces will be denoted by $\ct{OUS}$. Morphisms in this category are  linear maps that are positive and unital, that is, preserve both the ordering and the order unit. Clearly, $\ct{OUS}$ is a full subcategory in $\ct{OVSu}$, whose objects are  triples $(V,V^+,u)$ with a wedge $V^+$ and a not necessarily Archimedean order unit $u$.
+
+Let $\ct{EA}$ denote the category of effect algebras and $\ct{EMod}$ the category of effect modules. By the results of \cite{sylvia_plus3}, $\ct{EMod}$ is a full subcategory of $\ct{EA}$. Moreover, it was proved in \cite{gud_pulm} that $\ct{EMod}$ and $\ct{OVSu}$ are equivalent categories. More precisely, the interval $[0,u]$ for any $(V,V^+,u)\in \ct{OVSu}$ is an effect module and, conversely, for 
+any effect module $A$, an object $(V,V^+,u)\in \ct{OVSu}$ can be constructed such that 
+$A$ is isomorphic to the interval  $[0,u]$  and this construction is functorial. 
+
+ 
+
+\begin{prop}\label{prop:EMod_OVSu}   $\ct{EMod}$ and $\ct{OVSu}$ are equivalent categories.
+
+\end{prop}
+
+\begin{proof} \cite{sylvia_plus3} 
+
+\end{proof}
+
+Let $V: \ct{EMod}\to \ct{OVSu}$ be the functor defined in \cite{sylvia_plus3}. We say that $A\in \ct{EMod}$ is Archimedean if $VA$ is an order unit space and $A$ is called 
+a Banach effect module  if $VA$ is an  order unit Banach space. Banach effect modules are a full subcategory of $\ct{EMod}$ (and of course also of $\ct{EA}$), denoted by 
+$\ct{BEMod}$.
+
+
 
 \section{Abstract convex structures}
 
