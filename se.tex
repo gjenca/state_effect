@@ -74,9 +74,9 @@ Put  $V(K):=\mathrm{span}\{K\}\subseteq A(K)'$, $V(K)^+:=\cup_{\lambda\ge 0} \la
 \] 
 Then $\|\cdot\|_K$ is a seminorm in $V(K)$, which coincides with $2\rho$ on $K$, moreover, the intrinsic semimetric $\rho$ is a metric if and only if $\|\cdot\|_K$ is a norm, \cite{gudder}.  
 
-\begin{thm} Let $K$ be a igeometric convex structure. Then the following are equivalent.
+\begin{thm} Let $K$ be a geometric convex structure. Then the following are equivalent.
 \begin{enumerate}
-\item[(i)] iThe intrinsic semimetric  $\rho$ (or $\sigma$) is a metric.
+\item[(i)] The intrinsic semimetric  $\rho$ (or $\sigma$) is a metric.
 \item[(ii)] $K$ is separated by effects: $f(x)=f(y)$ for all $f\in E(K)$ implies $x=y$.
 \item[(iii)] The set $S=co(K\cup -K)$ is linearly bounded.
 
@@ -89,12 +89,28 @@ Then $\|\cdot\|_K$ is a seminorm in $V(K)$, which coincides with $2\rho$ on $K$,
 
 
 
-\begin{proof} As mentioned above, $\rho$ is a metric iff $\|\cdot\|_K$ is a norm, which is equivalent to (iii) by \cite{ellis}. Assume (i)
-
+\begin{proof} As mentioned above, $\rho$ is a metric iff $\|\cdot\|_K$ is a norm, which is equivalent to (iii) by \cite{ellis}. Assume (iii) holds and let $x\ne y\in K$. Then there is a bounded linear functional $\varphi$ on the normed space $(V(K),\|\cdot\|_K)$ 
+such that $\varphi(x)\ne \varphi(y)$, we may assume $\|\varphi\|_K^*\le 1$. Then 
+\[
+\sup_{x\in K} |\varphi(x)|\le \sup_{\|v\|_K\le 1} |\varphi(v)|=\|\varphi\|_K^*\le 1,
+\]
+it follows that $f=\frac12(\varphi+1)$ is an effect and $f(x)\ne f(y)$. 
+Conversely, assume (ii) and let $(1-\lambda)x+\lambda x'=(1-\lambda)y+\lambda y'$ for some $\lambda\in (0,1)$. Then
+\[
+|f(x)-f(y)|=\frac{\lambda}{1-\lambda}|f(x')-f(y')|\le \frac{2\lambda}{1-\lambda}.
+\]
+Hence if $\sigma(x,y)=0$, then $f(x)=f(y)$, so that  $x=y$.
 
 
 \end{proof}
+ 
+ A geometric convex structure $K$ is  \emph{bounded} if it satisfies any of  the above conditions. If, moreover,  $K$ is complete with respect to the intrinsic norm, then $(V(K),\|\cdot\|_K)$ is a Banach space, \cite{gudder}. The full subcategory $\ct{CConv}$ of 
+  convex structures satisfying these properties will be important in the sequel. Its objects will be called \emph{complete bounded convex structures}. 
+The following result is immediate from what was said before.
 
+\begin{thm} 
+$\ct{CConv}$ is equivalent to the category of base-normed Banach spaces with closed bases and base-preserving morphisms.
+\end{thm}
 
 
 \end{document}
